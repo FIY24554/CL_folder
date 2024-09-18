@@ -1,0 +1,74 @@
+<html>
+	<head>
+	    <script src="DB_sql.js"></script>
+	    <script src="jQuery.js"></script>
+	    <link rel="stylesheet" href="test.css">
+		<meta charset="utf-8">
+	    <title>テスト</title>
+	</head>
+	
+	<body>
+		<h1>テスト</h1>
+		<div>
+		  		<table  class="listScroll" border="3" style="border-collapse: collapse" id = "test_table">
+				    <tr>
+				      <th>社員番号</th>
+				      <th>社員名</th>
+				      <th>削除</th>
+				    </tr>
+				   </table>
+			</div>
+		
+		<div class="syain1">
+				<div>社員番号
+	  			<input type="text" id = "test_txt_input" size="40" style="height: 50px; name="社員番号" value = "">
+	  		</div>
+	  	</div>
+	  	
+	  	<div class="syain2">	
+	  			<div>社員名
+	  			<input type="text" id = "test_txt_input_2" size="40" style="height: 50px; name="社員名">
+	  			</div>
+	  	</div>
+	  	
+		
+		<script>
+		 
+		$("#test_txt_input").val("あああああ");
+		 
+		let sql = 'select staff_id, staff_name, del_flg from tm_staff';
+	  	//console.log(sql)
+	  	let select_sql = DB.sql(sql)
+	  	
+	  		  	
+	  	
+	  	
+	  	
+	  	  
+	    for(var i = 0; i < 20; i++){
+	      
+	      $("#test_table").append("<tr><td>" + select_sql[i]["staff_id"] + "</td><td>" 
+	       + select_sql[i]["staff_name"] + "</td><td>" + select_sql[i]["del_flg"] + "</td></tr>")
+	     
+	     }
+	     
+	     
+	    $(function(){
+	     $("#test_table").on("click","td",function(){
+	     
+	        var cell = $(this).text()
+	        const nextCell = $(this).next();
+	        
+	        const colIndex = $(this).index();
+	        if (colIndex !== 0) return;
+	        
+	        $("#test_txt_input").val(cell)
+	        $("#test_txt_input_2").val(nextCell.text())
+	        
+	        
+	        });
+	     });
+	     
+	  	</script>
+	</body>
+</html>

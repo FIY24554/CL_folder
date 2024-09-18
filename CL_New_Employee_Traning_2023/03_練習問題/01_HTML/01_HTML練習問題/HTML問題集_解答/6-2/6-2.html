@@ -1,0 +1,179 @@
+<html>
+
+<head>
+	<!-- htmlファイルと同じフォルダにあるjQuery.jsを読み込む -->
+	<script type="text/javascript" src="../common/jQuery.js"></script>
+	<!-- 文字コードをUTF-8に設定（文字化け防止） -->
+	<meta charset="UTF-8">
+	<!-- タイトル -->
+	<title>電卓</title>
+
+	<style>
+    	/* ここにCSSを書く */
+		input{
+			width: 275px;
+		}
+
+		button{
+			/* width: 15%;
+			height: 15%; */
+			width: 50px;
+			height: 30px;
+		}
+
+		#display{
+			text-align: right;
+		}
+	</style>
+</head>
+
+<body>
+    <!-- ここに画面に表示する内容を書く -->
+	<div id="calculator">
+		<table>
+			<tr>
+				<td>
+					<input type="text" id="display" readonly />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<!-- 戻るボタン -->
+					<button id="button_back">▷</button>
+
+					<!-- 7ボタン -->
+					<button id="button_7">7</button>
+
+					<!-- 8ボタン -->
+					<button id="button_8">8</button>
+
+					<!-- 9ボタン -->
+					<button id="button_9">9</button>
+
+					<!-- 割り算ボタン -->
+					<button id="button_division">÷</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<!-- クリアボタン -->
+					<button id="button_c">C</button>
+
+					<!-- 4ボタン -->
+					<button id="button_4">4</button>
+
+					<!-- 5ボタン -->
+					<button id="button_5">5</button>
+
+					<!-- 6ボタン -->
+					<button id="button_6">6</button>
+
+					<!-- 掛け算ボタン -->
+					<button id="button_multiplication">×</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<!-- オールクリアボタン -->
+					<button id="button_ac">AC</button>
+
+					<!-- 1ボタン -->
+					<button id="button_1">1</button>
+
+					<!-- 2ボタン -->
+					<button id="button_2">2</button>
+
+					<!-- 3ボタン -->
+					<button id="button_3">3</button>
+
+					<!-- 引き算ボタン -->
+					<button id="button_subtraction">-</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<!-- 0ボタン -->
+					<button id="button_0">0</button>
+
+					<!-- 00ボタン -->
+					<button id="button_00">00</button>
+
+					<!-- ドットボタン -->
+					<button id="button_dot">.</button>
+
+					<!-- 計算ボタン -->
+					<button id="button_calculation">=</button>
+
+					<!-- 足し算ボタン -->
+					<button id="button_addition">+</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+	
+	<script>
+	    // ここにJavaScriptを書く
+		// 0ボタン押下時の処理
+		$("#button_0").on("click", function(){});
+
+		// 00ボタン押下時の処理
+		$("#button_00").on("click", function(){});
+
+		// ドットボタン押下時の処理
+		$("#button_dot").on("click", function(){});
+
+		// 1ボタン押下時の処理
+		$("#button_1").on("click", function(){});
+
+		// 2ボタン押下時の処理
+		$("#button_2").on("click", function(){});
+
+		// 3ボタン押下時の処理
+		$("#button_3").on("click", function(){});
+
+		// 4ボタン押下時の処理
+		$("#button_4").on("click", function(){});
+
+		// 5ボタン押下時の処理
+		$("#button_5").on("click", function(){});
+
+		// 6ボタン押下時の処理
+		$("#button_6").on("click", function(){});
+
+		// 7ボタン押下時の処理
+		$("#button_7").on("click", function(){});
+
+		// 8ボタン押下時の処理
+		$("#button_8").on("click", function(){});
+
+		// 9ボタン押下時の処理
+		$("#button_9").on("click", function(){});
+
+		// 足し算ボタン押下時の処理
+		$("#button_addition").on("click", function(){});
+
+		// 引き算ボタン押下時の処理
+		$("#button_subtraction").on("click", function(){});
+
+		// 掛け算ボタン押下時の処理
+		$("#button_multiplication").on("click", function(){});
+
+		// 割り算ボタン押下時の処理
+		$("#button_division").on("click", function(){});
+
+		// 計算ボタン押下時の処理
+		$("#button_calculation").on("click", function(){});
+
+		// 戻るボタン押下時の処理
+		$("#button_back").on("click", function(){});
+
+		// クリアボタン押下時の処理
+		$("#button_c").on("click", function(){});
+
+		// オールクリアボタン押下時の処理
+		$("#button_ac").on("click", function(){});
+	</script>
+</body>
+
+</html>

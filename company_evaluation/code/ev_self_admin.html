@@ -1,0 +1,342 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="DB_sql.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<h1>自己評価管理</h1>
+	<div class="self_c_admin">
+		<table border="1" id="self_c_tb">
+			<tr>
+				<th class="pk_th0 sca_cd_th">自己評価<br>コード</th>
+				<th class="sca_pt_th">pt</th>
+				<th class="sca_pt_th">Expt</th>
+				<th class="sca_sc_th">評価項目</th>
+				<th class="sca_ex_th">説明</th>
+			</tr>
+			<!--ここにデータを挿入-->
+		</table>
+
+		<div class="self_c_input">
+			<div>
+				<label>自己評価コード</label>
+				<input type="text" id="sc_cd_inp" disabled>
+			</div>
+			<div>
+				<label>評価項目</label>
+				<input type="text" id="self_check_inp">
+			</div>
+			<div>
+				<label>pt</label>
+				<input type="number" id="pt_inp">
+			</div>
+			<div>
+				<label>Expt</label>
+				<input type="number" id="Expt_inp">
+			</div>
+			<div>
+				<label>説明</label>
+				<textarea id="explanation_inp"></textarea>
+			</div>
+			<!-- <div class="del_flg">
+				<label>削除フラグ</label>
+				<input type="checkbox" id="del_flg_inp">
+			</div> -->
+
+			<!-- エラーメッセージ -->
+			<div class="admin_error">
+				<p id="error_1" hidden>※評価項目を入力してください。</p>
+				<p id="error_2" hidden>※ptを入力してください。</p>
+				<p id="error_3" hidden>※Exptを入力してください。</p>
+				<p id="error_4" hidden>※評価項目は200文字以内で入力してください。</p>
+				<p id="error_5" hidden>※ptの上限値を超えています。</p>
+				<p id="error_6" hidden>※Exptの上限値を超えています。</p>
+				<p id="error_7" hidden>※説明は200文字以内で入力してください。</p>
+				<p id="error_15" hidden>※ptまたはExptに0以外の数値を入力してください。</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="admin_btn">
+		<button id="back_button">戻る</button>
+		<button id="insert_button">登録</button>
+		<button id="update_button">更新</button>
+	</div>
+	<!--ポップアップ時のグレー処理-->
+	<div id="pop_back"></div>
+	<!--更新ポップアップ-->
+	<div class="pop" id="UPDATE">
+		<button class="pop_cancel" >✖</button>
+		<div class="pop_title_alone">更新しますか？</div>
+		<button class="pop_button_alone" id="update_ok">OK</button>
+	</div>
+	<!--登録ポップアップ-->
+	<div class="pop" id="INSERT">
+		<button class="pop_cancel" >✖</button>
+		<div class="pop_title_alone">登録しますか？</div>
+		<button class="pop_button_alone" id="insert_ok">OK</button>
+	</div>
+	<!--戻るポップアップ-->
+	<div class="pop" id="BACK">
+		<button class="pop_cancel">✖</button>
+		<div class="pop_title"><span>※保存をしていないため<br>入力されたデータが消えます。</span><br>よろしいですか？</div>
+		<button class="pop_button_alone" id="back_ok">OK</button>
+	</div>
+</body>
+<script>
+	let ev_user_id = localStorage.getItem("ev_user_id");
+	//ブラウザのバックボタン押下時の警告メッセージ
+	window.addEventListener('load', function() {
+	  window.addEventListener('popstate', function(event) {
+	    alert('もう一度このボタンを押すと保存していないデータは消えてしまいます😱');
+	  });
+	  history.pushState(null, null, null);
+	});
+
+	// 現在日時
+	let date = new Date();
+	let date_yyyymm = date.toISOString()
+	let ev_date = date_yyyymm.slice(0,7);
+	let year = ev_date.slice(0,4);
+	let month = ev_date.slice(5,7);
+	let now = year+'-'+month+'-'+("00" + (date.getDate())).slice(-2);
+	// console.log("now:"+now);
+
+	// DBに登録されている自己評価テーブルを表示
+	let self_c = DB.sql("SELECT * FROM TM_self_check;");
+	console.log(self_c);
+
+	for(let i=0; i<self_c.length; i++){
+		$("#self_c_tb").append('<tr id="tr'+i+'"></tr>');
+		$("#tr"+i).append('<td id="sc_cd_'+i+'" class="pk_td0">'+self_c[i]["sc_cd"]+'</td>');
+		$("#tr"+i).append('<td id="pt_'+i+'">'+self_c[i]["pt"]+'</td>');
+		$("#tr"+i).append('<td id="Expt_'+i+'">'+self_c[i]["Expt"]+'</td>');
+		$("#tr"+i).append('<td id="self_check_'+i+'">'+self_c[i]["self_check"]+'</td>');
+		tb_null(i, "explanation", self_c[i]["explanation"]);
+	}
+	
+	// nullの場合、-(ハイフン)を返す(table用)
+	function tb_null(i, col, data){
+		if(data==null){
+			// nullの場合
+			$("#tr"+i).append('<td id="'+col+i+'" class="tb_null">-</td>');
+		}else{
+			// nullでない場合
+			$("#tr"+i).append('<td id="'+col+i+'">'+data+'</td>');
+		}
+	}
+
+	// クリックされた列のデータをテキストボックスに代入する
+	for(let i=0; i<self_c.length; i++){
+		$("#tr"+i).on("click",function(){
+			console.log();
+			$("#sc_cd_inp").val(self_c[i]["sc_cd"]);
+			$("#self_check_inp").val(self_c[i]["self_check"]);
+			$("#pt_inp").val(self_c[i]["pt"]);
+			$("#Expt_inp").val(self_c[i]["Expt"]);
+			inp_null(i, "explanation", self_c[i]["explanation"]);
+			if(self_c[i]["del_flg"]){
+				// 削除フラグがtrueの場合
+				$("#del_flg_inp").prop('checked', true);
+			}else{
+				// 削除フラグがfalseの場合
+				$("#del_flg_inp").prop('checked', false);
+			}
+		});
+	}
+	
+	// input用nullチェック
+	function inp_null(i, col, data){
+		if(data!=null){
+			// nullの場合
+			$("#"+col+"_inp").val(data);
+		}else{
+			// nullでない場合
+			$("#"+col+"_inp").val("");
+		}
+	}
+
+	// 登録確認ポップアップのOKボタンが押下されたとき
+	$("#insert_ok").on("click",function(){
+		if(error()){
+			// 自己評価コードの自動採番
+			let cd_num;
+			if($("#pt_inp").val() < 0 || $("#Expt_inp").val() < 0){
+				// ptまたはExptが0以下の場合
+				let db_cd = DB.sql('SELECT MIN(sc_cd) as sc_cd FROM TM_self_check WHERE pt < 0 OR Expt < 0;');
+				cd_num = Number(db_cd[0]["sc_cd"].slice(2))-1;
+			}else{
+				// ptまたはExptが0以下でない場合
+				let db_cd = DB.sql('SELECT MAX(sc_cd) as sc_cd FROM TM_self_check WHERE pt >= 0 AND Expt >= 0;');
+				cd_num = Number(db_cd[0]["sc_cd"].slice(2))+1;
+			}
+			new_cd = "SC" + ("000"+cd_num).slice(-3);
+			// console.log(new_cd);
+
+			// 自己評価テーブル登録用のSQL文
+			let sql = "INSERT INTO TM_self_check(sc_cd, self_check, pt, Expt, explanation, create_date, create_id) ";
+			sql += 'VALUES("'+new_cd+'", ';
+			sql += '"'+$("#self_check_inp").val()+'", ';
+			sql += $("#pt_inp").val()+', ';
+			sql += $("#Expt_inp").val()+', ';
+			sql += sql_null("explanation_inp", "v")+', ';
+			//sql += $("#del_flg_inp").prop('checked')+', ';
+			sql += '"'+now+'", ';
+			sql += '"'+ev_user_id+'");';// ログインID（あとで書き換える）
+			console.log(sql);
+			DB.sql(sql);
+			window.location.reload();
+		}
+	});
+
+	// 更新確認ポップアップのOKボタンが押下されたとき
+	$("#update_ok").on("click",function(){
+		if(error()){
+			// 自己評価テーブル更新用のSQL文
+			let sql = 'UPDATE TM_self_check ';
+			sql += 'SET self_check="'+$("#self_check_inp").val()+'", ';
+			sql += 'pt='+$("#pt_inp").val()+', ';
+			sql += 'Expt='+$("#Expt_inp").val()+', ';
+			sql += 'explanation='+sql_null("explanation_inp", "v")+', ';
+			//sql += 'del_flg='+$("#del_flg_inp").prop('checked')+', ';
+			sql += 'update_date="'+now+'", ';
+			sql += 'update_id="'+ev_user_id+'" ';// ログインID（あとで書き換える）
+			sql += 'WHERE sc_cd="'+$("#sc_cd_inp").val()+'";';
+			console.log(sql);
+			DB.sql(sql);
+			window.location.reload();
+		}
+	});
+
+	// sql用nullチェック
+	function sql_null(inp, type){
+		let inp_str = $("#"+inp).val();
+		if(inp_str==null || inp_str=="" || inp_str=="null"){
+			// inputの値がnullの場合
+			return 'null';
+		}else{
+			// inputの値がnullではないの場合
+			if(type=="i"){
+				// データ型が数値型の場合
+				return inp_str;
+			}else{
+				// データ型が文字型,日付型の場合
+				return '"'+inp_str+'"';
+			}
+		}
+	}
+
+	// エラーメッセージの表示
+	function error(){
+		let error_check = true;
+
+		document.getElementById("error_1").hidden = true;
+		document.getElementById("error_2").hidden = true;
+		document.getElementById("error_3").hidden = true;
+		document.getElementById("error_4").hidden = true;
+		document.getElementById("error_5").hidden = true;
+		document.getElementById("error_6").hidden = true;
+		document.getElementById("error_7").hidden = true;
+		document.getElementById("error_15").hidden = true;
+
+		// 評価項目が入力されていない場合
+		if($("#self_check_inp").val() == ""){
+			document.getElementById("error_1").hidden = false;
+			error_check = false;
+		}
+		// ptが入力されていない場合
+		if($("#pt_inp").val() == ""){
+			document.getElementById("error_2").hidden = false;
+			error_check = false;
+		}
+		// Exptが入力されていない場合
+		if($("#Expt_inp").val() == ""){
+			document.getElementById("error_3").hidden = false;
+			error_check = false;
+		}
+		// 評価項目が200文字以内でない場合
+		if($("#self_check_inp").val().length > 200){
+			document.getElementById("error_4").hidden = false;
+			error_check = false;
+		}
+		// ptの値が-32768～32767でない場合
+		if(-32768 > $("#pt_inp").val() || $("#pt_inp").val() > 32767){
+			document.getElementById("error_5").hidden = false;
+			error_check = false;
+		}
+		// Exptの値が-32768～32767でない場合
+		if(-32768 > $("#Expt_inp").val() || $("#Expt_inp").val() > 32767){
+			document.getElementById("error_6").hidden = false;
+			error_check = false;
+		}
+		// 説明が200文字以内でない場合
+		if($("#explanation_inp").val().length > 200){
+			document.getElementById("error_7").hidden = false;
+			error_check = false;
+		}
+		
+		//ptとExptが0の時
+		if(0 == $("#pt_inp").val() && $("#Expt_inp").val() == 0){
+			document.getElementById("error_15").hidden = false;
+			error_check = false;		
+		}
+		
+		return error_check;
+	}
+
+
+	// ポップアップの処理
+	$("#UPDATE").hide();
+	$("#INSERT").hide();
+	$("#BACK").hide();
+	$("#pop_back").hide();
+	
+	$("#back_button").on("click",function(){
+		$("#BACK").show();
+		$("#pop_back").show();
+	})
+	
+	$("#insert_button").on("click",function(){
+		$("#INSERT").show();
+		$("#pop_back").show();
+	})
+	
+	$("#update_button").on("click",function(){
+		$("#UPDATE").show();
+		$("#pop_back").show();
+	})
+	
+	$(".pop_cancel").on("click",function(){
+		$("#UPDATE").hide();
+		$("#INSERT").hide();
+		$("#BACK").hide();
+		$("#pop_back").hide();
+	})
+	
+	$("#update_ok").on("click",function(){
+		$("#UPDATE").hide();
+		$("#INSERT").hide();
+		$("#BACK").hide();
+		$("#pop_back").hide();
+	})
+	
+	$("#insert_ok").on("click",function(){
+		$("#UPDATE").hide();
+		$("#INSERT").hide();
+		$("#BACK").hide();
+		$("#pop_back").hide();
+	})
+	
+	$("#back_ok").on("click",function(){
+		$("#UPDATE").hide();
+		$("#INSERT").hide();
+		$("#BACK").hide();
+		$("#pop_back").hide();
+		location.href='ev_assess_select.html'
+	})
+	
+</script>
+</html>
+

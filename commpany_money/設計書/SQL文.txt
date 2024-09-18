@@ -1,0 +1,203 @@
+【データベース削除】
+DROP DATABASE company_money_maneger;
+
+【テーブル削除】
+DROP TABLE TE_Staff_Location;
+
+【テーブルデータ削除】
+DELETE FROM TP_Calendar;
+
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+【データベース作成】
+CREATE DATABASE company_money_maneger;
+
+【データベース選択】
+USE company_money_maneger;
+
+【カレンダーテーブル】
+＜作成＞
+CREATE TABLE TP_Calendar(
+        date DATE,
+        wday  VARCHAR(3) NOT NULL,
+        holiday_flg BOOLEAN DEFAULT false,
+    PRIMARY KEY (date)
+);
+＜確認＞
+DESC TP_Calendar;
+＜テストデータ登録＞
+長いので別ファイル
+＜テストデータ確認＞
+SELECT * FROM TP_Calendar;
+
+【休暇種別テーブル】
+＜作成＞
+CREATE TABLE TC_HolidayType(
+        holiday_type  VARCHAR(2),
+        holiday_type_name VARCHAR(20) NOT NULL,
+    PRIMARY KEY (holiday_type)
+);
+＜確認＞
+DESC TC_HolidayType;
+＜テストデータ登録＞
+INSERT INTO TC_HolidayType (holiday_type, holiday_type_name)
+VALUES ("01", "有休"),("02", "体調不良"),("99", "-");
+＜テストデータ確認＞
+SELECT * FROM TC_HolidayType;
+
+【契約形態テーブル】
+＜作成＞
+CREATE TABLE TC_Agreement(
+        agreement_id VARCHAR(4),
+        agreement_name VARCHAR(20) NOT NULL,
+    PRIMARY KEY (agreement_id)
+);
+＜確認＞
+DESC TC_Agreement;
+＜テストデータ登録＞
+INSERT INTO TC_Agreement (agreement_id, agreement_name)
+VALUES ("0001", "契約1"),("0002", "契約2");
+＜テストデータ確認＞
+SELECT * FROM TC_Agreement;
+
+【社員マスタ】
+＜作成＞
+CREATE TABLE TM_Staff(
+        staff_id VARCHAR(6),
+        staff_name VARCHAR(30) NOT NULL,
+        y_holiday INT(2),
+        del_flg  BOOLEAN DEFAULT false,
+        create_date DATE NOT NULL,
+        update_date DATE,
+    PRIMARY KEY (staff_id)
+);
+＜確認＞
+DESC TM_Staff;
+＜テストデータ登録＞
+INSERT INTO TM_Staff (staff_id, staff_name, y_holiday, create_date)
+VALUES
+ ("000001", "岩田有市", 20, "2023-08-01"),
+ ("000002", "村田純一", 20, "2023-08-01"),
+ ("000003", "松家もえ", 20, "2023-08-01"),
+ ("000004", "加藤千瑞", 20, "2023-08-01");
+＜テストデータ確認＞
+SELECT * FROM TM_Staff;
+
+
+【勤務先マスタ】
+＜作成＞
+CREATE TABLE TM_Location(
+        location_id VARCHAR(4),
+        location_name VARCHAR(30),
+        create_date DATE,
+        update_date DATE,
+    PRIMARY KEY (location_id)
+);
+＜確認＞
+DESC TM_Location;
+＜テストデータ登録＞
+INSERT INTO TM_Location (location_id, location_name, create_date)
+VALUES ("0001", "名古屋駅", "2023-08-01"),("0002", "東京駅", "2023-08-01");
+＜テストデータ確認＞
+SELECT * FROM TM_Location;
+
+【社員勤務先テーブル】
+＜作成＞
+CREATE TABLE TE_Staff_Location(
+        staff_id VARCHAR(6),
+        location_id VARCHAR(4),
+        agreement_id VARCHAR(4),
+        road_money INT,
+        start_time TIME NOT NULL  DEFAULT "0:00",
+        end_time TIME NOT NULL  DEFAULT "0:00",
+        work_time TIME NOT NULL  DEFAULT "0:00",
+        overtime_start TIME NOT NULL  DEFAULT "0:00",
+        del_flg  BOOLEAN DEFAULT false,
+        note  VARCHAR(300),
+    FOREIGN KEY (staff_id) REFERENCES TM_Staff(staff_id),
+    FOREIGN KEY (location_id) REFERENCES TM_Location(location_id),
+    FOREIGN KEY (agreement_id) REFERENCES TC_Agreement(agreement_id),
+    PRIMARY KEY (staff_id, location_id, agreement_id)
+);
+＜確認＞
+DESC TE_Staff_Location;
+＜テストデータ登録＞
+INSERT INTO TE_Staff_Location (staff_id, location_id, agreement_id, start_time, end_time, work_time, overtime_start)
+VALUES
+ ("000001", "0001", "0001", "9:00", "18:00", "8:00", "18:00"),
+ ("000002", "0001", "0001", "9:00", "18:00", "8:00", "18:00"),
+ ("000003", "0001", "0001", "9:00", "18:00", "8:00", "18:00"),
+ ("000004", "0002", "0001", "9:00", "18:00", "8:00", "18:00");
+＜テストデータ確認＞
+SELECT * FROM TE_Staff_Location;
+
+【勤務時間テーブル】
+＜作成＞
+CREATE TABLE TE_Time(
+        staff_id  VARCHAR(6),
+        date   DATE,
+        work_content  VARCHAR(100),
+        start_time  TIME  DEFAULT "0:00",
+        end_time  TIME  DEFAULT "0:00",
+        break_time  TIME  DEFAULT "0:00",
+        overtime_normal  TIME  DEFAULT "0:00",
+        overtime_night  TIME  DEFAULT "0:00",
+        overtime_nosat  TIME  DEFAULT "0:00",
+        overtime_nosat_night TIME  DEFAULT "0:00",
+        private_time  TIME  DEFAULT "0:00",
+        customer_time  TIME  DEFAULT "0:00",
+        break_time_any  TIME  DEFAULT "0:00",
+        holiday_time  TIME  DEFAULT "0:00",
+        holiday_type  VARCHAR(2),
+        slow   TIME  DEFAULT "0:00",
+        early   TIME  DEFAULT "0:00",
+    FOREIGN KEY (staff_id) REFERENCES TM_Staff(staff_id),
+    FOREIGN KEY (date)  REFERENCES TP_Calendar(date),
+    FOREIGN KEY (holiday_type) REFERENCES TC_HolidayType(holiday_type),
+    PRIMARY KEY (staff_id, date)
+);
+＜確認＞
+DESC TE_Time;
+＜テストデータ登録＞
+INSERT INTO TE_Time (staff_id, date, work_content, start_time, end_time, break_time, overtime_normal, overtime_night, overtime_nosat, overtime_nosat_night, private_time, customer_time)
+VALUES
+ ("000003", "2023-07-01", "寝てた", "9:00", "18:00", "1:00", "0:00", "0:00", "0:00", "0:00", "8:00", "0:00"),
+ ("000003", "2023-07-02", "起きてた", "9:00", "19:00", "1:00", "1:00", "0:00", "0:00", "0:00", "8:00", "0:00");
+＜テストデータ確認＞
+SELECT * FROM TE_Time;
+
+【一時勤務時間テーブル】
+＜作成＞
+CREATE TABLE TT_Time(
+        staff_id  VARCHAR(6),
+        date   DATE,
+        work_content  VARCHAR(100),
+        start_time  TIME  DEFAULT "0:00",
+        end_time  TIME  DEFAULT "0:00",
+        break_time  TIME  DEFAULT "0:00",
+        overtime_normal  TIME  DEFAULT "0:00",
+        overtime_night  TIME  DEFAULT "0:00",
+        overtime_nosat  TIME  DEFAULT "0:00",
+        overtime_nosat_night TIME  DEFAULT "0:00",
+        private_time  TIME  DEFAULT "0:00",
+        customer_time  TIME  DEFAULT "0:00",
+        break_time_any  TIME  DEFAULT "0:00",
+        holiday_time  TIME  DEFAULT "0:00",
+        holiday_type  VARCHAR(2),
+        slow   TIME  DEFAULT "0:00",
+        early   TIME  DEFAULT "0:00",
+    FOREIGN KEY (staff_id) REFERENCES TM_Staff(staff_id),
+    FOREIGN KEY (date)  REFERENCES TP_Calendar(date),
+    FOREIGN KEY (holiday_type) REFERENCES TC_HolidayType(holiday_type),
+    PRIMARY KEY (staff_id, date)
+);
+＜確認＞
+DESC TT_Time;
+＜テストデータ登録＞
+INSERT INTO TT_Time (staff_id, date, work_content, start_time, end_time, break_time, private_time, customer_time, holiday_type)
+VALUES
+ ("000003", "2023-07-03", "はよ帰る", "9:00", "15:00", "1:00", "5:00", "0:00", "01"),
+ ("000003", "2023-07-04", "寝坊", "11:00", "19:00", "1:00", "7:00", "0:00", "02");
+＜テストデータ確認＞
+SELECT * FROM TT_Time;
+

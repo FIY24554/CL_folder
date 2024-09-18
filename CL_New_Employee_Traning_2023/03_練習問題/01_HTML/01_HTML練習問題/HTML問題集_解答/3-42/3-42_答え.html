@@ -1,0 +1,36 @@
+<html>
+
+<head>
+	<!-- htmlファイルと同じフォルダにあるjQuery.jsを読み込む -->
+	<script type="text/javascript" src="../common/jQuery.js"></script>
+	<!-- 文字コードをUTF-8に設定（文字化け防止） -->
+	<meta charset="UTF-8">
+	<!-- タイトル -->
+	<title>練習問題</title>
+
+	<style>
+    	/* ここにCSSを書く */
+	</style>
+</head>
+
+<body>
+    <!-- ここに画面に表示する内容を書く -->
+	<div id="test"></div>
+	
+	
+	<script>
+	    // ここにJavaScriptを書く
+		let a = 1;
+		let b = 2;
+		let c = 0;
+		console.log("cの値：" + c);
+		c = sum(a, b);
+		console.log("関数実行後のcの値：" + c);
+
+		function sum(x, y){
+			return x + y;
+		}
+	</script>
+</body>
+
+</html>

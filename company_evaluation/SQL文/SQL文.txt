@@ -1,0 +1,289 @@
+【データベース削除】
+DROP DATABASE company_evaluation;
+
+【テーブル削除】
+DROP TABLE TM_salary;
+
+【テーブルデータ削除】
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM TE_staff_cp;
+DELETE FROM TE_staff_sc;
+DELETE FROM TM_salary;
+
+【カラム名変更】
+ALTER TABLE TM_staff RENAME COLUMN ac_history TO ac_history_cd;
+
+【外部キー追加】
+ALTER TABLE TM_staff ADD FOREIGN KEY (ac_history_cd) REFERENCES TC_ac_history(ac_history_cd);
+
+【初期値追加】
+ALTER TABLE TM_staff ALTER pt SET DEFAULT 0, Expt SET DEFAULT 0;
+
+【初期値追加＆NOTNULL追加】
+ALTER TABLE TM_staff MODIFY COLUMN pt SMALLINT DEFAULT 0 NOT NULL;
+ALTER TABLE TM_staff MODIFY COLUMN Expt SMALLINT DEFAULT 0 NOT NULL;
+
+【学歴列を全てnullにする】
+update TM_staff set ac_history_cd=null
+
+update TC_ac_history set ac_history="大卒(文系)" where ac_history_cp="ac_uh";
+update TC_ac_history set ac_history="大卒(理系)" where ac_history_cd="ac_us";
+
+【社員全員削除フラグON】
+update TM_staff set del_flg=true;
+
+【ログインテーブルに削除フラグ列追加】
+ALTER TABLE TM_user ADD COLUMN del_flg BOOLEAN  NOT NULL  DEFAULT false;
+
+【create_idの値をsystemに変更】
+update TM_staff set create_id="system";
+update TM_self_check set create_id="system";
+update TM_point set create_id="system";
+
+
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
+【データベース作成】
+CREATE DATABASE company_evaluation;
+
+【データベース選択】
+USE company_evaluation;
+
+【学歴テーブル】
+＜作成＞
+CREATE TABLE TC_ac_history(
+        ac_history_cd     VARCHAR(5),
+        ac_history     VARCHAR(10)  NOT NULL,
+        pt     SMALLINT  NOT NULL,
+        Expt     SMALLINT  NOT NULL,
+    PRIMARY KEY (ac_history_cd)
+);
+＜確認＞
+DESC TC_ac_history;
+＜テストデータ登録＞
+INSERT INTO TC_ac_history(ac_history_cd, ac_history, pt, Expt)
+VALUES
+     ("ac_n", "-", 0, 0),
+     ("ac_hs", "高卒", 5, 0),
+     ("ac_v2", "専門卒(2年)", 9, 1),
+     ("ac_v3", "専門卒(3年)", 15, 1),
+     ("ac_v4", "専門卒(4年)", 17, 2),
+     ("ac_uh", "大卒(文系)", 17, 2),
+     ("ac_us", "大卒(理系)", 19, 2),
+     ("ac_ct", "高専卒", 19, 2);
+＜テストデータ確認＞
+SELECT * FROM TC_ac_history;
+
+【最低賃金テーブル】
+＜作成＞
+CREATE TABLE TM_min_money(
+        min_money     SMALLINT,
+    PRIMARY KEY (min_money)
+);
+＜確認＞
+DESC TM_min_money;
+＜テストデータ登録＞
+INSERT INTO TM_min_money(min_money)
+VALUES (986);
+＜テストデータ確認＞
+SELECT * FROM TM_min_money;
+
+【給与テーブル】
+＜作成＞
+CREATE TABLE TM_salary(
+        cl_rank     VARCHAR(2),
+        class     TINYINT,
+        pt     SMALLINT  NOT NULL,
+        Expt     SMALLINT  NOT NULL,
+        salary     DECIMAL(7,0)  NOT NULL,
+        del_flg     BOOLEAN  NOT NULL  DEFAULT false,
+    PRIMARY KEY (cl_rank, class)
+);
+＜確認＞
+DESC TM_salary;
+＜テストデータ登録＞
+TM_salary_テストデータ.txtに記載
+＜テストデータ確認＞
+SELECT * FROM TM_salary;
+
+【職歴ポイント(IT以外)テーブル】
+＜作成＞
+CREATE TABLE TM_noit_point(
+        generation     TINYINT,
+        not_it     TINYINT,
+        1th     TINYINT,
+        2th     TINYINT,
+        3th     TINYINT,
+        4th     TINYINT,
+        5th_over     TINYINT,
+    PRIMARY KEY (generation, not_it)
+);
+＜確認＞
+DESC TM_noit_point;
+＜テストデータ登録＞
+TM_noit_point_テストデータ.txtに記載
+＜テストデータ確認＞
+SELECT * FROM TM_noit_point;
+
+【ユーザテーブル】
+＜作成＞
+CREATE TABLE TM_user(
+        user_id     VARCHAR(10),
+        user_name     VARCHAR(20)  NOT NULL,
+        password     VARCHAR(10)  NOT NULL,
+        user_kbn     VARCHAR(10),
+        del_flg     BOOLEAN  NOT NULL  DEFAULT false,
+    PRIMARY KEY (user_id)
+);
+＜確認＞
+DESC TM_user;
+＜テストデータ登録＞
+INSERT INTO TM_user(user_id, user_name, password)
+VALUES
+     ("iwata", "岩田有市", "password"),
+     ("ozawa", "大澤健太", "password"),
+     ("kozima", "小島衣織", "password"),
+     ("murata", "村田純一", "password");
+＜テストデータ確認＞
+SELECT * FROM TM_user;
+
+【社員テーブル】
+＜作成＞
+CREATE TABLE TM_staff(
+        staff_id     VARCHAR(6),
+        staff_name     VARCHAR(20)  NOT NULL,
+        birthday     DATE,
+        join_date     DATE,
+        pt     SMALLINT  NOT NULL  DEFAULT 0,
+        Expt     SMALLINT  NOT NULL  DEFAULT 0,
+        ac_history_cd     VARCHAR(5),
+        society_history     TINYINT    いらんかも,
+        it_history     TINYINT,
+        noit_history     TINYINT,
+        del_flg     BOOLEAN  NOT NULL  DEFAULT false,
+        create_date     DATE,
+        create_id     VARCHAR(6),
+        update_date     DATE,
+        update_id     VARCHAR(6),
+    FOREIGN KEY (ac_history_cd) REFERENCES TC_ac_history(ac_history_cd),
+    FOREIGN KEY (create_id) REFERENCES TM_user(user_id),
+    FOREIGN KEY (update_id) REFERENCES TM_user(user_id),
+    PRIMARY KEY (staff_id)
+);
+＜確認＞
+DESC TM_staff;
+＜テストデータ登録＞
+INSERT INTO TM_staff(staff_id, staff_name, birthday, join_date, create_date, create_id)
+VALUES
+     ("190011", "大橋 奈々", "2022-01-01", "2022-01-01", "2023-09-25", "iwata"),
+     ("190012", "國枝 敏彦", "2022-01-01", "2022-01-01", "2023-09-25", "iwata"),
+     ("190013", "大岡 咲月", "2022-01-01", "2022-01-01", "2023-09-25", "iwata"),
+     ("190015", "髙山 ゆう", "2022-01-01", "2022-01-01", "2023-09-25", "iwata"),
+     ("190016", "大澤 健太", "2022-01-01", "2022-01-01", "2023-09-25", "iwata"),
+     ("190017", "田中 常勝", "2022-01-01", "2022-01-01", "2023-09-25", "iwata"),
+     ("200003", "平野 僚太", "2022-01-01", "2022-01-01", "2023-09-25", "iwata"),
+     ("210001", "小島 衣織", "2022-01-01", "2022-01-01", "2023-09-25", "iwata"),
+     ("220001", "本田 しほ麗", "2022-01-01", "2022-01-01", "2023-09-25", "iwata"),
+     ("230001", "松家 もえ", "2022-01-01", "2022-01-01", "2023-09-25", "iwata"),
+     ("230002", "伊藤 愛香", "2022-01-01", "2022-01-01", "2023-09-25", "iwata"),
+     ("230003", "加藤 千瑞", "2022-01-01", "2022-01-01", "2023-09-25", "iwata"),
+     ("230004", "韮山 蒼太", "2022-01-01", "2022-01-01", "2023-09-25", "iwata"),
+     ("230005", "佐藤 宏樹", "2022-01-01", "2022-01-01", "2023-09-25", "iwata"),
+     ("230006", "浅井 栄二", "2022-01-01", "2022-01-01", "2023-09-25", "iwata");
+＜テストデータ確認＞
+SELECT * FROM TM_staff;
+
+【自己評価テーブル】
+＜作成＞
+CREATE TABLE TM_self_check(
+        sc_cd     VARCHAR(5),
+        self_check     VARCHAR(200)  NOT NULL,
+        pt     SMALLINT  NOT NULL,
+        Expt     SMALLINT  NOT NULL,
+        explanation     VARCHAR(200),
+        del_flg     BOOLEAN  NOT NULL  DEFAULT false,
+        create_date     DATE,
+        create_id     VARCHAR(6),
+        update_date     DATE,
+        update_id     VARCHAR(6),
+    FOREIGN KEY (create_id) REFERENCES TM_user(user_id),
+    FOREIGN KEY (update_id) REFERENCES TM_user(user_id),
+    PRIMARY KEY (sc_cd)
+);
+＜確認＞
+DESC TM_self_check;
+＜テストデータ登録＞
+TM_self_check_テストデータ.txtに記載
+＜テストデータ確認＞
+SELECT * FROM TM_self_check;
+
+【ポイントテーブル】
+＜作成＞
+CREATE TABLE TM_point(
+        title_cd     VARCHAR(5),
+        tm_kbn     VARCHAR(1)  NOT NULL,
+        jq_kbn     VARCHAR(1)  NOT NULL,
+        detail     VARCHAR(200)  NOT NULL,
+        pt     SMALLINT,
+        Expt     SMALLINT,
+        note     VARCHAR(200),
+        del_flg     BOOLEAN  NOT NULL  DEFAULT false,
+        create_date     DATE,
+        create_id     VARCHAR(6),
+        update_date     DATE,
+        update_id     VARCHAR(6),
+    FOREIGN KEY (create_id) REFERENCES TM_user(user_id),
+    FOREIGN KEY (update_id) REFERENCES TM_user(user_id),
+    PRIMARY KEY (title_cd)
+);
+＜確認＞
+DESC TM_point;
+＜テストデータ登録＞
+TM_point_テストデータ.txtに記載
+＜テストデータ確認＞
+SELECT * FROM TM_point;
+
+【社員自己評価テーブル】
+＜作成＞
+CREATE TABLE TE_staff_sc(
+        staff_id     VARCHAR(6),
+        sc_cd     VARCHAR(5),
+        assess_date     DATE,
+        result     BOOLEAN  NOT NULL,
+        note     VARCHAR(200),
+    FOREIGN KEY (staff_id) REFERENCES TM_staff(staff_id),
+    FOREIGN KEY (sc_cd) REFERENCES TM_self_check(sc_cd),
+    PRIMARY KEY (staff_id, sc_cd, assess_date)
+);
+＜確認＞
+DESC TE_staff_sc;
+＜テストデータ登録＞
+INSERT INTO TE_staff_sc(staff_id, sc_cd, assess_date, result)
+VALUES
+     ("230001", "SC001", "2023-08-17", true),
+     ("230001", "SC002", "2023-08-17", false);
+＜テストデータ確認＞
+SELECT * FROM TE_staff_sc;
+
+【社員会社評価テーブル】
+＜作成＞
+CREATE TABLE TE_staff_cp(
+        staff_id     VARCHAR(6),
+        title_cd     VARCHAR(5),
+        assess_date     DATE,
+        note     VARCHAR(200),
+    FOREIGN KEY (staff_id) REFERENCES TM_staff(staff_id),
+    FOREIGN KEY (title_cd) REFERENCES TM_point(title_cd),
+    PRIMARY KEY (staff_id, title_cd, assess_date)
+);
+＜確認＞
+DESC TE_staff_cp;
+＜テストデータ登録＞
+INSERT INTO TE_staff_cp(staff_id, title_cd, assess_date)
+VALUES
+     ("230001", "TQ003", "2023-08-17");
+＜テストデータ確認＞
+SELECT * FROM TE_staff_cp;
+
+
+

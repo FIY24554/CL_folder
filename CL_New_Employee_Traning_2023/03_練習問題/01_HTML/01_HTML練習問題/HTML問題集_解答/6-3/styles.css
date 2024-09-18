@@ -1,0 +1,59 @@
+/* 説明欄 */
+#manual{
+	position: absolute;
+	left: 5%;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+}
+
+/* スクリーンの大きさ、位置 */
+#screen{
+	width: 640px;
+	height: 480px;
+	background-color: black;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
+	color: white;
+}
+
+/* スタート画面 */
+#top, #game_clear, #game_over{
+	text-align: center;
+}
+.title{
+	margin-top: 100px;
+	font-size: 60px;
+}
+#start_text, #game_clear_text, #game_over_text{
+	margin-top: 100px;
+	font-size: 20px;
+}
+
+/* 残機表示 */
+#player{
+	position: absolute;
+	left: 80%;
+	top: 50%;
+	transform: translateY(-50%);
+}
+#p_cnt{
+	width: 100px;
+}
+
+/* 注意事項 */
+#cautions{
+	position: absolute;
+	top: 95%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+/* 入力欄非表示 */
+#input {
+	opacity: 0;
+}
+
+

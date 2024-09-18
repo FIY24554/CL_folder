@@ -1,0 +1,63 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<h1>人事評価システム</h1>
+	<div class="center">
+		<button class="select_row2"id="assess_start">評価実施</button>
+		<button class="select_row2"id="assess_output">評価出力</button>
+	</div>
+	<div id="menus" class="center">
+		<button class="select_row1"id="staff_admin">社員管理</button>
+		<button class="select_row1"id="assess_admin">評価項目管理</button>
+		<button class="select_row1"id="money_table">給与テーブル</button>
+	</div>
+	<button id="select_menu">▼</button>
+	<!--<button id="back_button">戻る</button>-->
+</body>
+<script>
+	//社員管理ボタン押下時
+	$("#staff_admin").on("click",function(){
+		location.href='ev_staff_admin.html'
+	});
+	
+	$("#assess_admin").on("click",function(){
+		location.href='ev_assess_select.html'
+	});
+	
+	$("#money_table").on("click",function(){
+		location.href='ev_money_table.html'
+	});
+	
+	$("#assess_start").on("click",function(){
+		location.href='ev_assess_start.html'
+	});
+	
+	$("#assess_output").on("click",function(){
+		location.href='ev_assess_output.html'
+	});
+
+	let menu_flg = true;
+	$("#menus").hide();
+	// ▼ボタン押下時
+	$("#select_menu").on("click",function(){
+		if(menu_flg){
+			$("#menus").show();
+			$("#select_menu").text("▲");
+		}else{
+			$("#menus").hide();
+			$("#select_menu").text("▼");
+		}
+		menu_flg = !menu_flg;
+	});
+	
+//	$("#back_button").on("click",function(){
+//		location.href='ev_login.html'
+//	});
+
+</script>
+</html>
+

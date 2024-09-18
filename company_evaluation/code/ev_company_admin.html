@@ -1,0 +1,369 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="DB_sql.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<h1>会社評価管理</h1>
+	<div class="com_p_admin">
+		<table border="1" id="com_p_tb">
+			<tr>
+				<th class="pk_th0">会社評価<br>コード</th>
+				<th>技管<br>区分</th>
+				<th>業資<br>区分</th>
+				<th>pt</th>
+				<th>Expt</th>
+				<th>内容</th>
+				<th>備考</th>
+			</tr>
+			<!--ここにデータを挿入-->
+		</table>
+
+		<div class="com_p_input">
+			<div>
+				<label>会社評価コード</label>
+				<input type="text" id="title_cd_inp" disabled>
+			</div>
+			<div>
+				<label>技管区分</label>
+				<select id="tm_kbn_inp">
+					<option value="T">技術系</option>
+					<option value="M">管理系</option>
+					<option value="C">会社貢献系</option>
+				</select>
+				<label>業資区分</label>
+				<select id="jq_kbn_inp">
+					<option value="J">実務系</option>
+					<option value="Q">資格系</option>
+					<option value="C">会社貢献系</option>
+				</select>
+			</div>
+			<div>
+				<label>pt</label>
+				<input type="number" id="pt_inp">
+				<label>Expt</label>
+				<input type="number" id="Expt_inp">
+			</div>
+			<div>
+				<label>内容</label>
+				<textarea id="detail_inp"></textarea>
+			</div>
+			<div>
+				<label>備考</label>
+				<textarea id="note_inp"></textarea>
+			</div>
+			<!-- <div class="del_flg">
+				<label>削除フラグ</label>
+				<input type="checkbox" id="del_flg_inp">
+			</div> -->
+
+			<!-- エラーメッセージ -->
+			<div class="admin_error">
+				<p id="error_1" hidden>※内容を入力してください。</p>
+				<p id="error_2" hidden>※内容は200文字以内で入力してください。</p>
+				<p id="error_3" hidden>※ptの上限値を超えています。</p>
+				<p id="error_4" hidden>※Exptの上限値を超えています。</p>
+				<p id="error_5" hidden>※備考は200文字以内で入力してください。</p>
+				<p id="error_6" hidden>※ptを入力してください。</p>
+				<p id="error_7" hidden>※Exptを入力してください。</p>
+				<p id="error_8" hidden>※技管区分を会社貢献系に変更してください。</p>
+				<p id="error_9" hidden>※業資区分を会社貢献系に変更してください。</p>
+				<p id="error_15" hidden>※ptまたはExptに0以外の数値を入力してください。</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="admin_btn">
+		<button id="back_button">戻る</button>
+		<button id="insert_button">登録</button>
+		<button id="update_button">更新</button>
+	</div>
+	<!--ポップアップ時のグレー処理-->
+	<div id="pop_back"></div>
+	<!--更新ポップアップ-->
+	<div class="pop" id="UPDATE">
+		<button class="pop_cancel" >✖</button>
+		<div class="pop_title_alone">更新しますか？</div>
+		<button class="pop_button_alone" id="update_ok">OK</button>
+	</div>
+	<!--登録ポップアップ-->
+	<div class="pop" id="INSERT">
+		<button class="pop_cancel" >✖</button>
+		<div class="pop_title_alone">登録しますか？</div>
+		<button class="pop_button_alone" id="insert_ok">OK</button>
+	</div>
+	<!--戻るポップアップ-->
+	<div class="pop" id="BACK">
+		<button class="pop_cancel">✖</button>
+		<div class="pop_title"><span>※保存をしていないため<br>入力されたデータが消えます。</span><br>よろしいですか？</div>
+		<button class="pop_button_alone" id="back_ok">OK</button>
+	</div>
+</body>
+<script>
+	let ev_user_id = localStorage.getItem("ev_user_id");
+	//ブラウザのバックボタン押下時の警告メッセージ
+	window.addEventListener('load', function() {
+	  window.addEventListener('popstate', function(event) {
+	    alert('もう一度このボタンを押すと保存していないデータは消えてしまいます😱');
+	  });
+	  history.pushState(null, null, null);
+	});
+
+	// 現在日時
+	let date = new Date();
+	let date_yyyymm = date.toISOString()
+	let ev_date = date_yyyymm.slice(0,7);
+	let year = ev_date.slice(0,4);
+	let month = ev_date.slice(5,7);
+	let now = year+'-'+month+'-'+("00" + (date.getDate())).slice(-2);
+	// console.log("now:"+now);
+
+	// DBに登録されている会社評価テーブルを表示
+	let com_p = DB.sql("SELECT * FROM TM_point ORDER BY tm_kbn desc, jq_kbn asc, title_cd asc;");
+	console.log(com_p);
+
+	for(let i=0; i<com_p.length; i++){
+		$("#com_p_tb").append('<tr id="tr'+i+'"></tr>');
+		$("#tr"+i).append('<td id="title_cd_'+i+'" class="pk_td0">'+com_p[i]["title_cd"]+'</td>');
+		$("#tr"+i).append('<td id="tm_kbn_'+i+'">'+com_p[i]["tm_kbn"]+'</td>');
+		$("#tr"+i).append('<td id="jq_kbn_'+i+'">'+com_p[i]["jq_kbn"]+'</td>');
+		tb_null(i, "pt", com_p[i]["pt"]);
+		tb_null(i, "Expt", com_p[i]["Expt"]);
+		$("#tr"+i).append('<td id="detail_'+i+'">'+com_p[i]["detail"]+'</td>');
+		tb_null(i, "note", com_p[i]["note"]);
+	}
+	
+	// nullの場合、-(ハイフン)を返す(table用)
+	function tb_null(i, col, data){
+		if(data==null){
+			// nullの場合
+			$("#tr"+i).append('<td id="'+col+i+'" class="tb_null">-</td>');
+		}else{
+			// nullでない場合
+			$("#tr"+i).append('<td id="'+col+i+'">'+data+'</td>');
+		}
+	}
+
+	// クリックされた列のデータをテキストボックスに代入する
+	for(let i=0; i<com_p.length; i++){
+		$("#tr"+i).on("click",function(){
+			console.log();
+			$("#title_cd_inp").val(com_p[i]["title_cd"]);
+			$("#tm_kbn_inp").val(com_p[i]["tm_kbn"]);
+			$("#jq_kbn_inp").val(com_p[i]["jq_kbn"]);
+			inp_null(i, "pt", com_p[i]["pt"]);
+			inp_null(i, "Expt", com_p[i]["Expt"]);
+			$("#detail_inp").val(com_p[i]["detail"]);
+			inp_null(i, "note", com_p[i]["note"]);
+			if(com_p[i]["del_flg"]){
+				// 削除フラグがtrueの場合
+				$("#del_flg_inp").prop('checked', true);
+			}else{
+				// 削除フラグがfalseの場合
+				$("#del_flg_inp").prop('checked', false);
+			}
+		});
+	}
+	
+	// input用nullチェック
+	function inp_null(i, col, data){
+		if(data!=null){
+			// nullの場合
+			$("#"+col+"_inp").val(data);
+		}else{
+			// nullでない場合
+			$("#"+col+"_inp").val("");
+		}
+	}
+
+	// 登録確認ポップアップのOKボタンが押下されたとき
+	$("#insert_ok").on("click",function(){
+		if(error()){
+			// 会社評価コードの自動採番
+			let kbn_cd = $("#tm_kbn_inp").val() + $("#jq_kbn_inp").val();
+			let db_cd = DB.sql('SELECT COUNT(title_cd) as cnt FROM TM_point WHERE title_cd LIKE "'+kbn_cd+'%";');
+			let new_cd = kbn_cd + ("000"+(db_cd[0]["cnt"]+1)).slice(-3);
+
+			// 会社評価テーブル登録用のSQL文
+			let sql = "INSERT INTO TM_point(title_cd, tm_kbn, jq_kbn, pt, Expt , detail, note, create_date, create_id) ";
+			sql += 'VALUES("'+new_cd+'", ';
+			sql += '"'+$("#tm_kbn_inp").val()+'", ';
+			sql += '"'+$("#jq_kbn_inp").val()+'", ';
+			sql += sql_null("pt_inp", "i")+', ';
+			sql += sql_null("Expt_inp", "i")+', ';
+			sql += '"'+$("#detail_inp").val()+'", ';
+			sql += sql_null("note_inp", "v")+', ';
+			//sql += $("#del_flg_inp").prop('checked')+', ';
+			sql += '"'+now+'", ';
+			sql += '"'+ev_user_id+'");';// ログインID（あとで書き換える）
+			console.log(sql);
+			DB.sql(sql);
+			window.location.reload();
+		}
+	});
+
+	// 更新確認ポップアップのOKボタンが押下されたとき
+	$("#update_ok").on("click",function(){
+		if(error()){
+			// 会社評価テーブル更新用のSQL文
+			let sql = 'UPDATE TM_point ';
+			sql += 'SET tm_kbn="'+$("#tm_kbn_inp").val()+'", ';
+			sql += 'jq_kbn="'+$("#jq_kbn_inp").val()+'", ';
+			sql += 'pt='+sql_null("pt_inp", "i")+', ';
+			sql += 'Expt='+sql_null("Expt_inp", "i")+', ';
+			sql += 'detail="'+$("#detail_inp").val()+'", ';
+			sql += 'note='+sql_null("note_inp", "v")+', ';
+			//sql += 'del_flg='+$("#del_flg_inp").prop('checked')+', ';
+			sql += 'update_date="'+now+'", ';
+			sql += 'update_id="'+ev_user_id+'" ';// ログインID（あとで書き換える）
+			sql += 'WHERE title_cd="'+$("#title_cd_inp").val()+'";';
+			console.log(sql);
+			DB.sql(sql);
+			window.location.reload();
+		}
+	});
+
+	// sql用nullチェック
+	function sql_null(inp, type){
+		let inp_str = $("#"+inp).val();
+		if(inp_str==null || inp_str=="" || inp_str=="null"){
+			// inputの値がnullの場合
+			return 'null';
+		}else{
+			// inputの値がnullではないの場合
+			if(type=="i"){
+				// データ型が数値型の場合
+				return inp_str;
+			}else{
+				// データ型が文字型,日付型の場合
+				return '"'+inp_str+'"';
+			}
+		}
+	}
+
+	// エラーメッセージの表示
+	function error(){
+		let error_check = true;
+
+		document.getElementById("error_1").hidden = true;
+		document.getElementById("error_2").hidden = true;
+		document.getElementById("error_3").hidden = true;
+		document.getElementById("error_4").hidden = true;
+		document.getElementById("error_5").hidden = true;
+		document.getElementById("error_6").hidden = true;
+		document.getElementById("error_7").hidden = true;
+		document.getElementById("error_8").hidden = true;
+		document.getElementById("error_9").hidden = true;
+		document.getElementById("error_15").hidden = true;
+
+		// 内容が入力されていない場合
+		if($("#detail_inp").val() == ""){
+			document.getElementById("error_1").hidden = false;
+			error_check = false;
+		}
+		// 内容が200文字以内でない場合
+		if($("#detail_inp").val().length > 200){
+			document.getElementById("error_2").hidden = false;
+			error_check = false;
+		}
+		// ptの値が-32768～32767でない場合
+		if(-32768 > $("#pt_inp").val() || $("#pt_inp").val() > 32767){
+			document.getElementById("error_3").hidden = false;
+			error_check = false;
+		}
+		// Exptの値が-32768～32767でない場合
+		if(-32768 > $("#Expt_inp").val() || $("#Expt_inp").val() > 32767){
+			document.getElementById("error_4").hidden = false;
+			error_check = false;
+		}
+		// 備考が200文字以内でない場合
+		if($("#note_inp").val().length > 200){
+			document.getElementById("error_5").hidden = false;
+			error_check = false;
+		}
+		// ptが入力されていない場合
+		if($("#pt_inp").val() == ""){
+			document.getElementById("error_6").hidden = false;
+			error_check = false;
+		}
+		// Exptが入力されていない場合
+		if($("#Expt_inp").val() == ""){
+			document.getElementById("error_7").hidden = false;
+			error_check = false;
+		}
+		// 業資区分が会社貢献系の場合
+		if($("#jq_kbn_inp").val()=="C" && $("#tm_kbn_inp").val()!="C"){
+			document.getElementById("error_8").hidden = false;
+			error_check = false;
+		}
+		// 技管区分が会社貢献系の場合
+		if($("#tm_kbn_inp").val()=="C" && $("#jq_kbn_inp").val()!="C"){
+			document.getElementById("error_9").hidden = false;
+			error_check = false;
+		}
+		
+		//ptとExptが0の時
+		if(0 == $("#pt_inp").val() && $("#Expt_inp").val() == 0){
+			document.getElementById("error_15").hidden = false;
+			error_check = false;
+		}
+		
+		return error_check;
+	}
+
+
+	// ポップアップの処理
+	$("#UPDATE").hide();
+	$("#INSERT").hide();
+	$("#BACK").hide();
+	$("#pop_back").hide();
+	
+	$("#back_button").on("click",function(){
+		$("#BACK").show();
+		$("#pop_back").show();
+	})
+	
+	$("#insert_button").on("click",function(){
+		$("#INSERT").show();
+		$("#pop_back").show();
+	})
+	
+	$("#update_button").on("click",function(){
+		$("#UPDATE").show();
+		$("#pop_back").show();
+	})
+	
+	$(".pop_cancel").on("click",function(){
+		$("#UPDATE").hide();
+		$("#INSERT").hide();
+		$("#BACK").hide();
+		$("#pop_back").hide();
+	})
+	
+	$("#update_ok").on("click",function(){
+		$("#UPDATE").hide();
+		$("#INSERT").hide();
+		$("#BACK").hide();
+		$("#pop_back").hide();
+	})
+	
+	$("#insert_ok").on("click",function(){
+		$("#UPDATE").hide();
+		$("#INSERT").hide();
+		$("#BACK").hide();
+		$("#pop_back").hide();
+	})
+	
+	$("#back_ok").on("click",function(){
+		$("#UPDATE").hide();
+		$("#INSERT").hide();
+		$("#BACK").hide();
+		$("#pop_back").hide();
+		location.href='ev_assess_select.html'
+	})
+	
+</script>
+</html>
+

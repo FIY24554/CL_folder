@@ -1,0 +1,210 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+	<script src="DB_sql.js"></script>
+</head>
+<body>
+	<h1>自己評価</h1>
+	<table border="1" id="sc_assess_table">
+		<tr>
+			<th></th>
+			<th class="scass_self_check_th">評価</th>
+			<!-- <th class="scass_explanation_th">説明</th> -->
+			<th class="scass_pt_th">pt</th>
+			<th class="scass_pt_th">Expt</th>
+		</tr>
+	</table>
+	<!-- <table border="1" class="sum_table">
+		<tr>
+			<th colspan="2">合計</th>
+		</tr>
+		<tr>
+			<th>pt</th>
+			<td id="pt"></td>
+		</tr>
+		<tr>
+			<th>Expt</th>
+			<td id="Expt"></td>
+		</tr>
+	</table> -->
+	<div class="sc_ass_btn">
+		<button id="back_button">戻る</button>
+		<button id="company_assess_button">会社評価へ戻る</button>
+		<table border="1" class="sa_staff_name_table">
+			<tr>
+				<th>氏名</th>
+				<th colspan="4">合計</th>
+			</tr>
+			<tr>
+				<td id="sa_staff_name_td"></td>
+				<th class="ca_tb_th">pt</th>
+				<td id="pt" class="scass_pt_td"></td>
+				<th class="ca_tb_th">Expt</th>
+				<td id="Expt" class="scass_pt_td"></td>
+			</tr>
+		</table>
+		<div>
+			<label>※保存されます</label>
+			<button id="check_button">結果を表示</button>
+		</div>
+	</div>
+</body>
+<script>
+	let ev_user_id = localStorage.getItem("ev_user_id");
+	//ブラウザのバックボタン押下時の警告メッセージ
+	window.addEventListener('load', function() {
+		window.addEventListener('popstate', function(event) {
+			alert('もう一度このボタンを押すと保存していないデータは消えてしまいます😱');
+		});
+		history.pushState(null, null, null);
+	});
+	let pt=0;
+	let Expt=0;
+	let ev_assess_check = localStorage.getItem("ev_assess_check");
+	if(ev_assess_check=="true"){
+		$("#back_button").prop("disabled",true);
+		$("#company_assess_button").prop("disabled",true);
+	}
+	//日付を取得
+	let date = new Date();
+	let date_yyyymm = date.toISOString();
+	let ev_date = date_yyyymm.slice(0,7);
+	let year = ev_date.slice(0,4);
+	let month = ev_date.slice(5,7);
+	if(parseInt(month)<=9&&parseInt(month)>3){
+		month="09";
+	}else{
+		month="03";
+	}
+	//テスト
+	//year = "2020"
+	//month = "03"
+	//自己評価の項目を取得
+	let DB_self = DB.sql('SELECT * FROM TM_self_check WHERE del_flg=0;');
+	//社員のIDを取得
+	let staff = localStorage.getItem("ev_staff_id_assess");
+	//社員の自己評価データ取得
+	let staff_data = DB.sql('SELECT * FROM TE_staff_sc where staff_id="'+staff+'" and assess_date="'+year+'-'+month+'-01";');
+	//チェックボックス用の配列を宣言
+	let self_check = new Array(DB_self.length);
+	for(i=0;i<self_check.length;i++){
+		self_check[i] = new Array(2);
+		self_check[i][0] = false;
+		self_check[i][1] = DB_self[i]["sc_cd"];
+	}
+	//テーブルにデータを挿入
+	for(i=0;i<DB_self.length;i++){
+		// let explanation;
+		// if(DB_self[i]["explanation"] == null){
+		// 	// 備考がnullの場合
+		// 	explanation = "-";
+		// }else{
+		// 	// 備考がnullでない場合
+		// 	explanation = DB_self[i]["explanation"];
+		// }
+		// $("#sc_assess_table").append('<tr><td><input type="checkbox" id="'+DB_self[i]["sc_cd"]+'" class="assess_check_box"></td><td>'+DB_self[i]["self_check"]+'</td><td>'+DB_self[i]["explanation"]+'</td><td>[pt]'+DB_self[i]["pt"]+'\n[Expt]'+DB_self[i]["Expt"]+'</td></tr>')
+		// $("#sc_assess_table").append('<tr><td><input type="checkbox" id="'+DB_self[i]["sc_cd"]+'" class="assess_check_box"></td><td>'+DB_self[i]["self_check"]+'</td><td>'+DB_self[i]["explanation"]+'</td><td class="scass_pt_td">'+DB_self[i]["pt"]+'</td><td class="scass_pt_td">'+DB_self[i]["Expt"]+'</td></tr>')
+		$("#sc_assess_table").append('<tr><td><input type="checkbox" id="'+DB_self[i]["sc_cd"]+'" class="assess_check_box"></td><td>'+DB_self[i]["self_check"]+'</td><td class="scass_pt_td">'+DB_self[i]["pt"]+'</td><td class="scass_pt_td">'+DB_self[i]["Expt"]+'</td></tr>')
+	}
+	// $("#sc_assess_table").append('<tr><th colspan="2">合計</th><td id="pt" class="scass_pt_td"></td><td id="Expt" class="scass_pt_td"></td></tr>')
+	
+	//すでに記入したものを反映
+	for(i=0;i<staff_data.length;i++){
+		for(j=0;j<self_check.length;j++){
+			if(self_check[j][1]==staff_data[i]["sc_cd"]){
+				if(staff_data[i]["result"]==1){
+					self_check[j][0]=true;
+					let check = $("#"+DB_self[j]["sc_cd"]);
+					check.prop("checked", true);
+				}
+			}
+		}
+	}
+	
+	//ポイントを計算
+	for(i=0;i<self_check.length;i++){
+		if(self_check[i][0]==true){
+			pt += parseInt(DB_self[i]["pt"]);
+			Expt += parseInt(DB_self[i]["Expt"]);
+		}
+	}
+	$("#pt").text(pt);
+	$("#Expt").text(Expt);
+	
+	
+	//チェックボックス押下時
+	$("input").click(function(){
+		pt=0;
+		Expt=0;
+		let check_id = $(this).attr("id");
+		for(i=0;i<self_check.length;i++){
+			if(check_id==self_check[i][1]){
+				if(self_check[i][0]==true){
+					self_check[i][0]=false;
+				}else{
+					self_check[i][0]=true;
+				}
+			}
+		}
+		for(i=0;i<self_check.length;i++){
+			if(self_check[i][0]==true){
+				pt += parseInt(DB_self[i]["pt"]);
+				Expt += parseInt(DB_self[i]["Expt"]);
+			}
+		}
+		$("#pt").text(pt);
+		$("#Expt").text(Expt);
+	})
+
+	// 氏名表示
+	let DB_staff_name = DB.sql('SELECT * FROM TM_staff WHERE staff_id="'+staff+'";');
+	$("#sa_staff_name_td").text(DB_staff_name[0]["staff_name"]);
+	
+	
+	$("#back_button").on("click",function(){
+		location.href='ev_assess_start.html'
+	})
+	
+	$("#company_assess_button").on("click",function(){
+		location.href='ev_company_assess.html'
+	})
+	
+	$("#check_button").on("click",function(){
+		staff_data = DB.sql('SELECT * FROM TE_staff_sc where staff_id="'+staff+'" and assess_date="'+year+'-'+month+'-01";');
+		for(i=0;i<self_check.length;i++){
+			let distinct_insert_check = true;
+			let distinct_delete_check = false;
+			if(staff_data.length>0){
+				for(j=0;j<staff_data.length;j++){
+					if(staff_data[j]["sc_cd"]==self_check[i][1]){
+						distinct_insert_check = false;
+					}
+				}
+				if(distinct_insert_check){
+					let change = 0;
+					if(self_check[i][0]==true){
+						change = 1;
+					}
+					DB.sql('insert into TE_staff_sc value ("'+staff+'","'+self_check[i][1]+'","'+year+'-'+month+'-01",'+change+',"");');
+				} else{
+					let change = 0;
+					if(self_check[i][0]==true){
+						change = 1;
+					}
+					DB.sql('update TE_staff_sc set result='+change+' where staff_id="'+staff+'" and sc_cd="'+self_check[i][1]+'" and assess_date="'+year+'-'+month+'-01";');
+				}
+			}else{
+				let change = 0;
+				if(self_check[i][0]==true){
+					change = 1;
+				}
+				DB.sql('insert into TE_staff_sc value ("'+staff+'","'+self_check[i][1]+'","'+year+'-'+month+'-01",'+change+',"");');
+			}
+		}
+		location.href='ev_result.html'
+	})
+</script>
+</html>
+

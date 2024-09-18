@@ -1,0 +1,190 @@
+<html>
+
+<head>
+	<script type="text/javascript" src="jQuery.js"></script>
+	<script defer type="text/javascript" src="layout.js"></script>
+	<script defer type="text/javascript" src="shooter.js"></script>
+	<script defer type="text/javascript" src="invader.js"></script>
+	<link rel="stylesheet" href="styles.css">
+	<meta charset="UTF-8">
+	<title>インベーダーゲーム</title>
+</head>
+
+<body>
+	<div>
+		<table border="2" id="manual">
+			<tr>
+				<th colspan="2"><label>How To Play</label></th>
+			</tr>
+			<tr>
+				<th><label>Keybord</label></th>
+				<th><label>Action</label></th>
+			</tr>
+			<tr>
+				<td><label>←</label></td>
+				<td><label>Move Left</label></td>
+			</tr>
+			<tr>
+				<td><label>→</label></td>
+				<td><label>Move Right</label></td>
+			</tr>
+			<tr>
+				<td><label>Space</label></td>
+				<td><label>Shot</label></td>
+			</tr>
+		</table>
+	</div>
+	<div id="screen">
+		<!-- スタート画面 -->
+		<div id="top">
+			<div class="title"><label>Invaders Game</label></div>
+			<div id="start_text"><label>Please Push SPACE KEY</label></div>
+		</div>
+
+		<!-- ゲーム画面 -->
+		<div id="game" hidden>
+			<div id="shooter"></div>
+			<div id="bullet" hidden></div>
+		</div>
+
+		<!-- ゲームクリア -->
+		<div id="game_clear" hidden>
+			<div class="title"><label>Game Clear!!</label></div>
+		</div>
+
+		<!-- ゲームオーバー -->
+		<div id="game_over" hidden>
+			<div class="title"><label>Game Over...</label></div>
+		</div>
+	</div>
+
+	<div>
+		<table border="2" id="player">
+			<tr>
+				<th><label>Player</label></th>
+				<td id="p_cnt"><label></label></td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="cautions"><label>※キーボードは半角で入力してください。</label></div>
+
+	<!-- キーボード入力値を取得する用 -->
+	<input type="text" id="input"/>
+
+	<script>
+		$(document).ready(function(){
+			// ゲームの状況（1:スタート画面, 2:ゲーム画面）
+			let status = "1";
+
+			// スタート画面の処理
+			let flashGlg = false;
+			let start = setInterval(function () {
+				// スタート画面の処理（500ミリ秒（0.5秒）毎にsetInterval内の処理を繰り返す）
+				if (flashGlg){
+					$("#start_text").show();
+					flashGlg = false;
+				}
+				else {
+					$("#start_text").hide();
+					flashGlg = true;
+				}
+			}, 500);
+
+			// キーボードのみで操作する
+			$("#input").focus();
+			$("#input").focusout(function () {
+				$("#input").focus();
+			});
+
+			// キーボード押下時の処理
+			$("#input").keydown(function (e) {
+				$("#input").val("");
+				if (status == "1"){
+					// スタート画面の場合
+					if (e.keyCode == "32"){
+						// スペースキー押下時、ゲーム開始
+						clearInterval(start);
+						status = "3";
+						$("#top").hide();
+						$("#game").show();
+						game_start();
+					}
+				}
+				else if (status == "2"){
+					// ゲーム画面の場合
+					if (shooter.flg){
+						// 自機が健在の場合のみ処理
+						if (e.keyCode == "32"){
+							// スペースキー押下時
+							if (!shooter.bulletFlg){
+								shooter.bulletX = shooter.x + shooterDotW * 4;
+								shooter.bulletY = shooter.y;
+								shooter.bulletFlg = true;
+								$("#bullet").css({
+									"margin-left": shooter.bulletX + "px",
+									"margin-top": shooter.bulletY +"px"
+								});
+								$("#bullet").show();
+							}
+						}
+						if (e.keyCode == "37"){
+							// 左方向キー押下時
+							shooter.x = shooter.x - shooterDotW * 2;
+								$("#shooter").css("margin-left", shooter.x + "px");
+						}
+						if (e.keyCode == "39"){
+							// 右方向キー押下時
+							shooter.x = shooter.x + shooterDotW * 2;
+							$("#shooter").css("margin-left", shooter.x + "px");
+						}
+						if (e.keyCode == "84"){
+							// test
+							for (let i=1; i<invaders.length; i++){
+								invaders[i]["flg"] = false;
+								$("#inv_" + i).hide();
+							}
+						}
+					}
+				}
+			});
+		});
+
+		// ゲーム画面の処理
+		function gameStart(){
+			playerCount();
+			// ゲームステップ数
+			let gameStep = 0;
+			let game = setInterval(function () {
+				// ゲーム画面の処理（ミリ秒（秒）毎にsetInterval内の処理を繰り返す）
+				gameStep++;
+				// インベーダーの処理
+				if (invaderAct(gameStep)){
+					// ゲームオーバー
+					gameOver();
+				}
+
+				// 自機の処理
+				if (shooterAct()){
+					// ゲームクリア
+					gameClear();
+				}
+			}, 1);
+		}
+
+		// ゲームクリアを表示
+		function gameClear(){
+			clearInterval(gameStart);
+			$("#game").hide();
+			$("#game_clear").hide();
+		}
+		// ゲームオーバーを表示
+		function gameOver(){
+			clearInterval(gameStart);
+			$("#game").hide();
+			$("#game_over").show();
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+	<script src="DB_sql.js"></script>
+</head>
+<body>
+	<h1>評価実施</h1>
+	<table border="1" id="table" class="ass_start_tb">
+		<tr>
+			<th>社員番号</th>
+			<th>氏名</th>
+			<th>最新</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</table>
+	<button id="back_button">戻る</button>
+</body>
+<script>
+	// let DB_staff_date = DB.sql("SELECT TM_staff.staff_id,staff_name,max(assess_date) as assess_date FROM TM_staff join TE_staff_sc on TM_staff.staff_id=TE_staff_sc.staff_id Group by TM_staff.staff_id");
+	let DB_staff_date = DB.sql("SELECT TM_staff.staff_id,staff_name,max(assess_date) as assess_date,DATE_FORMAT(max(assess_date),'%Y年%c月分') as date_str FROM TM_staff join TE_staff_sc on TM_staff.staff_id=TE_staff_sc.staff_id Group by TM_staff.staff_id");
+	let DB_staff = DB.sql("select staff_id,staff_name from TM_staff");
+	for(i=0;i<DB_staff.length;i++){
+		let DB_staff_check = true;
+		for(j=0;j<DB_staff_date.length;j++){
+			if(DB_staff_date[j]["staff_id"]==DB_staff[i]["staff_id"]){
+				$("#table").append('<tr><td>'+DB_staff_date[j]["staff_id"]+'</td><td>'+DB_staff_date[j]["staff_name"]+'</td><td>'+DB_staff_date[j]["date_str"]+'</td><td><button id="cm'+DB_staff_date[j]["staff_id"]+'" class="asa_cp_st">会社評価</button></td><td><button id="sc'+DB_staff_date[j]["staff_id"]+'" class="asa_sc_st">自己評価</button></td></tr>');
+				DB_staff_check = false;
+			}
+		}
+		if(DB_staff_check){
+			$("#table").append('<tr><td>'+DB_staff[i]["staff_id"]+'</td><td>'+DB_staff[i]["staff_name"]+'</td><td>未実施</td><td><button id="cm'+DB_staff[i]["staff_id"]+'" class="asa_cp_st">会社評価</button></td><td><button id="sc'+DB_staff[i]["staff_id"]+'" class="asa_sc_st">自己評価</button></td></tr>');
+		}
+	}
+	$("button").click(function(){
+		let button_id = $(this).attr("id");
+		let location_id = button_id.slice(0,2);
+		let staff_id = button_id.slice(2,8);
+		if(button_id=="back_button"){
+			location.href='ev_select.html';
+		}
+		if(location_id=="cm"){
+			localStorage.setItem("ev_staff_id_assess",staff_id);
+			localStorage.setItem("ev_assess_check","true");
+			location.href='ev_company_assess.html';
+		}else if(location_id=="sc"){
+			localStorage.setItem("ev_staff_id_assess",staff_id);
+			localStorage.setItem("ev_assess_check","false");
+			location.href='ev_self_assess.html';
+		}
+	});
+</script>
+</html>
+

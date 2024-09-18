@@ -1,0 +1,634 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+	<script src="DB_sql.js"></script>
+</head>
+<body>
+	<h1>個人成績評価表</h1>
+	<table border="1" id="staff_status_table">
+		<tr>
+			<th class="ch_re_staff_id_th">社員番号</th>
+			<th class="ch_re_staff_name_th">氏名</th>
+			<th class="ch_re_day_th">生年月日</th>
+			<th class="ch_re_age_th">年齢</th>
+			<th class="ch_re_day_th">入社日</th>
+			<th class="ch_re_join_year_th">勤続年数</th>
+			<th class="ch_re_ac_th">学歴</th>
+			<th class="ch_re_salary_th">基本給</th>
+			<th rowspan="2" class="ch_re_sumpt_th">ポイント<br>総合計</th>
+			<th class="ch_re_pt_th">pt</th>
+			<th>Expt</th>
+		</tr>
+		<tr>
+			<td id="staff_id"></td>
+			<td id="staff_name"></td>
+			<td id="staff_birthday"></td>
+			<td id="staff_old"></td>
+			<td id="staff_join_date"></td>
+			<td id="staff_society_history"></td>
+			<td id="staff_ac_history"></td>
+			<td id="staff_money" style="background-color: #ffff14;"></td>
+			<td id="staff_pt"></td>
+			<td id="staff_Expt"></td>
+		</tr>
+	</table>
+	<div class="check_result">
+		<div class="check_result_1">
+			<table border="1" id="cp_table">
+				<tr id="table_bar">
+					<th id="th_title">取得タイトル</th>
+					<th id="th_pt">pt</th>
+					<th id="th_Expt">Expt</th>
+				</tr>
+			</table>
+			<table border="1"id="staff_sc_table">
+				<tr>
+					<th rowspan="2"></th>
+					<th colspan="3">前々年度</th>
+					<th colspan="3">前年度</th>
+					<th colspan="3">今年度</th>
+				</tr>
+				<tr>
+					<th class="ch_re_yyyymm_th">年月</th>
+					<th class="ch_re_pt_th">pt</th>
+					<th>Expt</th>
+					<th class="ch_re_yyyymm_th">年月</th>
+					<th class="ch_re_pt_th">pt</th>
+					<th>Expt</th>
+					<th class="ch_re_yyyymm_th">年月</th>
+					<th class="ch_re_pt_th">pt</th>
+					<th>Expt</th>
+				</tr>
+				<tr>
+					<th class="ch_re_assday_th">前期</th>
+					<td id="two_year_date">-</td>
+					<td id="two_year_pt">pt</td>
+					<td id="two_year_Expt">Expt</td>
+					<td id="last_year_date">-</td>
+					<td id="last_year_pt">pt</td>
+					<td id="last_year_Expt">Expt</td>
+					<td id="year_date">-</td>
+					<td id="year_pt">pt</td>
+					<td id="year_Expt">Expt</td>
+				</tr>
+				<tr>
+					<th class="ch_re_assday_th">後期</th>
+					<td id="two_year_two_date">-</td>
+					<td id="two_year_two_pt" >pt</td>
+					<td id="two_year_two_Expt" >Expt</td>
+					<td id="last_year_two_date">-</td>
+					<td id="last_year_two_pt" >pt</td>
+					<td id="last_year_two_Expt" >Expt</td>
+					<td id="year_two_date">-</td>
+					<td id="year_two_pt" >pt</td>
+					<td id="year_two_Expt" >Expt</td>
+				</tr>
+				<tr>
+					<th colspan="2">過去三年以前の合計</th>
+					<td id="old3_pt" >pt</td>
+					<td id="old3_Expt" >Expt</td>
+					<th colspan="4">総合計</th>
+					<td id="allsum_pt" >pt</td>
+					<td id="allsum_Expt" >Expt</td>
+				</tr>
+			</table>	
+		</div>
+
+		<div class="check_result_2">
+			<table border="1" id="staff_sal_history_table">
+				<tr>
+					<th colspan="2">社会人歴(中途)</th>
+				</tr>
+				<tr>
+					<th class="sal_his_th" style="background-color:#ffc1c1">IT経験</th>
+					<td id="staff_ithistory" class="sal_his_td"></td>
+				</tr>
+				<tr>
+					<th class="sal_his_th" style="background-color:#a3ffa3">IT以外</th>
+					<td id="staff_noithistory" class="sal_his_td"></td>
+				</tr>
+			</table>
+			<div id="bottom_arrow">⇩</div>
+			<table border="1"id="staff_sal_noit_table">
+				<tr>
+					<th class="sal_his_th" style="background-color:#a3ffa3">IT以外</th>
+					<td id="staff_noitpoint" class="sal_his_td"></td>
+				</tr>
+			</table>	
+		</div>
+
+		<div class="check_result_3">
+			<div id="right_arrow1">⇨</div>
+			<div id="right_arrow2">⇨</div>	
+		</div>
+
+		<div class="check_result_4">
+			<table border="1"id="staff_sal_it_table">
+				<tr>
+					<th class="sal_his_th" style="background-color:#ffc1c1">IT経験</th>
+					<td id="staff_itpoint" class="sal_his_td"></td>
+				</tr>
+			</table>
+			<table border="1"id="staff_sal_math_table">
+				<tr>
+					<th colspan="2">現在</th>
+				</tr>
+				<tr>
+					<th style="background-color:#a3ffa3">入社</th>
+					<th id="n_day" style="background-color:#a3ffa3"></th>
+				</tr>
+				<tr>
+					<th id="n_old" class="sal_his_th" style="background-color:#a3ffa3"></th>
+					<td id="noit_point" class="sal_his_td"></td>
+				</tr>
+			</table>	
+		</div>
+	</div>
+	<button id="result_selfcheck_button">自己評価へ戻る</button>
+	<button id="result_company_button">会社評価へ戻る</button>
+	<button id="result_csv_button">Excel用データに変換</button>
+	<button id="result_back_button">終了</button>
+</body>
+<script>
+	localStorage.setItem("ev_assess_check","false");
+	let DB_generation_point="-"
+	let generation=0;
+	let staff_sum_pt=0;
+	let staff_sum_Expt=0;
+	let birthday = "-";
+	let job_history="-";
+	let staff_old="-";
+	let staff_society_history="-";
+	let DB_staff = DB.sql("select * from TM_staff");
+	let staff_id_check = localStorage.getItem("ev_staff_id_assess");
+	let DB_sumall=0;
+	DB_staff = DB.sql("select * from TM_staff");
+	let salary_cp = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_cp join TM_point on TE_staff_cp.title_cd=TM_point.title_cd where staff_id="'+staff_id_check+'";');
+	let date = new Date();
+	let date_yyyymm = date.toISOString();
+	let ev_date = date_yyyymm.slice(0,7);
+	let day = date_yyyymm.slice(8,10);
+	let year = ev_date.slice(0,4);
+	let true_month = ev_date.slice(5,7);
+	let month = ev_date.slice(5,7);
+	if(parseInt(month)<=9&&parseInt(month)>3){
+		month="09";
+	}else{
+		month="03";
+	}
+	if(month==3){
+		DB_sumall = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_sc join TM_self_check on TE_staff_sc.sc_cd=TM_self_check.sc_cd where staff_id="'+staff_id_check+'" and result=1;');
+	}else{
+		DB_sumall = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_sc join TM_self_check on TE_staff_sc.sc_cd=TM_self_check.sc_cd where staff_id="'+staff_id_check+'" and result=1 and assess_date<>"'+year+'-9-01";')
+	}
+	let DB_staff_cp_point = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_cp join TM_point on TE_staff_cp.title_cd=TM_point.title_cd where staff_id="'+staff_id_check+'";')
+	if(DB_sumall[0]["pt"]!=null&&DB_sumall[0]["Expt"]!=null){
+		staff_sum_pt = parseInt(DB_sumall[0]["pt"]);
+		staff_sum_Expt = parseInt(DB_sumall[0]["Expt"]);
+	}
+	if(DB_staff_cp_point[0]["pt"]!=null&&DB_staff_cp_point[0]["Expt"]!=null){
+		staff_sum_pt += parseInt(DB_staff_cp_point[0]["pt"]);
+		staff_sum_Expt += parseInt(DB_staff_cp_point[0]["Expt"]);
+	}
+	let staff_check = "";
+	for(i=0;i<DB_staff.length;i++){
+		if(DB_staff[i]["staff_id"]==staff_id_check){
+			staff_check = i;
+		}
+	}
+	console.log('select salary from TM_salary where pt<='+DB_staff[staff_check]["pt"]+' and Expt<='+DB_staff[staff_check]["Expt"]+' order by salary desc;')
+	if(DB_staff[staff_check]["birthday"]!=null){
+		birthday = DB_staff[staff_check]["birthday"].slice(0,4);
+	}
+	if(DB_staff[staff_check]["join_date"]!=null){
+		job_history = DB_staff[staff_check]["join_date"].slice(0,4);
+	}
+	if(DB_staff[staff_check]["birthday"]!=null){
+		staff_old = parseInt(year)-parseInt(birthday);
+		if(parseInt(true_month)-parseInt(DB_staff[staff_check]["birthday"].slice(5,7))<=0){
+			if(parseInt(true_month)-parseInt(DB_staff[staff_check]["birthday"].slice(5,7))==0){
+				if(parseInt(day)-parseInt(DB_staff[staff_check]["birthday"].slice(8,10))<0){
+					staff_old = staff_old - 1;
+				}
+			}else{
+				staff_old = staff_old - 1;
+			}
+		}
+	}
+	if(DB_staff[staff_check]["join_date"]!=null){
+		staff_society_history = parseInt(year)-parseInt(job_history);
+		if(parseInt(true_month)-parseInt(DB_staff[staff_check]["join_date"].slice(5,7))<=0){
+			if(parseInt(true_month)-parseInt(DB_staff[staff_check]["join_date"].slice(5,7))==0){
+				if(parseInt(day)-parseInt(DB_staff[staff_check]["join_date"].slice(8,10))<0){
+					staff_society_history = staff_society_history - 1;
+				}
+			}else{
+				staff_society_history = staff_society_history - 1;
+			}
+		}
+	}
+
+	
+	//一番上のテーブルにデータを入れる
+	$("#staff_id").text(DB_staff[staff_check]["staff_id"]);
+	$("#staff_name").text(DB_staff[staff_check]["staff_name"]);
+	if(DB_staff[staff_check]["birthday"]!=null){
+		$("#staff_birthday").text(DB_staff[staff_check]["birthday"]);
+	}else{
+		$("#staff_birthday").text("-");
+	}
+	$("#staff_old").text(staff_old);
+	if(DB_staff[staff_check]["join_date"]!=null){
+		$("#staff_join_date").text(DB_staff[staff_check]["join_date"]);
+	}else{
+		$("#staff_join_date").text("-");
+	}
+	let sc_name = DB.sql('select * from TC_ac_history where ac_history_cd="'+DB_staff[staff_check]["ac_history_cd"]+'"');
+	$("#staff_society_history").text(staff_society_history);
+	if(DB_staff[staff_check]["ac_history_cd"]!=null){
+		$("#staff_ac_history").text(sc_name[0]["ac_history"]);
+	}else{
+		$("#staff_ac_history").text("-");
+	}
+	
+	if(DB_staff[staff_check]["staff_name"].length >16){
+		$("#staff_name").css('font-size','15');
+	}
+	
+	//取得タイトル出力
+	let DB_cp = DB.sql('SELECT TE_staff_cp.title_cd,detail,pt,Expt FROM TE_staff_cp join TM_point on TE_staff_cp.title_cd=TM_point.title_cd where staff_id = "'+DB_staff[staff_check]["staff_id"]+'";');
+	for(i=0;i<DB_cp.length;i++){
+		$("#cp_table").append('<tr><td>'+DB_cp[i]["detail"]+'</td><td class="ch_re_pt">'+DB_cp[i]["pt"]+'</td><td class="ch_re_pt">'+DB_cp[i]["Expt"]+'</td></tr>');
+	}
+	
+	//社会人歴出力
+	if(DB_staff[staff_check]["it_history"]!=null){
+		$("#staff_ithistory").text(DB_staff[staff_check]["it_history"]+"年");
+	}else{
+		$("#staff_ithistory").text("-");
+	}
+	if(DB_staff[staff_check]["noit_history"]!=null){
+		$("#staff_noithistory").text(DB_staff[staff_check]["noit_history"]+"年");
+	}else{
+		$("#staff_noithistory").text("-");
+	}
+	$("#staff_itpoint").text(DB_staff[staff_check]["it_history"]*4+"pt");
+	$("#staff_noitpoint").text(DB_staff[staff_check]["noit_history"]*2+"pt");
+	$("#n_day").text(staff_society_history+"年目");
+	if(job_history!="-"&&birthday!="-"){
+		generation = parseInt(job_history.slice(0,4))-parseInt(birthday.slice(0,4));
+		if(parseInt(job_history.slice(5,7))-parseInt(birthday.slice(5,7))<=0){
+			if(parseInt(job_history.slice(5,7))-parseInt(birthday.slice(5,7))==0){
+				if(parseInt(job_history.slice(8,10))-parseInt(birthday.slice(8,10))<0){
+					generation = generation - 1;
+				}
+			}else{
+				generation = generation - 1;
+			}
+		}
+	}
+	
+	generation = (Math.floor(generation/10)) * 10;
+	$("#n_old").text(generation+"代");
+	let sql_selectitem = "";
+	if(staff_society_history==0){
+		sql_selectitem = "1th"
+	}else if(staff_society_history==1){
+		sql_selectitem = "2th"
+	}else if(staff_society_history==2){
+		sql_selectitem = "3th"
+	}else if(staff_society_history==3){
+		sql_selectitem = "4th"
+	}else if(staff_society_history>=4){
+		sql_selectitem = "5th_over"
+	}
+	if(generation!="-"&&DB_staff[staff_check]["noit_history"]!=null&&DB_staff[staff_check]["noit_history"]!=0){
+		DB_generation_point=DB.sql('SELECT '+sql_selectitem+' FROM TM_noit_point where generation='+generation+' and not_it = '+DB_staff[staff_check]["noit_history"]);
+	}
+	if(DB_generation_point.length!=0){
+		if(DB_generation_point[0][sql_selectitem]!=null){
+			$("#noit_point").text(DB_generation_point[0][sql_selectitem]+"pt");
+		}else{
+			$("#noit_point").text("-");
+		}
+	}
+	
+	if(DB_staff[staff_check]["it_history"]!=null){
+		staff_sum_pt += (DB_staff[staff_check]["it_history"]*4);
+	}
+	
+	if(DB_generation_point.length!=0&&DB_staff[staff_check]["noit_history"]!=0&&DB_staff[staff_check]["noit_history"]!=null&&generation!="-"){
+		if(DB_generation_point[0][sql_selectitem]!=""){
+			staff_sum_pt += parseInt(DB_generation_point[0][sql_selectitem])
+		}
+	}
+	
+	if(DB_staff[staff_check]["ac_history_cd"]!=null){
+		let ac_sum = DB.sql('select * from TC_ac_history where ac_history_cd="'+DB_staff[staff_check]["ac_history_cd"]+'"');
+		staff_sum_pt += parseInt(ac_sum[0]["pt"]);
+		staff_sum_Expt += parseInt(ac_sum[0]["Expt"]);
+	}
+	
+	//ポイントのアップデート
+	DB.sql('update TM_staff set pt='+staff_sum_pt+',Expt='+staff_sum_Expt+' where staff_id="'+staff_id_check+'"');
+	DB_staff = DB.sql("select * from TM_staff");
+	$(staff_pt).text(DB_staff[staff_check]["pt"]);
+	$(staff_Expt).text(DB_staff[staff_check]["Expt"]);
+	DB_staff = DB.sql("select * from TM_staff");
+	let DB_salary = DB.sql('select salary from TM_salary where pt<='+DB_staff[staff_check]["pt"]+' and Expt<='+DB_staff[staff_check]["Expt"]+' order by salary desc;');
+	if(DB_staff[staff_check]["pt"]>0||DB_staff[staff_check]["Expt"]>0){
+		$("#staff_money").text(parseInt(DB_salary[0]["salary"]).toLocaleString());
+	}
+	
+	//自己評価シートの履歴
+	let last_year = parseInt(year) - 1;
+	let two_year = parseInt(year) - 2;
+	let three_year = parseInt(year) - 3;
+	if(parseInt(month)==9){
+		let year_point = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_sc join TM_self_check on TE_staff_sc.sc_cd=TM_self_check.sc_cd where staff_id="'+staff_id_check+'" and  assess_date="'+year+'-09-01" and result=1;');
+		let last_year_point = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_sc join TM_self_check on TE_staff_sc.sc_cd=TM_self_check.sc_cd where staff_id="'+staff_id_check+'" and  assess_date="'+last_year+'-09-01" and result=1;');
+		let two_year_point = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_sc join TM_self_check on TE_staff_sc.sc_cd=TM_self_check.sc_cd where staff_id="'+staff_id_check+'" and  assess_date="'+two_year+'-09-01" and result=1;');
+		let year_two_point = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_sc join TM_self_check on TE_staff_sc.sc_cd=TM_self_check.sc_cd where staff_id="'+staff_id_check+'" and  assess_date="'+year+'-03-01" and result=1;');
+		let last_year_two_point = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_sc join TM_self_check on TE_staff_sc.sc_cd=TM_self_check.sc_cd where staff_id="'+staff_id_check+'" and  assess_date="'+last_year+'-03-01" and result=1;');
+		let two_year_two_point = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_sc join TM_self_check on TE_staff_sc.sc_cd=TM_self_check.sc_cd where staff_id="'+staff_id_check+'" and  assess_date="'+two_year+'-03-01" and result=1;');
+		if(year_point[0]["pt"]!=null){
+			$("#year_pt").text(year_point[0]["pt"]);
+			$("#year_date").text(year+"-09");
+		}else{
+			$("#year_pt").text("-");
+			$("#year_date").text("-");
+		}
+		if(year_point[0]["Expt"]!=null){
+			$("#year_Expt").text(year_point[0]["Expt"]);
+		}else{
+			$("#year_Expt").text("-");
+		}
+		if(last_year_point[0]["pt"]!=null){
+			$("#last_year_pt").text(last_year_point[0]["pt"]);
+			$("#last_year_date").text(last_year+"-09");
+		}else{
+			$("#last_year_pt").text("-");
+			$("#last_year_date").text("-");
+		}
+		if(last_year_point[0]["Expt"]!=null){
+			$("#last_year_Expt").text(last_year_point[0]["Expt"]);
+		}else{
+			$("#last_year_Expt").text("-");
+		}
+		if(two_year_point[0]["pt"]!=null){
+			$("#two_year_pt").text(two_year_point[0]["pt"]);
+			$("#two_year_date").text(two_year+"-09");
+		}else{
+			$("#two_year_pt").text("-");
+			$("#two_year_date").text("-");
+		}
+		if(two_year_point[0]["Expt"]!=null){
+			$("#two_year_Expt").text(two_year_point[0]["Expt"]);
+		}else{
+			$("#two_year_Expt").text("-")
+		}
+		$("#year_two_pt").text("-");
+		$("#year_two_Expt").text("-");
+		$("#year_two_date").text("-");
+		if(year_two_point[0]["pt"]!=null){
+			$("#last_year_two_pt").text(year_two_point[0]["pt"]);
+			$("#last_year_two_date").text(year+"-03");
+		}else{
+			$("#last_year_two_pt").text("-");
+			$("#last_year_two_date").text("-");
+		}
+		if(year_two_point[0]["Expt"]!=null){
+			$("#last_year_two_Expt").text(year_two_point[0]["Expt"]);
+		}else{
+			$("#last_year_two_Expt").text("-");
+		}
+		if(last_year_two_point[0]["pt"]!=null){
+			$("#two_year_two_pt").text(last_year_two_point[0]["pt"]);
+			$("#two_year_two_date").text(last_year+"-03");
+		}else{
+			$("#two_year_two_pt").text("-");
+		}
+		if(last_year_two_point[0]["Expt"]!=null){
+			$("#two_year_two_Expt").text(last_year_two_point[0]["Expt"]);
+		}else{
+			$("#two_year_two_Expt").text("-");
+		}
+	}else{
+		let year_point = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_sc join TM_self_check on TE_staff_sc.sc_cd=TM_self_check.sc_cd where staff_id="'+staff_id_check+'" and  assess_date="'+year+'-09-01" and result=1;');
+		let last_year_point = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_sc join TM_self_check on TE_staff_sc.sc_cd=TM_self_check.sc_cd where staff_id="'+staff_id_check+'" and  assess_date="'+last_year+'-09-01" and result=1;');
+		let two_year_point = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_sc join TM_self_check on TE_staff_sc.sc_cd=TM_self_check.sc_cd where staff_id="'+staff_id_check+'" and  assess_date="'+two_year+'-09-01" and result=1;');
+		let year_two_point = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_sc join TM_self_check on TE_staff_sc.sc_cd=TM_self_check.sc_cd where staff_id="'+staff_id_check+'" and  assess_date="'+year+'-03-01" and result=1;');
+		let last_year_two_point = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_sc join TM_self_check on TE_staff_sc.sc_cd=TM_self_check.sc_cd where staff_id="'+staff_id_check+'" and  assess_date="'+last_year+'-03-01" and result=1;');
+		let two_year_two_point = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_sc join TM_self_check on TE_staff_sc.sc_cd=TM_self_check.sc_cd where staff_id="'+staff_id_check+'" and  assess_date="'+two_year+'-03-01" and result=1;');
+		let three_year_point = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_sc join TM_self_check on TE_staff_sc.sc_cd=TM_self_check.sc_cd where staff_id="'+staff_id_check+'" and  assess_date="'+three_year+'-09-01" and result=1;');
+		if(last_year_point[0]["pt"]!=null){
+			$("#year_pt").text(last_year_point[0]["pt"]);
+			$("#year_date").text(last_year+"-09");
+		}else{
+			$("#year_pt").text("-");
+			$("#year_date").text("-");
+		}
+		if(last_year_point[0]["Expt"]!=null){
+			$("#year_Expt").text(last_year_point[0]["Expt"]);
+		}else{
+			$("#year_Expt").text("-");
+		}
+		if(two_year_point[0]["pt"]!=null){
+			$("#last_year_pt").text(two_year_point[0]["pt"]);
+			$("#last_year_date").text(two_year+"-09");
+		}else{
+			$("#last_year_pt").text("-");
+			$("#last_year_date").text("-");
+		}
+		if(two_year_point[0]["Expt"]!=null){
+			$("#last_year_Expt").text(two_year_point[0]["Expt"]);
+		}else{
+			$("#last_year_Expt").text("-");
+		}
+		if(three_year_point[0]["pt"]!=null){
+			$("#two_year_pt").text(three_year_point[0]["pt"]);
+			$("#two_year_date").text(three_year+"-09");
+		}else{
+			$("#two_year_pt").text("-");
+			$("#two_year_date").text("-");
+		}
+		if(three_year_point[0]["Expt"]!=null){
+			$("#two_year_Expt").text(three_year_point[0]["Expt"]);
+		}else{
+			$("#two_year_Expt").text("-");
+		}
+		if(year_two_point[0]["pt"]!=null){
+			$("#year_two_pt").text(year_two_point[0]["pt"]);
+			$("#year_two_date").text(year+"-03");
+		}else{
+			$("#year_two_pt").text("-");
+			$("#year_two_date").text("-");
+		}
+		if(year_two_point[0]["Expt"]!=null){
+			$("#year_two_Expt").text(year_two_point[0]["Expt"]);
+		}else{
+			$("#year_two_Expt").text("-");
+		}
+		if(last_year_two_point[0]["pt"]!=null){
+			$("#last_year_two_pt").text(last_year_two_point[0]["pt"]);
+			$("#last_year_two_date").text(last_year+"-03");
+		}else{
+			$("#last_year_two_pt").text("-");
+			$("#last_year_two_date").text("-");
+		}
+		if(last_year_two_point[0]["Expt"]!=null){
+			$("#last_year_two_Expt").text(last_year_two_point[0]["Expt"]);
+		}else{
+			$("#last_year_two_Expt").text("-");
+		}
+		if(two_year_two_point[0]["pt"]!=null){
+			$("#two_year_two_pt").text(two_year_two_point[0]["pt"]);
+			$("#two_year_two_date").text(two_year+"-03");
+		}else{
+			$("#two_year_two_pt").text("-");
+			$("#two_year_two_date").text("-");
+		}
+		if(two_year_two_point[0]["Expt"]!=null){
+			$("#two_year_two_Expt").text(two_year_two_point[0]["Expt"]);
+		}else{
+			$("#two_year_two_Expt").text("-");
+		}
+	}
+
+	
+	//過去三年間
+	if(parseInt(month)==9){
+		let DB_two_year_point = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_sc join TM_self_check on TE_staff_sc.sc_cd=TM_self_check.sc_cd where staff_id="'+staff_id_check+'" and  assess_date<"'+two_year+'-09-01" and result=1;');
+		if(DB_two_year_point[0]["pt"]!=null){
+			$("#old3_pt").text(DB_two_year_point[0]["pt"]);
+		}else{
+			$("#old3_pt").text("-");
+		}
+		if(DB_two_year_point[0]["Expt"]!=null){
+			$("#old3_Expt").text(DB_two_year_point[0]["Expt"]);
+		}else{
+			$("#old3_Expt").text("-");
+		}
+	}else{
+		let DB_three_year_point = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_sc join TM_self_check on TE_staff_sc.sc_cd=TM_self_check.sc_cd where staff_id="'+staff_id_check+'" and  assess_date<"'+three_year+'-09-01" and result=1;');
+		if(DB_three_year_point[0]["pt"]!=null){
+			$("#old3_pt").text(DB_three_year_point[0]["pt"]);
+		}else{
+			$("#old3_pt").text("-");
+		}
+		if(DB_three_year_point[0]["Expt"]!=null){
+			$("#old3_Expt").text(DB_three_year_point[0]["Expt"]);
+		}else{
+			$("#old3_Expt").text("-");
+		}
+	}
+	let DB_old3 = DB.sql('select sum(pt) as pt ,sum(Expt) as Expt from TE_staff_sc join TM_self_check on TE_staff_sc.sc_cd=TM_self_check.sc_cd where staff_id="'+staff_id_check+'" and  assess_date<"'+two_year+'-09-01" and result=1;');
+	//総合計
+	$("#allsum_pt").text(DB_sumall[0]["pt"]);
+	$("#allsum_Expt").text(DB_sumall[0]["Expt"]);
+	
+	//戻るボタン押下時
+	$("#result_back_button").on("click",function(){
+		location.href='ev_assess_start.html'
+	})
+	
+	$("#result_selfcheck_button").on("click",function(){
+		location.href='ev_self_assess.html'
+	})
+	
+	$("#result_company_button").on("click",function(){
+		location.href='ev_company_assess.html'
+	})
+
+	$("#result_csv_button").on("click",function(){
+		//配列の作成
+		let csv_fail = new Array(33);
+		csv_fail[10] = new Array(DB_cp.length);
+		csv_fail[11] = new Array(DB_cp.length);
+		csv_fail[12] = new Array(DB_cp.length);
+		
+		//配列にデータを挿入
+		
+		//一番上のテーブルのデータを挿入
+		csv_fail[0] = DB_staff[staff_check]["staff_id"];
+		csv_fail[1] = DB_staff[staff_check]["staff_name"]
+		csv_fail[2] = DB_staff[staff_check]["birthday"]
+		csv_fail[3] = staff_old
+		csv_fail[4] = DB_staff[staff_check]["join_date"]
+		csv_fail[5] = staff_society_history
+		if(DB_staff[staff_check]["ac_history_cd"]!=null){
+			csv_fail[6] = sc_name[0]["ac_history"]
+		}else{
+			csv_fail[6] = "-";
+		}
+		csv_fail[7] = DB_salary[0]["salary"]
+		csv_fail[8] = DB_staff[staff_check]["pt"]
+		csv_fail[9] = DB_staff[staff_check]["Expt"]
+		
+		//取得した資格のデータを挿入
+		for(i=0;i<DB_cp.length;i++){
+			csv_fail[10][i] = DB_cp[i]["title_cd"];
+			csv_fail[11][i] = DB_cp[i]["pt"];
+			csv_fail[12][i] = DB_cp[i]["Expt"];
+		}
+		
+		csv_fail[13] = DB_staff[staff_check]["it_history"];
+		csv_fail[14] = DB_staff[staff_check]["noit_history"];
+		csv_fail[15] = $("#noit_point").text();
+		csv_fail[16] = $("#two_year_pt").text();
+		csv_fail[17] = $("#two_year_Expt").text();
+		csv_fail[18] = $("#two_year_two_pt").text();
+		csv_fail[19] = $("#two_year_two_Expt").text();
+		csv_fail[20] = $("#last_year_pt").text();
+		csv_fail[21] = $("#last_year_Expt").text();
+		csv_fail[22] = $("#last_year_two_pt").text();
+		csv_fail[23] = $("#last_year_two_Expt").text();
+		csv_fail[24] = $("#year_pt").text();
+		csv_fail[25] = $("#year_Expt").text();
+		csv_fail[26] = $("#year_two_pt").text();
+		csv_fail[27] = $("#year_two_Expt").text();
+		csv_fail[28] = $("#old3_pt").text();
+		csv_fail[29] = $("#old3_Expt").text();
+		csv_fail[30] = $("#allsum_pt").text();
+		csv_fail[31] = $("#allsum_Expt").text();
+		
+		//配列を文字列に変換
+		let csv_fail_change = csv_fail[0]+",";
+		
+		for (i=1;i<10;i++) {
+			csv_fail_change += csv_fail[i]+",";
+		}
+		
+		for (i=13;i<31;i++) {
+			csv_fail_change += csv_fail[i]+",";
+		}
+		
+		csv_fail_change += csv_fail[31];
+		csv_fail_change += ","+$("#n_day").text()+","+$("#n_old").text();
+		csv_fail_change += ","+$("#year_date").text()+","+$("#year_two_date").text()+","+$("#last_year_date").text()+","+$("#last_year_two_date").text()+","+$("#two_year_date").text()+","+$("#two_year_two_date").text();
+
+		
+		for(j=0;j<DB_cp.length;j++){
+			csv_fail_change+=","+DB_cp[j]["title_cd"]+","+DB_cp[j]["pt"]+","+DB_cp[j]["Expt"];
+		}
+		
+		// 文字列をBlobオブジェクトに変換
+		let bom = new Uint8Array([0xEF, 0xBB, 0xBF]);
+		let blob = new Blob([bom, csv_fail_change], {type: 'text/csv'});
+		let url = (window.URL || window.webkitURL).createObjectURL(blob);
+		//クラスを作成
+		let csv_click = document.createElement('a');
+		//ダウンロードにファイル名を追加?
+		csv_click.download = staff_id_check+DB_staff[staff_check]["staff_name"]+'_result.csv';
+		//先ほど作ったurlを追加
+		csv_click.href = url;
+		// aタグをクリック
+		csv_click.click();
+
+	})
+
+</script>
+</html>
+

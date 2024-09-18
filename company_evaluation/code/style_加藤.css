@@ -1,0 +1,762 @@
+/*ここはみんなで使うところだよ*/
+body{
+	font-size: 17px;
+}
+table{
+	font-size: 17px;
+}
+input{
+	font-size: 17px;
+}
+input[type="date"]{
+	font-size: 17px;
+}
+select{
+	font-size: 17px;
+}
+textarea{
+	font-size: 17px;
+}
+button{
+	font-size: 17px;
+}
+span{
+	color: red;
+}
+
+h1{
+	width: fit-content; 
+	margin: 0 auto;
+	font-size: 40px;
+}
+
+.f{
+	display: flex;
+}
+
+/* .sum_table{
+	position: fixed;
+	top: 100;
+	right: 35;
+	background-color: white;
+} */
+
+.center{
+	width: fit-content;
+	margin: 0 auto;
+}
+
+#insert_button{
+	border: solid 1px #000;
+	width: 200;
+	font-size:20;
+	background-color: #7fff7f;
+	position: absolute;
+	right: 300;
+	bottom: 15;
+}
+
+#update_button{
+	border: solid 1px #000;
+	width: 200;
+	font-size:20;
+	background-color: #7fbfff;
+	position: absolute;
+	right: 70;
+	bottom: 15;
+}
+
+#back_button{
+	width: 200;
+	font-size:20;
+	position: absolute;
+	left: 30;
+	bottom: 15;
+}
+
+p{
+	margin: 0 auto;
+}
+
+/*ポップアップ用*/
+.pop{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
+	width: 600;
+	height: 400;
+	border: double 5px #1E90FF;
+	background-color: white;
+	z-index: 2;
+}
+
+#pop_back{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translateY(-50%) translateX(-50%);
+	width: 100%;
+	height: 100%;
+	background-color: gray;
+	opacity: 0.5;
+	z-index: 2;
+}
+
+.pop_cancel{
+	width:30;
+	height:30;
+	display: block;
+	text-align: center;
+	margin: 10 10 auto auto;
+	background-color: red;
+	z-index: 2;
+}
+
+
+.pop_title_alone{
+	width: fit-content;
+	font-size: 45;
+	margin: 80 auto 10 auto;
+	z-index: 2;
+}
+
+.pop_title{
+	width: fit-content;
+	font-size: 25;
+	margin: 80 auto 10 auto;
+	text-align: center;
+	z-index: 2;
+}
+
+.pop_button_alone{
+	display: block;
+	width: 200;
+	height: 30;
+	margin: 80 auto;
+	z-index: 2;
+}
+
+/*ログイン画面*/
+#login_button{
+	display: block;
+	width: 200;
+	margin: 0 auto;
+	text-align: center;
+}
+.login_inp{
+	margin-top: 20px;
+}
+.login_inp label{
+	width: 100px;
+	display: inline-block;
+}
+.login_e{
+	margin: 10px auto 20px auto;
+	color: red;
+	width: fit-content;
+}
+
+/*選択画面*/
+.select_row1{
+	margin: 40px 10px 0 10px;
+	width:291px;
+	font-size: 20;
+}
+.select_row2{
+	margin: 30px 10px;
+	width:450px;
+	font-size: 20;
+}
+#assess_start{
+	font-size: 40px;
+	height: 150px;
+	color: #fff;
+	background-color: #0075c2;
+	border-radius:10px;
+	border: 1px solid #000;
+}
+#assess_start:hover{
+	background-color: #3a8cc2;
+}
+#assess_output{
+	font-size: 40px;
+	height: 150px;
+	color: #fff;
+	background-color: #ee7800;
+	border-radius:10px;
+	border: 1px solid #000;
+}
+#assess_output:hover{
+	background-color: #ed9a47;
+}
+
+/* 評価項目管理 */
+.assess_admin{
+	margin: 20px auto;
+	width: fit-content;
+}
+.assess_admin button{
+	width: 200;
+	font-size:20;
+}
+#self_admin{
+	margin-left: 100px;
+}
+/* .assess_admin_back{
+	position: absolute;
+	bottom: 15;
+} */
+
+/* 管理画面共通機能 */
+.staff_admin, .com_p_admin, .self_c_admin{
+	width: fit-content;
+	/* min-width: 1335px; */
+	margin: 10px auto 60px auto;
+	display: flex;
+}
+.staff_tb, #com_p_tb, #self_c_tb{
+	/* table-layout: fixed; */
+	display: block;
+	height: calc(100vh - 180px);
+	white-space: nowrap;
+	overflow: scroll;
+}
+.staff_tb th, #com_p_tb th, #self_c_tb th{
+	/* letter-spacing: normal;
+	white-space: normal; */
+	/* display: inline-block; */
+	position: sticky;
+	/* top: 2; */
+	top: 0;
+	background-color: #bcddff; 
+}
+.pk_th0, .pk_td0{
+	position: sticky;
+	left: 0;
+	background-color: white; 
+}
+.pk_th1, .pk_td1{
+	position: sticky;
+	left: 68;
+	background-color: white; 
+}
+.pk_th0, .pk_th1{
+	z-index: 1;
+}
+.tb_null{
+	text-align: center;
+}
+.staff_input div, .com_p_input div, .self_c_input div{
+	margin: 0 0 20px 0;
+}
+.staff_input label, .com_p_input label, .self_c_input label{
+	margin: 0 0 auto 15px;
+	width: 130px;
+	display: inline-block;
+	vertical-align: top;
+}
+.staff_input input[type="text"], .com_p_input input[type="text"], .self_c_input input[type="text"]{
+	width: 177px;
+}
+.staff_input input[type="number"], .com_p_input input[type="number"], .self_c_input input[type="number"]{
+	width: 177px;
+}
+.staff_input select, .com_p_input select{
+	width: 177px;
+}
+.del_flg label{
+	width: auto;
+}
+.del_flg input[type="checkbox"]{
+	margin-left: 10px;
+	transform: scale(1.5);
+}
+.admin_error p{
+	margin: 0 0 0 30px;
+	color: red;
+}
+.admin_btn{
+	/* padding: 15px 30px 15px 10px; */
+	width: 100%;
+	height: 60px;
+	background-color: white;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+
+/* 社員管理 */
+.staff_tb{
+	width: calc(100vw - 700px);
+}
+.staff_th_id{
+	width: 70px;
+}
+.staff_th_name{
+	min-width: 100px;
+}
+.staff_th_date{
+	min-width: 100px;
+}
+.staff_tb .staff_th_pt{
+	width: 45px;
+}
+.staff_th_ac{
+	width: 70px;
+}
+.staff_th_y{
+	width: 100px;
+}
+#staff_del_ch_div{
+	margin-top: 10px;
+}
+#staff_del_ch{
+	transform: scale(1.5);
+}
+.staff_input input[type="date"]{
+	width: 177px;
+	display: inline-block;
+}
+
+/* 会社評価管理 */
+#com_p_tb{
+	width: calc(100vw - 700px);
+}
+.com_p_input textarea{
+	resize: none;
+	width: 511px;
+	height: 100px;
+}
+
+/* 自己評価管理 */
+#self_c_tb{
+	width: calc(100vw - 570px);
+}
+.sca_cd_th{
+	width: 10%;
+}
+.sca_pt_th{
+	min-width: 40px;
+}
+.sca_sc_th{
+	width: 50%;
+}
+.sca_ex_th{
+	width: 40%;
+}
+#explanation_inp, #self_check_inp{
+	resize: none;
+	width: 380px;
+	height: 100px;
+}
+
+/* 給与テーブル */
+.min_s{
+	background-color: #d3d3d3;
+}
+.money{
+	width: 80px;
+}
+#salary_tb{
+	margin: 0 auto;
+	display: block;
+	width: fit-content;
+	height: calc(100vh - 300px);
+	overflow-y: scroll;
+}
+#salary_tb th{
+	position: sticky;
+	top: 0;
+	background-color: #bcddff;
+}
+#salary_tb .tr2{
+	position: sticky;
+	top: 28;
+}
+.class{
+	background-color: #ffddbc;
+}
+.salary_bottom{
+	margin: 15px auto 0 auto;
+	width: fit-content;
+	display: flex;
+}
+.salary_bottom th{
+	background-color: #bcddff;
+}
+.level_tb{
+	margin-left: 50px;
+}
+#min_money{
+	font-size: 17px;
+}
+#min_money_chenge{
+	margin: 10px auto 0 auto;
+	display: block;
+	width: 150px;
+}
+
+/* 評価実施 */
+.ass_start_tb{
+	display: block;
+	margin: 0 auto;
+	width: fit-content;
+	height: 80%;
+	overflow-y: scroll;
+}
+.ass_start_tb th{
+	position: sticky;
+	top: 0;
+	background-color: #bcddff;
+}
+.asa_cp_st, .asa_sc_st{
+	width: 100px;
+}
+
+/* 評価出力 */
+.ass_out_tb{
+	display: block;
+	margin: 0 auto;
+	width: fit-content;
+	height: 70%;
+	overflow-y: scroll;
+}
+.ass_out_tb th{
+	position: sticky;
+	top: 0;
+	background-color: #bcddff;
+}
+#output_button{
+	width: 200;
+	font-size:20;
+	position: absolute;
+	right: 30;
+	bottom: 15;
+}
+#all_select_button{
+	width: 100;
+	font-size: 17px;
+	display: block;
+	margin: 10px 400px 10px auto;
+}
+.ao_conf{
+	width: 80px;
+}
+
+/* 会社評価,自己評価 共通 */
+.com_ass_btn, .sc_ass_btn{
+	width: 100%;
+	height: 80px;
+	background-color: white;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+}
+.com_ass_btn div, .sc_ass_btn div{
+	position: absolute;
+	right: 30;
+	bottom: 15;
+}
+.com_ass_btn label, .sc_ass_btn label{
+	display: block;
+}
+#sc_button, #check_button{
+	width: 200;
+	font-size:20;
+}
+
+/*会社評価*/
+.assess_check_detail{
+	width: 58%;
+	height: 50;
+}
+.assess_check_note{
+	width: 30%;
+	height: 50;
+}
+.assess_check_box{
+	width: 25;
+	height: 25;
+	margin: auto 10;
+}
+.assess_check_n{
+	padding-left: 10px;
+	width: 42;
+	height: 50;
+}
+.assess_check_pt{
+	width: 40px;
+	text-align: center;
+}
+.assess_check{
+	width: 100%;
+	margin: 0 auto;
+	/* display: flex; */
+	border-bottom: dashed;
+	border-width: 1;
+
+}
+#assess_TJ :last-child, #assess_TQ :last-child, #assess_MJ :last-child, #assess_MQ :last-child, #assess_CC :last-child{
+	border-bottom: 0;
+}
+#t_kbn{
+	width: 100%;
+	height: 30;
+	margin: 0 auto;
+	font-size: 20;
+	text-align: center;
+	background: #ff8ec6;
+	/* border: solid;
+	border-width: 1;
+	border-color: black; */
+}
+#m_kbn{
+	width: 100%;
+	height: 30;
+	margin: 0 auto;
+	font-size: 20;
+	text-align: center;
+	background: #7fbfff;
+	/* border: solid;
+	border-width: 1;
+	border-color: black; */
+}
+#c_kbn{
+	width: 100%;
+	height: 30;
+	margin: 0 auto;
+	font-size: 20;
+	text-align: center;
+	background: #ffbf7f;
+	/* border: solid;
+	border-width: 1;
+	border-color: black; */
+}
+#j_kbn{
+	width: 100%;
+	height: 30;
+	margin: 0 auto;
+	font-size: 20;
+	text-align: center;
+	background: #ffff7f;
+	/* border: solid;
+	border-width: 0 1 1 1;
+	border-color: black; */
+}
+#q_kbn{
+	width: 100%;
+	height: 30;
+	margin: 0 auto;
+	font-size: 20;
+	text-align: center;
+	background: #89ff89;
+	/* border: solid;
+	border-width: 0 1 1 1;
+	border-color: black; */
+}
+#company_assess_table{
+	width: 75vw;
+	min-width: 1000px;
+	margin: 0 auto 80px auto;
+}
+.ca_tb_th{
+	width: 50px;
+}
+.ca_tb_td{
+	text-align: center;
+	width: 40px;
+}
+.ca_sum_table, .sa_staff_name_table{
+	margin: 5px auto 0 auto;
+}
+.ca_sum_table th, .sa_staff_name_table th{
+	background-color: #c489ff;
+}
+
+/* 自己評価 */
+#company_assess_button{
+	position: fixed;
+	left: 250;
+	bottom: 15;
+	width: 100px;
+	height: 36px;
+	font-size: 15;
+}
+#sc_assess_table{
+	margin: 0 auto 80px auto;
+	/* width: 80vw; */
+}
+#sc_assess_table th{
+	background-color: #ffcc99;
+}
+.scass_self_check_th{
+	/* width: 350px; */
+	max-width: 70vw;
+}
+.scass_pt_th{
+	width: 40px;
+}
+.scass_pt_td{
+	text-align: center;
+	width: 40px;
+}
+
+
+#staff_status_table{
+	position: absolute;
+	left:100;
+}
+#staff_status_table td{
+	text-align: center;
+}
+#staff_hisotory_table{
+	position: absolute;
+	left:800;
+}
+
+#staff_point_table{
+	position: absolute;
+	left:1050;
+}
+
+#cp_table{
+	display: block;
+	position: absolute;
+	top:175;
+	left:100;
+	height:200;
+	width:600;
+	overflow-y: scroll;
+}
+#staff_sal_history_table{
+	position: absolute;
+	top: 175;
+	left:800;
+}
+
+#staff_sal_it_table{
+	position: absolute;
+	top: 175;
+	left:1050;
+}
+
+#staff_sal_noit_table{
+	position: absolute;
+	top: 375;
+	left:800;
+
+}
+
+#staff_sal_math_table{
+	position: absolute;
+	top:375;
+	left:1050;
+}
+
+#staff_sc_table{
+	position: absolute;
+	top: 385;
+	left:100;
+}
+
+#table_bar{
+	position: sticky;
+	top: 0;
+	background-color: white;
+}
+#th_title{
+	width:485;
+}
+#th_pt{
+	width:40;
+}
+#th_Expt{
+	width:40;
+}
+#right_arrow1{
+	position: absolute;
+	top: 175;
+	left:965;
+	color:#ff1414;
+	font-size:50;
+}
+
+#right_arrow2{
+	position: absolute;
+	top: 355;
+	left:950;
+	color:#00ff00;
+	font-size:50;
+}
+
+#bottom_arrow{
+	position: absolute;
+	top: 285;
+	left:810;
+	color:#00ff00;
+	font-size:50;
+}
+
+#check_back_button{
+	position: absolute;
+	bottom:10;
+	left:100;
+	width:200;
+	height:40;
+}
+
+#right_move{
+	position: absolute;
+	bottom:10;
+	left:650;
+	width:200;
+	height:40;
+	font-size:20;
+}
+
+#left_move{
+	position: absolute;
+	bottom:10;
+	left:400;
+	width:200;
+	height:40;
+	font-size:20;
+}
+
+#check_csv_button{
+	position: absolute;
+	bottom:10;
+	right:175;
+	width:200;
+	height:40;
+}
+
+#result_selfcheck_button{
+	position: absolute;
+	bottom:10;
+	left:100;
+	width:200;
+	height:40;
+}
+#result_company_button{
+	position: absolute;
+	bottom:10;
+	left:310;
+	width:200;
+	height:40;
+}
+#result_back_button{
+	position: absolute;
+	bottom:10;
+	right:175;
+	width:200;
+	height:40;
+}
+#result_csv_button{
+	position: absolute;
+	bottom:10;
+	right:390;
+	width:400;
+	height:40;
+}

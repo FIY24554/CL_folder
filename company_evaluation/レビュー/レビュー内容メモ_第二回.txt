@@ -1,0 +1,21 @@
+DB設計書レビュー
+全画面
+	number型の見直し、見直す理由もつけて変更を報告
+	tm-login気持ち悪い、tm-userの方が良き、ログインは一時的だから、userid username
+	tm-staffのdeleteが最後じゃなくて、create,update系を最後尾に
+	create-date、おかしくない？assess-dateに変更
+tm-min-money
+	最低賃金の変更する方法をDB以外で検討、追加要件
+tm-login
+	id桁数20でいいの？20もいる？10に変更
+tm-salary
+	number型の見直し、見直す理由もつけて変更を報告
+tm-self-check
+	登録者と更新者あった方が良いんじゃない？
+tm-noit_point
+	一年目～五年目以降notnullじゃなくてよくね？最初にデータを入れるから
+tm-staff
+	学歴桁数30とる？
+
+追加要件
+時間があったらログインを管理できる画面ほし

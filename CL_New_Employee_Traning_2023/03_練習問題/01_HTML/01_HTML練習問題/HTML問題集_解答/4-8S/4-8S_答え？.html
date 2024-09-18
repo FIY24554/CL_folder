@@ -1,0 +1,45 @@
+<html>
+
+<head>
+	<!-- htmlファイルと同じフォルダにあるjQuery.jsを読み込む -->
+	<script type="text/javascript" src="../common/jQuery.js"></script>
+	<!-- 文字コードをUTF-8に設定（文字化け防止） -->
+	<meta charset="UTF-8">
+	<!-- タイトル -->
+	<title>練習問題</title>
+
+	<style>
+    	/* ここにCSSを書く */
+	</style>
+</head>
+
+<body>
+    <!-- ここに画面に表示する内容を書く -->
+	<div id="test"></div>
+	
+	
+	<script>
+	    // ここにJavaScriptを書く
+		let array = [];
+		array[0] = "にゃー";
+		array[1] = "　　　　　　　　　　lヽ、　　　 　 　  　 /ヽ";
+		array[2] = "　　　　　　　 　 　i!　ﾞヽ、 　 　　　／ 　ﾞi!　　　　　 ..,,　.,,.;;''⌒ヽ";
+		array[3] = "　　　　 　 　 　 　l　　　 ゝ-─‐-／'　　　　 i!　 , ,__,,;'”　 ”';　　　 ,ﾉ";
+		array[4] = "　　　　　　　　　,／”　　　　　　　 　 　　　i!''”　 ....ﾞ'';;..,,;;　　,,Y”";
+		array[5] = "　　　　　　　　,/'　　　　　　　　　　　　　 〈　　　　　　　　　'i;;- ､,,　　";
+		array[6] = "　　　　 　 　　i'　　　　　　　　　　　　　　 'i,　　　　　　　　 　　 　 ﾞ”ヽ、　";
+		array[7] = "　　　 　 　 　 i!　●　　　　　●　　 　＊ ,'i　　　　　　　　　　 　　　　　ﾞ）";
+		array[8] = "　　　　　　　　'i,::: 　 ﾄ─‐ｲ 　 　:::::::　　,/　　　　'　　　　　ﾞ”,;''i,-‐'";
+		array[9] = "　　　　　,,-‐''”ヽ､ 　　 ヽ,_ノ　　　　 ,,-‐　　　　　　　　　,..;;;ﾞ”";
+		array[10] = "　　　（　　　　,,, '' 　　　　 ,,.-‐''”　　　　　　　,,'”´｀`´";
+		array[11] = "　　　　 ヽ,..-‐''　　　 ,.-‐''”　　　　　　ノ-‐''”´";
+		array[12] = "　　　　　　　　　　（　　　　　　 ,. -'”";
+		array[13] = "　　　　　　　 　　　 ヽ、,,.. -‐'''”";
+
+		for (let i=0; i<13; i++){
+			$("#test").append("<div>" + array[i] + "</div>");
+		}
+	</script>
+</body>
+
+</html>

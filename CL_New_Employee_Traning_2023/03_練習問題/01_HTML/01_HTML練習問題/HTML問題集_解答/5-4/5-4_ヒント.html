@@ -1,0 +1,39 @@
+<html>
+
+<head>
+	<!-- htmlファイルと同じフォルダにあるjQuery.jsを読み込む -->
+	<script type="text/javascript" src="../common/jQuery.js"></script>
+	<!-- 文字コードをUTF-8に設定（文字化け防止） -->
+	<meta charset="UTF-8">
+	<!-- タイトル -->
+	<title>練習問題</title>
+
+	<style>
+    	/* ここにCSSを書く */
+	</style>
+</head>
+
+<body>
+    <!-- ここに画面に表示する内容を書く -->
+	<input type="text" id="text1" />
+	+
+	<input type="text" id="text2" />
+	<button id="button">ボタン</button>
+
+	<div id="test"></div>
+	
+	
+	<script>
+	    // ここにJavaScriptを書く
+		$("#button").on("click", function(){
+			if (isNaN(？) || isNaN(？)){
+				alert("数値以外が入力されています。");
+			}
+			else{
+				$("#test").append(Number($("#text1").val()) + Number($("#text2").val()));
+			}
+		});
+	</script>
+</body>
+
+</html>

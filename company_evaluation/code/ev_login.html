@@ -1,0 +1,57 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+	<script src="DB_sql.js"></script>
+</head>
+<body>
+	<h1>人事評価システム</h1>
+	<div class="center login_inp">
+		<label>ユーザID</label>
+		<input id="user_id" type="text">
+	</div>
+	<div class="center login_inp">
+		<label>パスワード</label>
+		<input type="password" id="password" type="text">
+	</div>
+	<p id="error" class="login_e">　</p>
+	<button id="login_button">ログイン</button>
+
+</body>
+<script>
+	
+	$("#login_button").on("click",function(){
+		let error=false;
+		//ユーザIDを取得
+		let user_id = $("#user_id").val();
+		//パスワードを取得
+		let password = $("#password").val();
+		if(user_id==""||password==""){
+			error=true;
+		}
+		if(error==false){
+			let DB_user = DB.sql("SELECT * FROM TM_user;")
+			
+			for(i=0;i<DB_user.length;i++){
+				if(user_id==DB_user[i]["user_id"]&&password==DB_user[i]["password"]){
+					//let date = new Date();
+					//let date_yyyymm = date.toISOString()
+					//let ev_date = date_yyyymm.slice(0,7);
+					//localStorage.setItem("ev_date",ev_date);
+					localStorage.setItem("ev_user_id",user_id);
+					location.href='ev_select.html'
+				}
+			}
+		}
+		error=true;
+		if(error){
+			$("#error").text("※ユーザIDかパスワードが違います");
+		}
+	})
+
+
+
+</script>
+</html>
+
