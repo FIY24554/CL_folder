@@ -1,0 +1,3 @@
+mysqlの外部からの許可(サーバ側)
+mysql > update user set host = '%' where user = 'root';
+mysql> FLUSH PRIVILEGES;

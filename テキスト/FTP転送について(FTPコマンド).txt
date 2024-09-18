@@ -1,0 +1,55 @@
+FTP転送について(FTPコマンド)
+
+//これでftpコマンドをインストール
+sudo yum install ftp
+
+//ftp転送したいファイルがある階層まで移動
+cd [移動したい階層名]
+//↓例
+cd /var/www/html
+
+//ftpコマンドでファイルサーバーにアクセス
+ftp [ftpサーバーのip]
+//↓例
+ftp 192.168.1.26
+
+//ユーザー名とパスワードを聞かれるので入力
+//ローカルの方の階層確認
+lcd
+
+//リモートの方の確認など
+//現在の階層の確認
+pwd
+//階層の中にあるフォルダーなどの確認
+ls
+//階層を移動
+cd
+//↓例
+cd disk1/cl_work
+
+//ファイルを転送
+put [送りたいファイル名]　※このファイル名はローカルの現在いる階層の中にあるファイル名
+//↓例
+put test.php
+
+//シェル化の仕方
+//シェルを作りたい階層で
+sudo vi test.sh
+
+//作ったシェルファイルの中に
+
+//ローカルの方の階層の移動
+cd /var/www/html
+
+ftp -p -n << EOF
+//ftpサーバー名
+  open 192.168.1.26
+//ユーザの名前とパスワード
+  user CL_Work Ciel2019
+  binary
+//リモートの階層移動
+  cd disk1/cl_work
+//転送
+  put "company_evaluation"$TE".dump"
+  quit
+EOF

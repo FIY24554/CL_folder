@@ -1,0 +1,37 @@
+using MySqlConnector;            
+
+
+
+
+
+
+
+// 接続文字列                                                    ↓mysqlのパスワード
+            var connectionString = "Server=localhost;User ID=root;Password=P@ssw0rd;Database=chat";
+            //                                                                            ↑databaseの名前
+
+            // 実行するSQL
+            var sql = "SELECT * FROM user";
+
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                // 接続の確立
+                connection.Open();
+
+                using (var command = new MySqlCommand(sql, connection))
+                using (var reader = command.ExecuteReader())
+                {
+                    // reader.Readが実行されている場合実行する
+                    while (reader.Read())
+                    {
+                        //コンソールに表示
+                        Console.WriteLine($"ID:{reader["user_id"]} 名前:{reader["user_name"]}");
+                        //ラベルに表示
+                        var firstValue = reader[0];
+                        label1.Text = firstValue.ToString();
+                    }
+
+                }
+
+
+            }

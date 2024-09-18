@@ -1,0 +1,62 @@
+サーバー構築
+
+・sudo yum update
+
+https://eng-entrance.com/linux-centos-port
+
+上記のサイトを参考
+
+sudo vi /var/www/html/index.html
+
+上記にhtmlのファイルがある
+
+権限を付与
+sudo chmod 777 /var/www/html/index.html
+
+sudo chmod 777 /var/www/html
+
+winscpでindex.htmlを削除して(消さなくてもok)閲覧したいhtmlファイルを転送
+
+ブラウザでhttpd://192.168.1.サーバーのip/htmlファイル名
+
+で閲覧可能
+
+これでip固定↓
+https://timesaving.hatenablog.com/entry/2020/02/23/123000
+
+デフォルトゲートウェイの設定
+sudo nmcli connection modify enp1s0 ipv4.gateway 192.168.1.1
+
+DNS設定
+sudo nmcli connection modify enp1s0 ipv4.dns 8.8.8.8
+
+設定を反映させる
+systemctl restart NetworkManager
+
+mysql
+https://qiita.com/nooboolean/items/7efc5c35b2e95637d8c1
+
+mysqlを起動
+sudo service mysqld start
+
+これで確認
+sudo systemctl status mysql
+
+ログインする場合はこの中のパスワードを確認
+sudo less /var/log/mysql.log
+または
+sudo less /var/log/mysql/mysql.log
+で初期パスワードを確認
+$ grep password /var/log/mysqld.log 2022-01-01T00:00:00.270120Z 6 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: 初期パスワード
+このように書かれている
+
+下記でmysqlにログイン
+
+mysql -u root -p
+
+この後にパスワードを聞かれるのでそこで新規パスワードを設定
+
+これでphpの設定インストる
+https://php-junkie.net/env/php8/
+
+sudo yum install php*

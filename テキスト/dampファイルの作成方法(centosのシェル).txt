@@ -1,0 +1,22 @@
+dampファイルの作成方法(centosのシェル)
+
+//シェルファイルを作りたい階層まで移動
+cd /bin
+
+//シェルを作成
+sudo vi test.sh
+
+//シェルファイルの中で入力
+
+//変数に年と月を入れ込み
+TE=`date "+%Y%m"`
+
+//dumpファイルの作成
+mysqldump --add-locks --disable-keys --extended-insert --lock-all-tables --quick --quote-names -u root -pCielj@p@n-2019 -h localhost -B company_evaluation > /var/www/html/"company_evaluation"$TE".dump"
+if [ $? -gt 0 ]; then
+    echo "[ERROR]バックアップ失敗。シェルスクリプトを強制終了する。";
+    exit 1;
+fi
+
+//dumpファイルの作成をkwsk
+mysqldump --add-locks --disable-keys --extended-insert --lock-all-tables --quick --quote-names -u [ユーザー名] -p[パスワード] -h [ホスト名] -B [データベース名] > [保存する階層とファイル名]

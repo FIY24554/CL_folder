@@ -1,0 +1,40 @@
+        private String[,] Sql(String sql)
+        {
+            // 接続文字列                                                    ↓mysqlのパスワード
+            var connectionString = "Server=192.168.1.252;User ID=root;Password=Cielj@p@n-2019;Database=chat";
+            //                                                                            ↑databaseの名前
+
+            DataTable dt = new DataTable();
+            
+
+            using (var connection = new MySqlConnection(connectionString))
+            {
+                // 接続の確立
+                connection.Open();
+
+                using (var command = new MySqlCommand(sql, connection))
+                using (var reader = command.ExecuteReader())
+                {
+
+                    dt.Load(reader);
+
+                }
+
+
+            }
+            int data_count = dt.Rows.Count;
+            int data_colums = dt.Columns.Count;
+            String[,] data = new string[data_colums, data_count];
+            int count = 0;
+            foreach (DataRow dr in dt.Rows)
+            {
+                var value = dr[1];
+                for (int i = 0; i < data_colums; i++)
+                {
+                    data[i, count] = dr[i].ToString();
+
+                }
+                count = count + 1;
+            }
+            return data;
+        }

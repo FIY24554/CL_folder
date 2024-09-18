@@ -1,0 +1,19 @@
+UPDATE TE_Time SET staff_id="000003",date="2023-01-01",work_content="",start_time="20:00",end_time="20:00",break_time="00:00",overtime_normal="00:00",overtime_night="00:00",overtime_nosat="00:00",overtime_nosat_night="00:00",private_time="21:00",customer_time="00:00",break_time_any="00:00",holiday_time="00:00",holiday_type="",slow="00:00",early="00:00";
+
+
+
+
+
+
+SET SQL_SAFE_UPDATES = 0;
+
+
+UPDATE TE_Time SET work_content="",start_time="20:00",end_time="20:00",break_time="00:00",overtime_normal="00:00",overtime_night="00:00",overtime_nosat="00:00",overtime_nosat_night="00:00",private_time="21:00",customer_time="00:00",break_time_any="00:00",holiday_time="00:00",holiday_type="",slow="00:00",early="00:00"　where staff_id="000003" AND date="2023-01-01"
+
+
+UPDATE TE_Time SET work_content="",start_time="20:00",end_time="20:00",break_time="00:00",overtime_normal="00:00",overtime_night="00:00",overtime_nosat="00:00",overtime_nosat_night="00:00",private_time="21:00",customer_time="00:00",break_time_any="00:00",holiday_time="00:00",holiday_type="-",slow="00:00",early="00:00" where staff_id="000003" AND date="2023-01-01"
+
+
+
+評価システム
+update tm_staff set birthday="2002-2-23",join_date="2023-4-1",pt=99,Expt=99,ac_history="専門卒",it_history=0,noit_history=0 where staff_id="230001"
