@@ -1,0 +1,16 @@
+// テーブルオブジェクトを取得
+FastReport.Table.TableObject table = report.FindObject("Table1") as FastReport.Table.TableObject;
+
+// テーブルのカラムの横幅を設定
+foreach (FastReport.Table.TableColumn column in table.Columns)
+{
+    if (column.Name == "ColumnName1")
+    {
+        column.Width = 100; // カラムの幅を100に設定
+    }
+    else if (column.Name == "ColumnName2")
+    {
+        column.Width = 150; // カラムの幅を150に設定
+    }
+    // 必要に応じて他のカラムの幅も設定
+}
