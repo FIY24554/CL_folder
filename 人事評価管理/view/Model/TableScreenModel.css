@@ -1,0 +1,48 @@
+/***************************************************************************************************/
+/*                                      変数宣言                                                   */
+/***************************************************************************************************/
+:root{
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    --TableScreenModel-Table-width    : 800px;
+    --TableScreenModel-Table-height   : 500px;
+    --TableScreenModel-Table-position : absolute;
+    --TableScreenModel-Table-left     : calc(calc(var(--Maine-Screen-Frame-width ) - var(--TableScreenModel-Table-width )) / 2);
+    --TableScreenModel-Table-top      : calc(calc(var(--Maine-Screen-Frame-height) - var(--TableScreenModel-Table-height)) / 2);
+    
+    
+    
+    
+    
+}
+
+/***************************************************************************************************/
+/*                                      選択画面                                                   */
+/*                                 [TableScreenModel]                                              */
+/***************************************************************************************************/
+
+.TableScreenModel-Table-Frame{
+    
+    
+    
+    
+}
+
+.TableScreenModel-Table{
+    
+    width    : var(--TableScreenModel-Table-width   );
+    height   : var(--TableScreenModel-Table-height  );
+    position : var(--TableScreenModel-Table-position);
+    left     : var(--TableScreenModel-Table-left    );
+    top      : var(--TableScreenModel-Table-top     );
+    
+    
+}

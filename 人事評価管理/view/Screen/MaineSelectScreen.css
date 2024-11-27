@@ -1,0 +1,384 @@
+/***************************************************************************************************/
+/*                                      変数宣言                                                   */
+/***************************************************************************************************/
+:root{
+    
+    /*共通
+    --common-gradation  :  64    ;
+    --common-border     : -32    ;
+    --common-hover      : -32    ;
+    --common-font-color : #ffffff;
+    /*
+    /*メイン選択画面*/
+
+    
+    
+    /*
+    --Evaluation-Output-Button-background-color  : #5a4abd;
+    
+    
+    --Evaluation-Perform-color        : #cf5c10;
+    */
+
+    
+    
+    
+    
+    
+    /*背景色*/
+    --MaineSelectScreen-common-Evaluation-Perform-Button-background-color                  : var(--common-Evaluation-Perform-color);          /* 登録モードの色       */
+    --MaineSelectScreen-common-Evaluation-Output-Button-background-color                   : var(--common-Evaluation-Output-color);          /* 登録モードの色       */
+    
+    /*背景色[ホバー時]*/
+    --MaineSelectScreen-common-Evaluation-Perform-Button-background-color-hover            : rgb( from var(--MaineSelectScreen-common-Evaluation-Perform-Button-background-color          ) calc( r + var(--common-hover      ) ) calc( g + var(--common-hover    ) ) calc( b + var(--common-hover    ) ) );
+    --MaineSelectScreen-common-Evaluation-Output-Button-background-color-hover             : rgb( from var(--MaineSelectScreen-common-Evaluation-Output-Button-background-color           ) calc( r + var(--common-hover      ) ) calc( g + var(--common-hover    ) ) calc( b + var(--common-hover    ) ) );
+    
+    /*ボーダー*/
+    --MaineSelectScreen-common-Evaluation-Perform-Button-border-color                      : rgb( from var(--MaineSelectScreen-common-Evaluation-Perform-Button-background-color          ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+    --MaineSelectScreen-common-Evaluation-Output-Button-border-color                       : rgb( from var(--MaineSelectScreen-common-Evaluation-Output-Button-background-color           ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+    
+    
+    /*ボーダー[ホバー時]*/
+    --MaineSelectScreen-common-Evaluation-Perform-Button-border-color-hover                : rgb( from var(--MaineSelectScreen-common-Evaluation-Perform-Button-background-color-hover    ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+    --MaineSelectScreen-common-Evaluation-Output-Button-border-color-hover                 : rgb( from var(--MaineSelectScreen-common-Evaluation-Output-Button-background-color-hover     ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+    
+    
+    /*グラデーション*/
+    --MaineSelectScreen-common-Evaluation-Perform-Button-background-color-gradation        : rgb( from var(--MaineSelectScreen-common-Evaluation-Perform-Button-background-color          ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+    --MaineSelectScreen-common-Evaluation-Output-Button-background-color-gradation         : rgb( from var(--MaineSelectScreen-common-Evaluation-Output-Button-background-color           ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+    
+    
+    /*グラデーション[ホバー時]*/
+    --MaineSelectScreen-common-Evaluation-Perform-Button-background-color-hover-gradation  : rgb( from var(--MaineSelectScreen-common-Evaluation-Perform-Button-background-color-hover    ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+    --MaineSelectScreen-common-Evaluation-Output-Button-background-color-hover-gradation   : rgb( from var(--MaineSelectScreen-common-Evaluation-Output-Button-background-color-hover     ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*==========================================================*/
+    /* 評価実施ボタン                                   */
+    /*==========================================================*/
+    
+    
+    /*--------------------------------------*/
+    /* 評価実施ボタン                     */
+    /*--------------------------------------*/
+    --Evaluation-Perform-Button-width                 : 150px                                                                                                                                      ;
+    --Evaluation-Perform-Button-height                : 30px                                                                                                                                      ;
+    --Evaluation-Perform-Button-background            : linear-gradient( 0deg , var(--MaineSelectScreen-common-Evaluation-Perform-Button-background-color) , var(--MaineSelectScreen-common-Evaluation-Perform-Button-background-color-gradation) )             ;
+    --Evaluation-Perform-Button-border-bottom         : 5px solid var(--MaineSelectScreen-common-Evaluation-Perform-Button-border-color)                                                                                                             ;
+    
+    /*--------------------------------------*/
+    /* 評価実施ボタン-テキスト            */
+    /*--------------------------------------*/
+    --Evaluation-Perform-Button-Text-font-size        : 15px                                                                                                                                                                              ;
+    
+    /*--------------------------------------*/
+    /* 評価実施ボタン[ホバー時]           */
+    /*--------------------------------------*/
+    --Evaluation-Perform-Button-hover-background      : linear-gradient( 0deg , var(--MaineSelectScreen-common-Evaluation-Perform-Button-background-color-hover) , var(--MaineSelectScreen-common-Evaluation-Perform-Button-background-color-hover-gradation) ) ;
+    --Evaluation-Perform-Button-hover-border-bottom   : 5px solid var(--MaineSelectScreen-common-Evaluation-Perform-Button-border-color-hover);
+    
+    /*--------------------------------------*/
+    /* 評価実施ボタン-テキスト[ホバー時]  */
+    /*--------------------------------------*/
+    --Evaluation-Perform-Button-Text-hover-color      : var(--common-font-color-hover)                                                                                                                                                    ;
+    
+    /*--------------------------------------*/
+    /* 評価実施ボタン[ダウン時]           */
+    /*--------------------------------------*/
+    --Evaluation-Perform-Button-down-border-bottom    : 1px solid var(--MaineSelectScreen-common-Evaluation-Perform-Button-border-color-hover)                                                                                                       ;
+    
+    
+    
+    
+    
+    
+    /*==========================================================*/
+    /* 評価出力ボタン                                   */
+    /*==========================================================*/
+    
+    
+    /*--------------------------------------*/
+    /* 評価出力ボタン                     */
+    /*--------------------------------------*/
+    --Evaluation-Output-Button-width                 : 150px                                                                                                                                      ;
+    --Evaluation-Output-Button-height                : 30px                                                                                                                                      ;
+    --Evaluation-Output-Button-background            : linear-gradient( 0deg , var(--MaineSelectScreen-common-Evaluation-Output-Button-background-color) , var(--MaineSelectScreen-common-Evaluation-Output-Button-background-color-gradation) )             ;
+    --Evaluation-Output-Button-border-bottom         : 5px solid var(--MaineSelectScreen-common-Evaluation-Output-Button-border-color)                                                                                                             ;
+    
+    /*--------------------------------------*/
+    /* 評価出力ボタン-テキスト            */
+    /*--------------------------------------*/
+    --Evaluation-Output-Button-Text-font-size        : 15px                                                                                                                                                                              ;
+    
+    /*--------------------------------------*/
+    /* 評価出力ボタン[ホバー時]           */
+    /*--------------------------------------*/
+    --Evaluation-Output-Button-hover-background      : linear-gradient( 0deg , var(--MaineSelectScreen-common-Evaluation-Output-Button-background-color-hover) , var(--MaineSelectScreen-common-Evaluation-Output-Button-background-color-hover-gradation) ) ;
+    --Evaluation-Output-Button-hover-border-bottom   : 5px solid var(--MaineSelectScreen-common-Evaluation-Output-Button-border-color-hover);
+    
+    /*--------------------------------------*/
+    /* 評価出力ボタン-テキスト[ホバー時]  */
+    /*--------------------------------------*/
+    --Evaluation-Output-Button-Text-hover-color      : var(--common-font-color-hover)                                                                                                                                                    ;
+    
+    /*--------------------------------------*/
+    /* 評価出力ボタン[ダウン時]           */
+    /*--------------------------------------*/
+    --Evaluation-Output-Button-down-border-bottom    : 1px solid var(--MaineSelectScreen-common-Evaluation-Output-Button-border-color-hover)                                                                                                       ;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+/***************************************************************************************************/
+/*                                      メイン選択画面                                             */
+/*                                    [MaineSelectScreen]                                          */
+/***************************************************************************************************/
+
+
+
+
+
+
+/*==========================================================*/
+/* フッターボタン                                           */
+/*==========================================================*/
+
+/*------------------------------------------*/
+/* 社員管理ボタン                           */
+/*------------------------------------------*/
+.Employees-Admin-Button{}
+.Employees-Admin-Button-Text{}
+.Employees-Admin-Button-Event{}
+
+/*------------------------------------------*/
+/* 評価管理ボタン                           */
+/*------------------------------------------*/
+.Evaluation-Admin-Button{}
+.Evaluation-Admin-Button-Text{}
+.Evaluation-Admin-Button-Event{}
+/*------------------------------------------*/
+/* 給与管理ボタン                           */
+/*------------------------------------------*/
+.Salary-Table-Button{}
+.Salary-Table-Button-Text{}
+.Salary-Table-Button-Event{}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*==========================================================*/
+/* 評価実施ボタン                                   */
+/*==========================================================*/
+
+
+/*--------------------------------------*/
+/* 評価実施ボタン                     */
+/*--------------------------------------*/
+.Evaluation-Perform-Button{
+    
+    /*
+    width           : var(--Evaluation-Perform-Button-width               );
+    height          : var(--Evaluation-Perform-Button-height              );
+    */
+    background      : var(--Evaluation-Perform-Button-background          );
+    border-bottom   : var(--Evaluation-Perform-Button-border-bottom       );
+    
+}
+
+/*--------------------------------------*/
+/* 評価実施ボタン-テキスト            */
+/*--------------------------------------*/
+.Evaluation-Perform-Button-Text{
+    /*
+    font-size       : var(--Evaluation-Perform-Button-Text-font-size      );
+    */
+}
+
+/*--------------------------------------*/
+/* 評価実施ボタン[ホバー時]           */
+/*--------------------------------------*/
+.Evaluation-Perform-Button-hover{
+    
+    background      : var(--Evaluation-Perform-Button-hover-background    );
+    border-bottom   : var(--Evaluation-Perform-Button-hover-border-bottom );
+    
+}
+
+/*--------------------------------------*/
+/* 評価実施ボタン-テキスト[ホバー時]  */
+/*--------------------------------------*/
+.Evaluation-Perform-Button-Text-hover{
+    
+    color           : var(--Evaluation-Perform-Button-Text-hover-color    );
+    
+}
+
+/*--------------------------------------*/
+/* 評価実施ボタン[ダウン時]           */
+/*--------------------------------------*/
+.Evaluation-Perform-Button-down{
+    
+    border-bottom   : var(--Evaluation-Perform-Button-down-border-bottom  );
+    
+}
+
+
+
+
+
+
+/*==========================================================*/
+/* 評価出力ボタン                                   */
+/*==========================================================*/
+
+
+/*--------------------------------------*/
+/* 評価出力ボタン                     */
+/*--------------------------------------*/
+.Evaluation-Output-Button{
+    
+    /*
+    width           : var(--Evaluation-Output-Button-width               );
+    height          : var(--Evaluation-Output-Button-height              );
+    */
+    background      : var(--Evaluation-Output-Button-background          );
+    border-bottom   : var(--Evaluation-Output-Button-border-bottom       );
+    
+}
+
+/*--------------------------------------*/
+/* 評価出力ボタン-テキスト            */
+/*--------------------------------------*/
+.Evaluation-Output-Button-Text{
+    /*
+    font-size       : var(--Evaluation-Output-Button-Text-font-size      );
+    */
+}
+
+/*--------------------------------------*/
+/* 評価出力ボタン[ホバー時]           */
+/*--------------------------------------*/
+.Evaluation-Output-Button-hover{
+    
+    background      : var(--Evaluation-Output-Button-hover-background    );
+    border-bottom   : var(--Evaluation-Output-Button-hover-border-bottom );
+    
+}
+
+/*--------------------------------------*/
+/* 評価出力ボタン-テキスト[ホバー時]  */
+/*--------------------------------------*/
+.Evaluation-Output-Button-Text-hover{
+    
+    color           : var(--Evaluation-Output-Button-Text-hover-color    );
+    
+}
+
+/*--------------------------------------*/
+/* 評価出力ボタン[ダウン時]           */
+/*--------------------------------------*/
+.Evaluation-Output-Button-down{
+    
+    border-bottom   : var(--Evaluation-Output-Button-down-border-bottom  );
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,351 @@
+/***************************************************************************************************/
+/*                                      変数宣言                                                   */
+/***************************************************************************************************/
+:root{
+    
+    /*==========================================================*/
+    /* 共通系                                                   */
+    /*==========================================================*/
+    
+    /*背景色*/
+    --Header-common-Frame-background-color                 : #bfbfb7          ;
+    --Header-common-Title-Frame-background-color           : #526aa0          ;
+    --Header-common-User-Frame-background-color            : #227770          ;
+    
+    /*背景色のグラデーション*/
+    --Header-common-Frame-background-gradation-color       : rgb( from var(--Header-common-Frame-background-color      ) calc(r + var(--common-gradation) ) calc(g + var(--common-gradation) ) calc(b + var(--common-gradation) ) ) ; 
+    --Header-common-Title-Frame-background-gradation-color : rgb( from var(--Header-common-Title-Frame-background-color) calc(r + var(--common-gradation) ) calc(g + var(--common-gradation) ) calc(b + var(--common-gradation) ) ) ;
+    --Header-common-User-Frame-background-gradation-color  : rgb( from var(--Header-common-User-Frame-background-color ) calc(r + var(--common-gradation) ) calc(g + var(--common-gradation) ) calc(b + var(--common-gradation) ) ) ;
+    
+    /*余白*/
+    --Header-common-Excess-Adjust                          : 20px;
+    
+    
+    
+    
+    
+    
+    
+        
+    
+    /*背景色*/
+    --Header-common-Back-Button-background-color                  : #224476;          /* 登録モードの色       */
+    
+    
+    /*背景色[ホバー時]*/
+    --Header-common-Back-Button-background-color-hover            : rgb( from var(--Header-common-Back-Button-background-color          ) calc( r + var(--common-hover      ) ) calc( g + var(--common-hover    ) ) calc( b + var(--common-hover    ) ) );
+    
+    
+    /*ボーダー*/
+    --Header-common-Back-Button-border-color                      : rgb( from var(--Header-common-Back-Button-background-color          ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+
+    
+    
+    /*ボーダー[ホバー時]*/
+    --Header-common-Back-Button-border-color-hover                : rgb( from var(--Header-common-Back-Button-background-color-hover    ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+
+    
+    
+    /*グラデーション*/
+    --Header-common-Back-Button-background-color-gradation        : rgb( from var(--Header-common-Back-Button-background-color          ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+
+    
+    
+    /*グラデーション[ホバー時]*/
+    --Header-common-Back-Button-background-color-hover-gradation  : rgb( from var(--Header-common-Back-Button-background-color-hover    ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*==========================================================*/
+    /* ヘッダー                                                 */
+    /*==========================================================*/
+    
+    /*--------------------------------------*/
+    /* ヘッダフレーム                       */
+    /*--------------------------------------*/
+    --Header-position                             : relative                                                                                                                                    ;
+    --Header-width                                : 100%                                                                                                                                        ;
+    --Header-height                               : 130px                                                                                                                                       ;
+    --Header-border-bottom                        : 1px solid #696969                                                                                                                           ;
+    --Header-box-shadow                           : 0 1px 1px 0 black                                                                                                                           ;
+    --Header-background                           : linear-gradient( 0deg , var(--Header-common-Frame-background-color) , var(--Header-common-Frame-background-gradation-color) )               ;
+    --Header-opacity                              : 0.9                                                                                                                                         ;
+    
+    /*--------------------------------------*/
+    /* ボタンフレーム                       */
+    /*--------------------------------------*/
+    --Header-Button-Frame-margin                  : auto auto auto 0                                                                                                                            ;
+    --Header-Button-Frame-height                  : var(--Header-height)                                                                                                                        ;
+    --Header-Button-Frame-position                : absolute                                                                                                                                    ;
+    
+    
+    
+    /*--------------------------------------*/
+    /* 戻るボタン                     */
+    /*--------------------------------------*/
+    --Header-Back-Button-width                 : 150px                                                                                                                                      ;
+    --Header-Back-Button-height                : 30px                                                                                                                                      ;
+    --Header-Back-Button-background            : linear-gradient( 0deg , var(--Header-common-Back-Button-background-color) , var(--Header-common-Back-Button-background-color-gradation) )             ;
+    --Header-Back-Button-border-bottom         : 5px solid var(--Header-common-Back-Button-border-color)                                                                                                             ;
+    
+    /*--------------------------------------*/
+    /* 戻るボタン-テキスト            */
+    /*--------------------------------------*/
+    --Header-Back-Button-Text-font-size        : 15px                                                                                                                                                                              ;
+    
+    /*--------------------------------------*/
+    /* 戻るボタン[ホバー時]           */
+    /*--------------------------------------*/
+    --Header-Back-Button-hover-background      : linear-gradient( 0deg , var(--Header-common-Back-Button-background-color-hover) , var(--Header-common-Back-Button-background-color-hover-gradation) ) ;
+    --Header-Back-Button-hover-border-bottom   : 5px solid var(--Header-common-Back-Button-border-color-hover);
+    
+    /*--------------------------------------*/
+    /* 戻るボタン-テキスト[ホバー時]  */
+    /*--------------------------------------*/
+    --Header-Back-Button-Text-hover-color      : var(--common-font-color-hover)                                                                                                                                                    ;
+    
+    /*--------------------------------------*/
+    /* 戻るボタン[ダウン時]           */
+    /*--------------------------------------*/
+    --Header-Back-Button-down-border-bottom    : 1px solid var(--Header-common-Back-Button-border-color-hover)                                                                                                       ;
+    
+    
+    
+    /*--------------------------------------*/
+    /* タイトルフレーム                     */
+    /*--------------------------------------*/
+    --Header-Title-Frame-position                 : absolute                                                                                                                                    ;
+    --Header-Title-Frame-top                      : 0                                                                                                                                           ;
+    --Header-Title-Frame-left                     : calc( var(--Header-Back-Button-width) + var(--Header-common-Excess-Adjust) )                                                                 ;
+    --Header-Title-Frame-border-radius            : 0px 0px 0px 50px                                                                                                                            ;
+    --Header-Title-Frame-width                    : 600px                                                                                                                                       ;
+    --Header-Title-Frame-height                   : 80px                                                                                                                                        ;
+    --Header-Title-Frame-border-bottom            : 1px solid #696969                                                                                                                           ;
+    --Header-Title-Frame-border-left              : 1px solid #696969                                                                                                                           ;
+    --Header-Title-Frame-box-shadow               : 0 1px 1px 0 black                                                                                                                           ;
+    --Header-Title-Frame-background               : linear-gradient( 0deg , var(--Header-common-Title-Frame-background-color) , var(--Header-common-Title-Frame-background-gradation-color) )   ;
+    --Header-Title-Frame-color                    : #000000                                                                                                                                     ;
+    
+    /*--------------------------------------*/
+    /* [ タイトル・ユーザ ]フレームコンテナ */
+    /*--------------------------------------*/
+    --Header-Title-User-Container-position        : relative                                                                                                                                    ;
+    --Header-Title-User-Container-margin          : auto 0 auto auto                                                                                                                            ;
+    --Header-Title-User-Container-width           : calc( var(--Header-Title-Frame-width) + var(--Header-Back-Button-width) + var(--Header-common-Excess-Adjust) )                               ;
+    --Header-Title-User-Container-height          : var(--Header-height   )                                                                                                                     ;
+    
+    /*--------------------------------------*/
+    /* ユーザフレーム                       */
+    /*--------------------------------------*/
+    --Header-User-Frame-position                  : absolute                                                                                                                                    ;
+    --Header-User-Frame-top                       :  80px                                                                                                                                       ;
+    --Header-User-Frame-right                     : -10px                                                                                                                                       ;
+    --Header-User-Frame-transform                 : skewX(30deg)                                                                                                                                ;
+    --Header-User-Frame-width                     : 400px                                                                                                                                       ;
+    --Header-User-Frame-height                    : 30px                                                                                                                                        ;
+    --Header-User-Frame-border-bottom             :  1px solid #696969                                                                                                                          ;
+    --Header-User-Frame-border-left               :  1px solid #696969                                                                                                                          ;
+    --Header-User-Frame-box-shadow                :    0 1px 1px 0 black                                                                                                                        ;
+    --Header-User-Frame-background                : linear-gradient( 0deg , var(--Header-common-User-Frame-background-color) , var(--Header-common-User-Frame-background-gradation-color) )     ;
+    --Header-User-Frame-color                     : #000000                                                                                                                                     ;
+    
+    /*--------------------------------------*/
+    /* ロケーションフレーム                 */
+    /*--------------------------------------*/
+    --Header-Location-Frame-position              : absolute                                                                                                                                    ;
+    --Header-Location-Frame-top                   : 0                                                                                                                                           ;
+    --Header-Location-Frame-left                  : 0                                                                                                                                           ;
+    --Header-Location-Frame-width                 : var(--Header-Title-Frame-width )                                                                                                            ;
+    --Header-Location-Frame-height                : var(--Header-Title-Frame-height)                                                                                                            ;
+    --Header-Location-Frame-color                 : #000000                                                                                                                                     ;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+/***************************************************************************************************/
+/*                                      [ ヘッダ ]                                                 */
+/***************************************************************************************************/
+
+/*--------------------------------------*/
+/* ヘッダフレーム                       */
+/*--------------------------------------*/
+#Header{
+    
+    position         : var(--Header-position                        );
+    width            : var(--Header-width                           );
+    height           : var(--Header-height                          );
+    border-bottom    : var(--Header-border-bottom                   );
+    box-shadow       : var(--Header-box-shadow                      );
+    background       : var(--Header-background                      );
+    opacity          : var(--Header-opacity                         );
+}
+
+/*--------------------------------------*/
+/* [ タイトル・ユーザ ]フレームコンテナ */
+/*--------------------------------------*/
+#Header #Title-User-Container{
+    
+    position         : var(--Header-Title-User-Container-position   );
+    margin           : var(--Header-Title-User-Container-margin     );
+    width            : var(--Header-Title-User-Container-width      );
+    height           : var(--Header-Title-User-Container-height     );
+    
+}
+
+/*--------------------------------------*/
+/* ボタンフレーム                       */
+/*--------------------------------------*/
+#Header #ButtonFrame{
+    
+    position         : var(--Header-Button-Frame-position           );
+    height           : var(--Header-Button-Frame-height             );
+    margin           : var(--Header-Button-Frame-margin             );
+    
+}
+
+/*--------------------------------------*/
+/* タイトルフレーム                     */
+/*--------------------------------------*/
+#Header #TitleFrame{
+    
+    position         : var(--Header-Title-Frame-position            );
+    top              : var(--Header-Title-Frame-top                 );
+    left             : var(--Header-Title-Frame-left                );
+    border-radius    : var(--Header-Title-Frame-border-radius       );
+    width            : var(--Header-Title-Frame-width               );
+    height           : var(--Header-Title-Frame-height              );
+    border-bottom    : var(--Header-Title-Frame-border-bottom       );
+    border-left      : var(--Header-Title-Frame-border-left         );
+    box-shadow       : var(--Header-Title-Frame-box-shadow          );
+    background       : var(--Header-Title-Frame-background          );
+    color            : var(--Header-Title-Frame-color               );
+    
+}
+
+/*--------------------------------------*/
+/* ユーザフレーム                       */
+/*--------------------------------------*/
+#Header #UserFrame{
+    
+    position         : var(--Header-User-Frame-position             );
+    top              : var(--Header-User-Frame-top                  );
+    right            : var(--Header-User-Frame-right                );
+    transform        : var(--Header-User-Frame-transform            );
+    width            : var(--Header-User-Frame-width                );
+    height           : var(--Header-User-Frame-height               );
+    border-bottom    : var(--Header-User-Frame-border-bottom        );
+    border-left      : var(--Header-User-Frame-border-left          );
+    box-shadow       : var(--Header-User-Frame-box-shadow           );
+    background       : var(--Header-User-Frame-background           );
+    color            : var(--Header-User-Frame-color                );
+    
+}
+
+/*--------------------------------------*/
+/* ロケーションフレーム                 */
+/*--------------------------------------*/
+#Header #LocationFrame{
+    
+    position         : var(--Header-Location-Frame-position         );
+    top              : var(--Header-Location-Frame-top              );
+    left             : var(--Header-Location-Frame-left             );
+    width            : var(--Header-Location-Frame-width            );
+    height           : var(--Header-Location-Frame-height           );
+    color            : var(--Header-Location-Frame-color            );
+    
+}
+
+
+
+
+
+/*--------------------------------------*/
+/* 戻るボタン                     */
+/*--------------------------------------*/
+.Header-Back-Button{
+    
+    width           : var(--Header-Back-Button-width               );
+    height          : var(--Header-Back-Button-height              );
+    background      : var(--Header-Back-Button-background          );
+    border-bottom   : var(--Header-Back-Button-border-bottom       );
+    
+}
+
+/*--------------------------------------*/
+/* 戻るボタン-テキスト            */
+/*--------------------------------------*/
+.Header-Back-Button-Text{
+    font-size       : var(--Header-Back-Button-Text-font-size      );
+}
+
+/*--------------------------------------*/
+/* 戻るボタン[ホバー時]           */
+/*--------------------------------------*/
+.Header-Back-Button-hover{
+    
+    background      : var(--Header-Back-Button-hover-background    );
+    border-bottom   : var(--Header-Back-Button-hover-border-bottom );
+    
+}
+
+/*--------------------------------------*/
+/* 戻るボタン-テキスト[ホバー時]  */
+/*--------------------------------------*/
+.Header-Back-Button-Text-hover{
+    
+    color           : var(--Header-Back-Button-Text-hover-color    );
+    
+}
+
+/*--------------------------------------*/
+/* 戻るボタン[ダウン時]           */
+/*--------------------------------------*/
+.Header-Back-Button-down{
+    
+    border-bottom   : var(--Header-Back-Button-down-border-bottom  );
+    
+}
+
+

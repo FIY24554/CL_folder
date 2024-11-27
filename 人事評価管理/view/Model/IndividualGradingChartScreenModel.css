@@ -1,0 +1,266 @@
+/***************************************************************************************************/
+/*                                      変数宣言                                                   */
+/***************************************************************************************************/
+:root{
+    
+    
+    /*共通系*/
+    /*--IndividualGradingChartScreenModel-common-Footer-Frame-height : 100px;*/
+    --IndividualGradingChartScreenModel-common-padding   : 20px;
+    --IndividualGradingChartScreenModel-common-td-height : 30px;
+    
+    
+    
+    
+    
+    
+    
+    --IndividualGradingChartScreenModel-Footer-Frame-height : 100px;
+    
+    /*==========================================================*/
+    /* フレーム                                                 */
+    /*==========================================================*/
+    
+    /*--------------------------------------*/
+    /* 個人成績評価表フレーム               */
+    /*--------------------------------------*/
+    
+    /*--------------------------------------*/
+    /* 凡例フレーム                         */
+    /*--------------------------------------*/
+    --IndividualGradingChartScreenModel-Legend-Frame-width    : 100vw;
+    --IndividualGradingChartScreenModel-Legend-Frame-height   : calc(100vh - calc( var(--IndividualGradingChartScreenModel-Footer-Frame-height) + var(--Header-height) ) );
+    --IndividualGradingChartScreenModel-Legend-Frame-position : fixed;
+    --IndividualGradingChartScreenModel-Legend-Frame-top      : var(--Header-height);
+    --IndividualGradingChartScreenModel-Legend-Frame-left     : 0;
+    
+    /*--------------------------------------------------------*/
+    /* 個人成績評価表フレーム(内側に作るMaine-Frameのクローン)*/
+    /*--------------------------------------------------------*/
+    --IndividualGradingChartScreenModel-Frame-width           : var(--Maine-Frame-width                       );
+    --IndividualGradingChartScreenModel-Frame-height          : var(--Maine-Frame-height                      );
+    --IndividualGradingChartScreenModel-Frame-overflow        : var(--Maine-Frame-overflow                    );
+    --IndividualGradingChartScreenModel-Frame-margin          : var(--Maine-Frame-margin                      );
+    --IndividualGradingChartScreenModel-Frame-position        : var(--Maine-Frame-position                    );
+    --IndividualGradingChartScreenModel-Frame-user-select     : var(--Maine-Frame-user-select                 );
+    
+    
+    /*--------------------------------------*/
+    /* 社員フレーム                         */
+    /*--------------------------------------*/
+    --IndividualGradingChartScreenModel-Employees-Table-Frame-width    : 1200px;
+    --IndividualGradingChartScreenModel-Employees-Table-Frame-height   : 60px;
+    --IndividualGradingChartScreenModel-Employees-Table-Frame-position : absolute;
+    --IndividualGradingChartScreenModel-Employees-Table-Frame-top      : var(--IndividualGradingChartScreenModel-common-padding);
+    
+    
+    /*--------------------------------------*/
+    /* 評価フレーム                         */
+    /*--------------------------------------*/
+    --IndividualGradingChartScreenModel-Evaluation-Table-Frame-width    : calc( var(--IndividualGradingChartScreenModel-Employees-Table-Frame-width) / 2 - calc(var(--IndividualGradingChartScreenModel-common-padding) / 2) );
+    --IndividualGradingChartScreenModel-Evaluation-Table-Frame-height   : 300px;
+    --IndividualGradingChartScreenModel-Evaluation-Table-Frame-position : absolute;
+    --IndividualGradingChartScreenModel-Evaluation-Table-Frame-top      : calc(calc(var(--IndividualGradingChartScreenModel-common-padding) * 2) + calc(var(--IndividualGradingChartScreenModel-common-td-height) * 2));
+    --IndividualGradingChartScreenModel-Evaluation-Table-Frame-left     : 0;
+    
+    
+    
+    
+    
+    /*--------------------------------------*/
+    /* 経験フレーム                         */
+    /*--------------------------------------*/
+    --IndividualGradingChartScreenModel-Experience-Table-Frame-width    : calc( var(--IndividualGradingChartScreenModel-Employees-Table-Frame-width) / 2 - calc(var(--IndividualGradingChartScreenModel-common-padding) / 2) );
+    --IndividualGradingChartScreenModel-Experience-Table-Frame-height   : 300px;
+    --IndividualGradingChartScreenModel-Experience-Table-Frame-position : absolute;
+    --IndividualGradingChartScreenModel-Experience-Table-Frame-top      : calc(calc(var(--IndividualGradingChartScreenModel-common-padding) * 2) + calc(var(--IndividualGradingChartScreenModel-common-td-height) * 2));
+    --IndividualGradingChartScreenModel-Experience-Table-Frame-right    : 0;
+    
+    
+    
+    
+    
+    --IndividualGradingChartScreenModel-Final-Verdict-Experience-Table-Frame-width    : calc( var(--IndividualGradingChartScreenModel-Employees-Table-Frame-width) / 2 - calc(var(--IndividualGradingChartScreenModel-common-padding) / 2) );
+    --IndividualGradingChartScreenModel-Final-Verdict-Experience-Table-Frame-height   : calc( var(--IndividualGradingChartScreenModel-common-td-height) * 5 );
+    --IndividualGradingChartScreenModel-Final-Verdict-Experience-Table-Frame-position : absolute;
+    --IndividualGradingChartScreenModel-Final-Verdict-Experience-Table-Frame-top      : calc( var(--IndividualGradingChartScreenModel-Evaluation-Table-Frame-height) + var(--IndividualGradingChartScreenModel-common-padding) * 3 + var(--IndividualGradingChartScreenModel-Employees-Table-Frame-height) );
+    --IndividualGradingChartScreenModel-Final-Verdict-Experience-Table-Frame-left     : 0;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*--------------------------------------*/
+    /* 評価テーブル                         */
+    /*--------------------------------------*/
+    --IndividualGradingChartScreenModel-Evaluation-Table-width  : var(--IndividualGradingChartScreenModel-Evaluation-Table-Frame-width );
+    --IndividualGradingChartScreenModel-Evaluation-Table-height : var(--IndividualGradingChartScreenModel-Evaluation-Table-Frame-height);
+    
+    
+    
+    
+}
+
+/***************************************************************************************************/
+/*                                      個人成績評価表                                             */
+/*                                 [IndividualGradingChartScreenModel]                             */
+/***************************************************************************************************/
+
+
+
+/*--------------------------------------*/
+/* 凡例フレーム                         */
+/*--------------------------------------*/
+#IndividualGradingChartScreenModel-Legend-Frame{
+    
+    width    : var(--IndividualGradingChartScreenModel-Legend-Frame-width   );
+    height   : var(--IndividualGradingChartScreenModel-Legend-Frame-height  );
+    position : var(--IndividualGradingChartScreenModel-Legend-Frame-position);
+    top      : var(--IndividualGradingChartScreenModel-Legend-Frame-top     );
+    left     : var(--IndividualGradingChartScreenModel-Legend-Frame-left    );
+    
+}
+
+/*--------------------------------------*/
+/* 個人成績評価表フレーム               */
+/*--------------------------------------*/
+#IndividualGradingChartScreenModel-Frame{
+    
+    width           : var(--IndividualGradingChartScreenModel-Frame-width                       );
+    height          : var(--IndividualGradingChartScreenModel-Frame-height                      );
+    overflow        : var(--IndividualGradingChartScreenModel-Frame-overflow                    );
+    margin          : var(--IndividualGradingChartScreenModel-Frame-margin                      );
+    position        : var(--IndividualGradingChartScreenModel-Frame-position                    );
+    user-select     : var(--IndividualGradingChartScreenModel-Frame-user-select                 );
+    
+}
+
+
+/*--------------------------------------*/
+/* 社員テーブルフレーム               */
+/*--------------------------------------*/
+#IndividualGradingChartScreenModel-Employees-Table-Frame{
+    
+    width    : var(--IndividualGradingChartScreenModel-Employees-Table-Frame-width   );
+    height   : var(--IndividualGradingChartScreenModel-Employees-Table-Frame-height  );
+    position : var(--IndividualGradingChartScreenModel-Employees-Table-Frame-position);
+    top      : var(--IndividualGradingChartScreenModel-Employees-Table-Frame-top     );
+    
+    
+    
+}
+
+
+
+
+
+
+/*--------------------------------------*/
+/* 評価テーブルフレーム                 */
+/*--------------------------------------*/
+#IndividualGradingChartScreenModel-Evaluation-Table-Frame{
+    
+    width    : var(--IndividualGradingChartScreenModel-Evaluation-Table-Frame-width   );
+    height   : var(--IndividualGradingChartScreenModel-Evaluation-Table-Frame-height  );
+    position : var(--IndividualGradingChartScreenModel-Evaluation-Table-Frame-position);
+    top      : var(--IndividualGradingChartScreenModel-Evaluation-Table-Frame-top     );
+    left     : var(--IndividualGradingChartScreenModel-Evaluation-Table-Frame-left    );
+    
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+/*--------------------------------------*/
+/* 経験テーブルフレーム                 */
+/*--------------------------------------*/
+#IndividualGradingChartScreenModel-Experience-Table-Frame{
+    
+    width    : var(--IndividualGradingChartScreenModel-Experience-Table-Frame-width   );
+    height   : var(--IndividualGradingChartScreenModel-Experience-Table-Frame-height  );
+    position : var(--IndividualGradingChartScreenModel-Experience-Table-Frame-position);
+    top      : var(--IndividualGradingChartScreenModel-Experience-Table-Frame-top     );
+    right    : var(--IndividualGradingChartScreenModel-Experience-Table-Frame-right   );
+    
+    
+    
+    
+}
+
+
+
+
+
+
+/*--------------------------------------*/
+/* 最終評価テーブルフレーム             */
+/*--------------------------------------*/
+#IndividualGradingChartScreenModel-Final-Verdict-Table-Frame{
+    
+    width    : var(--IndividualGradingChartScreenModel-Final-Verdict-Experience-Table-Frame-width   );
+    height   : var(--IndividualGradingChartScreenModel-Final-Verdict-Experience-Table-Frame-height  );
+    position : var(--IndividualGradingChartScreenModel-Final-Verdict-Experience-Table-Frame-position);
+    top      : var(--IndividualGradingChartScreenModel-Final-Verdict-Experience-Table-Frame-top     );
+    left     : var(--IndividualGradingChartScreenModel-Final-Verdict-Experience-Table-Frame-left    );
+    
+    
+    
+    
+}
+
+
+/*--------------------------------------*/
+/* フッダーフレーム                     */
+/*--------------------------------------*/
+.IndividualGradingChartScreenModel-Footer-Frame{
+    
+    height : var(--IndividualGradingChartScreenModel-Footer-Frame-height);
+    
+}
+
+
+
+
+
+
+.IndividualGradingChartScreenModel-Evaluation-Table{
+    
+    width  : var(--IndividualGradingChartScreenModel-Evaluation-Table-width );
+    height : var(--IndividualGradingChartScreenModel-Evaluation-Table-height);
+    
+}
+
+
+
+

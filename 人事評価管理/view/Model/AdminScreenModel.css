@@ -1,0 +1,552 @@
+/***************************************************************************************************/
+/*                                      変数宣言                                                   */
+/***************************************************************************************************/
+:root{
+    
+    
+    /*==========================================================*/
+    /* 共通系                                                   */
+    /*==========================================================*/
+    
+    
+    /*指定*/
+    --AdminScreenModel-common-Padding                                           :  15px  ;          /* 余白                 */
+    --AdminScreenModel-common-Button-width                                      : 150px  ;          /* 各モードボタンの横幅 */
+    --AdminScreenModel-common-Button-height                                     :  30px  ;          /* 各モードボタンの縦幅 */
+    
+    
+    /*背景色*/
+    --AdminScreenModel-common-Register-Button-background-color                  : #12ad12;          /* 登録モードの色       */
+    --AdminScreenModel-common-Update-Button-background-color                    : #1e50bf;          /* 更新モードの色       */
+    --AdminScreenModel-common-Delete-Button-background-color                    : #bf0000;          /* 削除モードの色       */
+    --AdminScreenModel-common-Popup-Register-Button-background-color                  : #12ad12;          /* 登録モードの色       */
+    
+    
+    /*背景色[ホバー時]*/
+    --AdminScreenModel-common-Register-Button-background-color-hover            : rgb( from var(--AdminScreenModel-common-Register-Button-background-color          ) calc( r + var(--common-hover      ) ) calc( g + var(--common-hover    ) ) calc( b + var(--common-hover    ) ) );
+    --AdminScreenModel-common-Update-Button-background-color-hover              : rgb( from var(--AdminScreenModel-common-Update-Button-background-color            ) calc( r + var(--common-hover      ) ) calc( g + var(--common-hover    ) ) calc( b + var(--common-hover    ) ) );
+    --AdminScreenModel-common-Delete-Button-background-color-hover              : rgb( from var(--AdminScreenModel-common-Delete-Button-background-color            ) calc( r + var(--common-hover      ) ) calc( g + var(--common-hover    ) ) calc( b + var(--common-hover    ) ) );
+    --AdminScreenModel-common-Popup-Register-Button-background-color-hover            : rgb( from var(--AdminScreenModel-common-Popup-Register-Button-background-color          ) calc( r + var(--common-hover      ) ) calc( g + var(--common-hover    ) ) calc( b + var(--common-hover    ) ) );
+    
+    
+    /*ボーダー*/
+    --AdminScreenModel-common-Register-Button-border-color                      : rgb( from var(--AdminScreenModel-common-Register-Button-background-color          ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+    --AdminScreenModel-common-Update-Button-border-color                        : rgb( from var(--AdminScreenModel-common-Update-Button-background-color            ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+    --AdminScreenModel-common-Delete-Button-border-color                        : rgb( from var(--AdminScreenModel-common-Delete-Button-background-color            ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+    --AdminScreenModel-common-Popup-Register-Button-border-color                      : rgb( from var(--AdminScreenModel-common-Popup-Register-Button-background-color          ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+
+    
+    
+    /*ボーダー[ホバー時]*/
+    --AdminScreenModel-common-Register-Button-border-color-hover                : rgb( from var(--AdminScreenModel-common-Register-Button-background-color-hover    ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+    --AdminScreenModel-common-Update-Button-border-color-hover                  : rgb( from var(--AdminScreenModel-common-Update-Button-background-color-hover      ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+    --AdminScreenModel-common-Delete-Button-border-color-hover                  : rgb( from var(--AdminScreenModel-common-Delete-Button-background-color-hover      ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+    --AdminScreenModel-common-Popup-Register-Button-border-color-hover                : rgb( from var(--AdminScreenModel-common-Popup-Register-Button-background-color-hover    ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+
+    
+    
+    /*グラデーション*/
+    --AdminScreenModel-common-Register-Button-background-color-gradation        : rgb( from var(--AdminScreenModel-common-Register-Button-background-color          ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+    --AdminScreenModel-common-Update-Button-background-color-gradation          : rgb( from var(--AdminScreenModel-common-Update-Button-background-color            ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+    --AdminScreenModel-common-Delete-Button-background-color-gradation          : rgb( from var(--AdminScreenModel-common-Delete-Button-background-color            ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+    --AdminScreenModel-common-Popup-Register-Button-background-color-gradation        : rgb( from var(--AdminScreenModel-common-Popup-Register-Button-background-color          ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+
+    
+    
+    /*グラデーション[ホバー時]*/
+    --AdminScreenModel-common-Register-Button-background-color-hover-gradation  : rgb( from var(--AdminScreenModel-common-Register-Button-background-color-hover    ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+    --AdminScreenModel-common-Update-Button-background-color-hover-gradation    : rgb( from var(--AdminScreenModel-common-Update-Button-background-color-hover      ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+    --AdminScreenModel-common-Delete-Button-background-color-hover-gradation    : rgb( from var(--AdminScreenModel-common-Delete-Button-background-color-hover      ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+    --AdminScreenModel-common-Popup-Register-Button-background-color-hover-gradation  : rgb( from var(--AdminScreenModel-common-Popup-Register-Button-background-color-hover    ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+
+    
+    
+    /*==========================================================*/
+    /* フレーム                                                 */
+    /*==========================================================*/
+    
+    
+    /*--------------------------------------*/
+    /* テーブルフレーム                     */
+    /*--------------------------------------*/
+    --AdminScreenModel-Table-Frame-width     : 650px                                                                                                                                                                            ;
+    --AdminScreenModel-Table-Frame-height    : 500px                                                                                                                                                                            ;
+    --AdminScreenModel-Table-Frame-position  : absolute                                                                                                                                                                         ;
+    --AdminScreenModel-Table-Frame-top       : calc(var(--AdminScreenModel-common-Button-height) + var(--AdminScreenModel-common-Padding) + var(--AdminScreenModel-common-Padding))                                             ;
+    --AdminScreenModel-Table-Frame-left      :      var(--AdminScreenModel-common-Padding      )                                                                                                                                ;
+    
+    /*--------------------------------------*/
+    /* 登録-更新-削除ボタンフレーム         */
+    /*--------------------------------------*/
+    --AdminScreenModel-Button-Frame-width    : calc( var(--Maine-Frame-width) - calc(var(--AdminScreenModel-Table-Frame-width ) + var(--AdminScreenModel-common-Padding)) - calc(var(--AdminScreenModel-common-Padding) * 2) )  ;
+    --AdminScreenModel-Button-Frame-height   : calc( var(--AdminScreenModel-common-Button-height) + var(--AdminScreenModel-common-Padding) )                                                                                    ;
+    --AdminScreenModel-Button-Frame-position : absolute                                                                                                                                                                         ;
+    --AdminScreenModel-Button-Frame-top      :       var(--AdminScreenModel-common-Padding)                                                                                                                                     ;
+    --AdminScreenModel-Button-Frame-right    :       var(--AdminScreenModel-common-Padding)                                                                                                                                     ;
+    
+    /*--------------------------------------*/
+    /* インプットボックスフレーム           */
+    /*--------------------------------------*/
+    --AdminScreenModel-Input-Frame-width     : calc( var(--Maine-Frame-width) - calc(var(--AdminScreenModel-Table-Frame-width ) + var(--AdminScreenModel-common-Padding)) - calc(var(--AdminScreenModel-common-Padding) * 2))   ;
+    --AdminScreenModel-Input-Frame-height    : calc( var(--AdminScreenModel-Table-Frame-height) + calc(var(--AdminScreenModel-common-Button-height) + 20))                                                                      ;
+    --AdminScreenModel-Input-Frame-position  : absolute                                                                                                                                                                         ;
+    --AdminScreenModel-Input-Frame-top       :       var(--AdminScreenModel-Table-Frame-top)                                                                                                                                    ;
+    --AdminScreenModel-Input-Frame-right     :       var(--AdminScreenModel-common-Padding)                                                                                                                                     ;
+    
+    
+    /*==========================================================*/
+    /* 登録モードボタン                                         */
+    /*==========================================================*/
+    
+    
+    /*--------------------------------------*/
+    /* 登録モードボタン                     */
+    /*--------------------------------------*/
+    --Register-Button-width                 : var(--AdminScreenModel-common-Button-width )                                                                                                                                      ;
+    --Register-Button-height                : var(--AdminScreenModel-common-Button-height)                                                                                                                                      ;
+    --Register-Button-background            : linear-gradient( 0deg , var(--AdminScreenModel-common-Register-Button-background-color) , var(--AdminScreenModel-common-Register-Button-background-color-gradation) )             ;
+    --Register-Button-border-bottom         : 5px solid var(--AdminScreenModel-common-Register-Button-border-color)                                                                                                             ;
+    
+    /*--------------------------------------*/
+    /* 登録モードボタン-テキスト            */
+    /*--------------------------------------*/
+    --Register-Button-Text-font-size        : 15px                                                                                                                                                                              ;
+    
+    /*--------------------------------------*/
+    /* 登録モードボタン[ホバー時]           */
+    /*--------------------------------------*/
+    --Register-Button-hover-background      : linear-gradient( 0deg , var(--AdminScreenModel-common-Register-Button-background-color-hover) , var(--AdminScreenModel-common-Register-Button-background-color-hover-gradation) ) ;
+    --Register-Button-hover-border-bottom   : 5px solid var(--AdminScreenModel-common-Register-Button-border-color-hover);
+    
+    /*--------------------------------------*/
+    /* 登録モードボタン-テキスト[ホバー時]  */
+    /*--------------------------------------*/
+    --Register-Button-Text-hover-color      : var(--common-font-color-hover)                                                                                                                                                    ;
+    
+    /*--------------------------------------*/
+    /* 登録モードボタン[ダウン時]           */
+    /*--------------------------------------*/
+    --Register-Button-down-border-bottom    : 1px solid var(--AdminScreenModel-common-Register-Button-border-color-hover)                                                                                                       ;
+    
+    
+    /*==========================================================*/
+    /* 更新モードボタン                                         */
+    /*==========================================================*/
+    
+    
+    /*--------------------------------------*/
+    /* 更新モードボタン                     */
+    /*--------------------------------------*/
+    --Update-Button-width                   : var(--AdminScreenModel-common-Button-width )                                                                                                                                  ;
+    --Update-Button-height                  : var(--AdminScreenModel-common-Button-height)                                                                                                                                  ;
+    --Update-Button-background              : linear-gradient( 0deg , var(--AdminScreenModel-common-Update-Button-background-color) , var(--AdminScreenModel-common-Update-Button-background-color-gradation) )             ;
+    --Update-Button-border-bottom           : 5px solid var(--AdminScreenModel-common-Update-Button-border-color)                                                                                                           ;
+    
+    /*--------------------------------------*/
+    /* 更新モードボタン-テキスト            */
+    /*--------------------------------------*/
+    --Update-Button-Text-font-size          : 15px                                                                                                                                                                          ;
+    
+    /*--------------------------------------*/
+    /* 更新モードボタン[ホバー時]           */
+    /*--------------------------------------*/
+    --Update-Button-hover-background        : linear-gradient( 0deg , var(--AdminScreenModel-common-Update-Button-background-color-hover) , var(--AdminScreenModel-common-Update-Button-background-color-hover-gradation) ) ;
+    --Update-Button-hover-border-bottom     : 5px solid var(--AdminScreenModel-common-Update-Button-border-color-hover);
+    
+    /*--------------------------------------*/
+    /* 更新モードボタン-テキスト[ホバー時]  */
+    /*--------------------------------------*/
+    --Update-Button-Text-hover-color        : var(--common-font-color-hover)                                                                                                                                                ;
+    
+    /*--------------------------------------*/
+    /* 更新モードボタン[ダウン時]           */
+    /*--------------------------------------*/
+    --Update-Button-down-border-bottom      : 1px solid var(--AdminScreenModel-common-Update-Button-border-color-hover)                                                                                                     ;
+    
+    
+    /*==========================================================*/
+    /* 削除モードボタン                                         */
+    /*==========================================================*/
+    
+    
+    /*--------------------------------------*/
+    /* 削除モードボタン                     */
+    /*--------------------------------------*/
+    --Delete-Button-width                   : var(--AdminScreenModel-common-Button-width )                                                                                                                                  ;
+    --Delete-Button-height                  : var(--AdminScreenModel-common-Button-height)                                                                                                                                  ;
+    --Delete-Button-background              : linear-gradient( 0deg , var(--AdminScreenModel-common-Delete-Button-background-color) , var(--AdminScreenModel-common-Delete-Button-background-color-gradation) )             ;
+    --Delete-Button-border-bottom           : 5px solid var(--AdminScreenModel-common-Delete-Button-border-color)                                                                                                           ;
+    
+    /*--------------------------------------*/
+    /* 削除モードボタン-テキスト            */
+    /*--------------------------------------*/
+    --Delete-Button-Text-font-size          : 15px                                                                                                                                                                          ;
+    
+    /*--------------------------------------*/
+    /* 削除モードボタン[ホバー時]           */
+    /*--------------------------------------*/
+    --Delete-Button-hover-background        : linear-gradient( 0deg , var(--AdminScreenModel-common-Delete-Button-background-color-hover) , var(--AdminScreenModel-common-Delete-Button-background-color-hover-gradation) ) ;
+    --Delete-Button-hover-border-bottom     : 5px solid var(--AdminScreenModel-common-Delete-Button-border-color-hover);
+    
+    /*--------------------------------------*/
+    /* 削除モードボタン-テキスト[ホバー時]  */
+    /*--------------------------------------*/
+    --Delete-Button-Text-hover-color        : var(--common-font-color-hover)                                                                                                                                                ;
+    
+    /*--------------------------------------*/
+    /* 削除モードボタン[ダウン時]           */
+    /*--------------------------------------*/
+    --Delete-Button-down-border-bottom      : 1px solid var(--AdminScreenModel-common-Delete-Button-border-color-hover)                                                                                                     ;
+    
+    
+    /*==========================================================*/
+    /* 登録-更新-削除ボタン                                     */
+    /*==========================================================*/
+    
+    
+    /*--------------------------------------*/
+    /* 登録・更新・削除ボタン               */
+    /*--------------------------------------*/
+    --RUB-Register-Button-width             : 200px                                 ;
+    --RUB-Register-Button-height            : 35px                                  ;
+    --RUB-Register-Button-background        : var(--Register-Button-background   )  ;
+    --RUB-Register-Button-border-bottom     : var(--Register-Button-border-bottom)  ;
+    
+    /*--------------------------------------*/
+    /* 登録・更新・削除ボタン-テキスト      */
+    /*--------------------------------------*/
+    --RUB-Button-Text-font-size             : 15px                                  ;
+    
+    
+    /*==========================================================*/
+    /* ポップアップ登録ボタン                                   */
+    /*==========================================================*/
+    
+    
+    /*--------------------------------------*/
+    /* ポップアップ登録ボタン                     */
+    /*--------------------------------------*/
+    --Popup-Register-Button-width                 : 150px                                                                                                                                      ;
+    --Popup-Register-Button-height                : 30px                                                                                                                                      ;
+    --Popup-Register-Button-background            : linear-gradient( 0deg , var(--AdminScreenModel-common-Popup-Register-Button-background-color) , var(--AdminScreenModel-common-Popup-Register-Button-background-color-gradation) )             ;
+    --Popup-Register-Button-border-bottom         : 5px solid var(--AdminScreenModel-common-Popup-Register-Button-border-color)                                                                                                             ;
+    
+    /*--------------------------------------*/
+    /* ポップアップ登録ボタン-テキスト            */
+    /*--------------------------------------*/
+    --Popup-Register-Button-Text-font-size        : 15px                                                                                                                                                                              ;
+    
+    /*--------------------------------------*/
+    /* ポップアップ登録ボタン[ホバー時]           */
+    /*--------------------------------------*/
+    --Popup-Register-Button-hover-background      : linear-gradient( 0deg , var(--AdminScreenModel-common-Popup-Register-Button-background-color-hover) , var(--AdminScreenModel-common-Popup-Register-Button-background-color-hover-gradation) ) ;
+    --Popup-Register-Button-hover-border-bottom   : 5px solid var(--AdminScreenModel-common-Popup-Register-Button-border-color-hover);
+    
+    /*--------------------------------------*/
+    /* ポップアップ登録ボタン-テキスト[ホバー時]  */
+    /*--------------------------------------*/
+    --Popup-Register-Button-Text-hover-color      : var(--common-font-color-hover)                                                                                                                                                    ;
+    
+    /*--------------------------------------*/
+    /* ポップアップ登録ボタン[ダウン時]           */
+    /*--------------------------------------*/
+    --Popup-Register-Button-down-border-bottom    : 1px solid var(--AdminScreenModel-common-Popup-Register-Button-border-color-hover)                                                                                                       ;
+    
+    
+    
+}
+
+/***************************************************************************************************/
+/*                                      管理画面モデル                                             */
+/*                                    [AdminScreenModel]                                           */
+/***************************************************************************************************/
+
+
+/*==========================================================*/
+/* フレーム                                                 */
+/*==========================================================*/
+
+
+/*--------------------------------------*/
+/* テーブルフレーム                     */
+/*--------------------------------------*/
+.Admin-Screen-Model-Table-Frame{
+    
+    width    : var(--AdminScreenModel-Table-Frame-width   );
+    height   : var(--AdminScreenModel-Table-Frame-height  );
+    position : var(--AdminScreenModel-Table-Frame-position);
+    top      : var(--AdminScreenModel-Table-Frame-top     );
+    left     : var(--AdminScreenModel-Table-Frame-left    );
+    
+}
+
+/*--------------------------------------*/
+/* 登録-更新-削除ボタンフレーム         */
+/*--------------------------------------*/
+.Admin-Screen-Model-Button-Frame{
+    
+    width    : var(--AdminScreenModel-Button-Frame-width   );
+    height   : var(--AdminScreenModel-Button-Frame-height  );
+    position : var(--AdminScreenModel-Button-Frame-position);
+    top      : var(--AdminScreenModel-Button-Frame-top     );
+    right    : var(--AdminScreenModel-Button-Frame-right   );
+    
+}
+
+/*--------------------------------------*/
+/* インプットボックスフレーム           */
+/*--------------------------------------*/
+.Admin-Screen-Model-Input-Frame{
+    
+    width    : var(--AdminScreenModel-Input-Frame-width   );
+    height   : var(--AdminScreenModel-Input-Frame-height  );
+    position : var(--AdminScreenModel-Input-Frame-position);
+    top      : var(--AdminScreenModel-Input-Frame-top     );
+    right    : var(--AdminScreenModel-Input-Frame-right   );
+    
+}
+
+
+/*==========================================================*/
+/* 登録モードボタン                                         */
+/*==========================================================*/
+
+
+/*--------------------------------------*/
+/* 登録モードボタン                     */
+/*--------------------------------------*/
+.Register-Button{
+    
+    width           : var(--Register-Button-width               );
+    height          : var(--Register-Button-height              );
+    background      : var(--Register-Button-background          );
+    border-bottom   : var(--Register-Button-border-bottom       );
+    
+}
+
+/*--------------------------------------*/
+/* 登録モードボタン-テキスト            */
+/*--------------------------------------*/
+.Register-Button-Text{
+    font-size       : var(--Register-Button-Text-font-size      );
+}
+
+/*--------------------------------------*/
+/* 登録モードボタン[ホバー時]           */
+/*--------------------------------------*/
+.Register-Button-hover{
+    
+    background      : var(--Register-Button-hover-background    );
+    border-bottom   : var(--Register-Button-hover-border-bottom );
+    
+}
+
+/*--------------------------------------*/
+/* 登録モードボタン-テキスト[ホバー時]  */
+/*--------------------------------------*/
+.Register-Button-Text-hover{
+    
+    color           : var(--Register-Button-Text-hover-color    );
+    
+}
+
+/*--------------------------------------*/
+/* 登録モードボタン[ダウン時]           */
+/*--------------------------------------*/
+.Register-Button-down{
+    
+    border-bottom   : var(--Register-Button-down-border-bottom  );
+    
+}
+
+
+/*==========================================================*/
+/* 更新モードボタン                                         */
+/*==========================================================*/
+
+
+/*--------------------------------------*/
+/* 更新モードボタン                     */
+/*--------------------------------------*/
+.Update-Button{
+    
+    width           : var(--Update-Button-width               );
+    height          : var(--Update-Button-height              );
+    background      : var(--Update-Button-background          );
+    border-bottom   : var(--Update-Button-border-bottom       );
+    
+}
+
+/*--------------------------------------*/
+/* 更新モードボタン-テキスト            */
+/*--------------------------------------*/
+.Update-Button-Text{
+    font-size       : var(--Update-Button-Text-font-size      );
+}
+
+/*--------------------------------------*/
+/* 更新モードボタン[ホバー時]           */
+/*--------------------------------------*/
+.Update-Button-hover{
+    
+    background      : var(--Update-Button-hover-background    );
+    border-bottom   : var(--Update-Button-hover-border-bottom );
+    
+}
+
+/*--------------------------------------*/
+/* 更新モードボタン-テキスト[ホバー時]  */
+/*--------------------------------------*/
+.Update-Button-Text-hover{
+    
+    color           : var(--Update-Button-Text-hover-color    );
+    
+}
+
+/*--------------------------------------*/
+/* 更新モードボタン[ダウン時]           */
+/*--------------------------------------*/
+.Update-Button-down{
+    
+    border-bottom   : var(--Update-Button-down-border-bottom  );
+    
+}
+
+
+/*==========================================================*/
+/* 削除モードボタン                                         */
+/*==========================================================*/
+
+
+/*--------------------------------------*/
+/* 削除モードボタン                     */
+/*--------------------------------------*/
+.Delete-Button{
+    
+    width           : var(--Delete-Button-width               );
+    height          : var(--Delete-Button-height              );
+    background      : var(--Delete-Button-background          );
+    border-bottom   : var(--Delete-Button-border-bottom       );
+    
+}
+
+/*--------------------------------------*/
+/* 削除モードボタン-テキスト            */
+/*--------------------------------------*/
+.Delete-Button-Text{
+    font-size       : var(--Delete-Button-Text-font-size      );
+}
+
+/*--------------------------------------*/
+/* 削除モードボタン[ホバー時]           */
+/*--------------------------------------*/
+.Delete-Button-hover{
+    
+    background      : var(--Delete-Button-hover-background    );
+    border-bottom   : var(--Delete-Button-hover-border-bottom );
+    
+}
+
+/*--------------------------------------*/
+/* 削除モードボタン-テキスト[ホバー時]  */
+/*--------------------------------------*/
+.Delete-Button-Text-hover{
+    
+    color           : var(--Delete-Button-Text-hover-color    );
+    
+}
+
+/*--------------------------------------*/
+/* 削除モードボタン[ダウン時]           */
+/*--------------------------------------*/
+.Delete-Button-down{
+    
+    border-bottom   : var(--Delete-Button-down-border-bottom  );
+    
+}
+
+
+/*==========================================================*/
+/* 登録・更新・削除ボタン                                   */
+/*==========================================================*/
+
+
+/*--------------------------------------*/
+/* 登録・更新・削除ボタン               */
+/*--------------------------------------*/
+.RUB-Button{
+    
+    width       : var(--RUB-Register-Button-width   );
+    height      : var(--RUB-Register-Button-height  );
+    
+}
+
+/*--------------------------------------*/
+/* 登録・更新・削除ボタン-テキスト      */
+/*--------------------------------------*/
+.RUB-Button-Text{
+    font-size   : var(--RUB-Button-Text-font-size   );
+}
+
+/*==========================================================*/
+/* ポップアップ登録ボタン                                   */
+/*==========================================================*/
+
+
+/*--------------------------------------*/
+/* ポップアップ登録ボタン                     */
+/*--------------------------------------*/
+.Popup-Register-Button{
+    
+    width           : var(--Popup-Register-Button-width               );
+    height          : var(--Popup-Register-Button-height              );
+    background      : var(--Popup-Register-Button-background          );
+    border-bottom   : var(--Popup-Register-Button-border-bottom       );
+    
+}
+
+/*--------------------------------------*/
+/* ポップアップ登録ボタン-テキスト            */
+/*--------------------------------------*/
+.Popup-Register-Button-Text{
+    font-size       : var(--Popup-Register-Button-Text-font-size      );
+}
+
+/*--------------------------------------*/
+/* ポップアップ登録ボタン[ホバー時]           */
+/*--------------------------------------*/
+.Popup-Register-Button-hover{
+    
+    background      : var(--Popup-Register-Button-hover-background    );
+    border-bottom   : var(--Popup-Register-Button-hover-border-bottom );
+    
+}
+
+/*--------------------------------------*/
+/* ポップアップ登録ボタン-テキスト[ホバー時]  */
+/*--------------------------------------*/
+.Popup-Register-Button-Text-hover{
+    
+    color           : var(--Popup-Register-Button-Text-hover-color    );
+    
+}
+
+/*--------------------------------------*/
+/* ポップアップ登録ボタン[ダウン時]           */
+/*--------------------------------------*/
+.Popup-Register-Button-down{
+    
+    border-bottom   : var(--Popup-Register-Button-down-border-bottom  );
+    
+}
+
+
+
+
+.AdminScreenModel-Table{
+    
+    width  : 650;
+    height : 500;
+    
+}
+

@@ -1,0 +1,159 @@
+:root{
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    --Company-Evaluation-Admin-Screen-Button-background-color : #bf2f2f;
+    --Self-Evaluation-Admin-Screen-Button-background-color : #7f2fbf;
+    
+    
+}
+
+
+
+
+
+
+/***************************************************************************************************/
+/*                                      評価管理画面                                               */
+/*                                    [EvaluationAdminSelectScreen]                                */
+/***************************************************************************************************/
+
+/*==========================================================*/
+/* 会社評価管理ボタン                                           */
+/*==========================================================*/
+
+/*・・・・・・・・・・・・・・・・・・・*/
+/* 会社評価管理ボタン                       */
+/*・・・・・・・・・・・・・・・・・・・*/
+.Company-Evaluation-Admin-Screen-Button{
+    
+    --gradation : rgb( from var(--Company-Evaluation-Admin-Screen-Button-background-color) calc(r + var(--common-gradation)) calc(g + var(--common-gradation)) calc(b + var(--common-gradation)) );
+    
+    background       : linear-gradient( 0deg , var(--Company-Evaluation-Admin-Screen-Button-background-color) , var(--gradation) )  ;
+    border-bottom    : 5px solid rgb(from var(--Company-Evaluation-Admin-Screen-Button-background-color) calc( r + var(--common-border) ) calc( g + var(--common-border) ) calc( b + var(--common-border) ) ) ;
+    
+}
+
+/*・・・・・・・・・・・・・・・・・・・*/
+/* 会社評価管理ボタン-テキスト              */
+/*・・・・・・・・・・・・・・・・・・・*/
+.Company-Evaluation-Admin-Screen-Button-Text{
+    
+}
+
+/*・・・・・・・・・・・・・・・・・・・*/
+/* 評価実施ボタン-イベント              */
+/*・・・・・・・・・・・・・・・・・・・*/
+.Company-Evaluation-Admin-Screen-Button-Event{
+    
+}
+
+/*・・・・・・・・・・・・・・・・・・・*/
+/* 評価実施ボタン[ホバー時]             */
+/*・・・・・・・・・・・・・・・・・・・*/
+.Company-Evaluation-Admin-Screen-Button-hover{
+    
+    --background  : rgb( from var(--Company-Evaluation-Admin-Screen-Button-background-color) calc(r + var(--common-hover    )                      ) calc(g + var(--common-hover    )                      ) calc(b + var(--common-hover)                          ) );
+    --gradation   : rgb( from var(--Company-Evaluation-Admin-Screen-Button-background-color) calc(r + var(--common-gradation) + var(--common-hover)) calc(g + var(--common-gradation) + var(--common-hover)) calc(b + var(--common-gradation) + var(--common-hover)) );
+    --border      : rgb( from var(--Company-Evaluation-Admin-Screen-Button-background-color) calc(r + var(--common-border   ) + var(--common-hover)) calc(g + var(--common-border   ) + var(--common-hover)) calc(b + var(--common-border   ) + var(--common-hover)) );
+    
+    background    : linear-gradient( 0deg , var(--background) , var(--gradation) ) ;
+    border-bottom : 5px solid var(--border)                                        ;
+    
+    
+}
+
+
+/*・・・・・・・・・・・・・・・・・・・*/
+/* 評価実施ボタン-テキスト[ホバー時]    */
+/*・・・・・・・・・・・・・・・・・・・*/
+.Company-Evaluation-Admin-Screen-Button-Text-hover{
+    
+    --font        : rgb( from var(--common-font-color) calc(r + var(--common-hover)) calc(g + var(--common-hover)) calc(b + var(--common-hover)));
+    color         : var(--font)                                                                                                                  ;
+    
+}
+
+
+/*・・・・・・・・・・・・・・・・・・・*/
+/* 評価実施ボタン[ダウン時]             */
+/*・・・・・・・・・・・・・・・・・・・*/
+.Company-Evaluation-Admin-Screen-Button-down{
+    
+    --border      : rgb( from var(--Company-Evaluation-Admin-Screen-Button-background-color) calc(r + var(--common-border   ) + var(--common-hover)) calc(g + var(--common-border   ) + var(--common-hover)) calc(b + var(--common-border   ) + var(--common-hover)) );
+    
+    border-bottom : 1px solid var(--border);
+    
+}
+
+/*・・・・・・・・・・・・・・・・・・・*/
+/* 評価出力ボタン                       */
+/*・・・・・・・・・・・・・・・・・・・*/
+.Self-Evaluation-Admin-Screen-Button{
+    
+    --gradation : rgb( from var(--Self-Evaluation-Admin-Screen-Button-background-color) calc(r + var(--common-gradation)) calc(g + var(--common-gradation)) calc(b + var(--common-gradation)) );
+    
+    background       : linear-gradient( 0deg , var(--Self-Evaluation-Admin-Screen-Button-background-color) , var(--gradation) )  ;
+    border-bottom    : 5px solid rgb(from var(--Self-Evaluation-Admin-Screen-Button-background-color) calc( r + var(--common-border) ) calc( g + var(--common-border) ) calc( b + var(--common-border) ) ) ;
+    
+}
+
+/*・・・・・・・・・・・・・・・・・・・*/
+/* 評価出力ボタン-テキスト              */
+/*・・・・・・・・・・・・・・・・・・・*/
+.Self-Evaluation-Admin-Screen-Button-Text{
+    
+}
+
+/*・・・・・・・・・・・・・・・・・・・*/
+/* 評価出力ボタン-イベント              */
+/*・・・・・・・・・・・・・・・・・・・*/
+.Self-Evaluation-Admin-Screen-Button-Event{
+    
+}
+
+/*・・・・・・・・・・・・・・・・・・・*/
+/* 評価出力ボタン[ホバー時]             */
+/*・・・・・・・・・・・・・・・・・・・*/
+.Self-Evaluation-Admin-Screen-Button-hover{
+    
+    --background  : rgb( from var(--Self-Evaluation-Admin-Screen-Button-background-color) calc(r + var(--common-hover    )                      ) calc(g + var(--common-hover    )                      ) calc(b + var(--common-hover)                          ) );
+    --gradation   : rgb( from var(--Self-Evaluation-Admin-Screen-Button-background-color) calc(r + var(--common-gradation) + var(--common-hover)) calc(g + var(--common-gradation) + var(--common-hover)) calc(b + var(--common-gradation) + var(--common-hover)) );
+    --border      : rgb( from var(--Self-Evaluation-Admin-Screen-Button-background-color) calc(r + var(--common-border   ) + var(--common-hover)) calc(g + var(--common-border   ) + var(--common-hover)) calc(b + var(--common-border   ) + var(--common-hover)) );
+    
+    background    : linear-gradient( 0deg , var(--background) , var(--gradation) ) ;
+    border-bottom : 5px solid var(--border)                                        ;
+    
+    
+}
+
+
+/*・・・・・・・・・・・・・・・・・・・*/
+/* 評価出力ボタン-テキスト[ホバー時]    */
+/*・・・・・・・・・・・・・・・・・・・*/
+.Self-Evaluation-Admin-Screen-Button-Text-hover{
+    
+    --font        : rgb( from var(--common-font-color) calc(r + var(--common-hover)) calc(g + var(--common-hover)) calc(b + var(--common-hover)));
+    color         : var(--font)                                                                                                                  ;
+    
+}
+
+
+/*・・・・・・・・・・・・・・・・・・・*/
+/* 評価出力ボタン[ダウン時]             */
+/*・・・・・・・・・・・・・・・・・・・*/
+.Self-Evaluation-Admin-Screen-Button-down{
+    
+    --border      : rgb( from var(--Self-Evaluation-Admin-Screen-Button-background-color) calc(r + var(--common-border   ) + var(--common-hover)) calc(g + var(--common-border   ) + var(--common-hover)) calc(b + var(--common-border   ) + var(--common-hover)) );
+    
+    border-bottom : 1px solid var(--border);
+    
+}
+
+

@@ -1,0 +1,862 @@
+:root{
+    
+    /*==========================================================*/
+    /* 共通系                                                   */
+    /*==========================================================*/
+    --common-gradation :  64    ;
+    --common-hover     : 32     ;
+    --common-border    : -64    ;
+    --common-font-color: #f9f9f9;
+    --common-font-color-hover : rgb( from var(--common-font-color) calc(r + var(--common-hover)) calc(g + var(--common-hover)) calc(b + var(--common-hover)));
+    --common-font-color-black      :#333333;
+    --common-font-color-black-hover:rgb( from var(--common-font-color-black) calc(r + var(--common-hover)) calc(g + var(--common-hover)) calc(b + var(--common-hover)));;
+    
+    /*共通カラー系*/
+    --common-Evaluation-Perform-color : #cf5c10;    /*評価実施*/
+    --common-Evaluation-Output-color  : #5a4abd;    /*評価出力*/
+    
+    --common-Technology-color : #40e0d0;    /*技術系*/
+    --common-Practical-color  : #e62f8b;    /*実務系*/
+    
+    --common-Self-Evaluation-color : #bf6fdf; /*自己評価*/
+    
+    --common-Table-Data-Normal-color : #dddddd;
+    
+    
+    /*背景*/
+    --common-PopUp-Cross-Button-background-color                  : #bf0000;
+    --common-PopUp-Cross-Button-background-color-hover            : rgb(from   var(--common-PopUp-Cross-Button-background-color)   calc( r + var(--common-hover) ) calc( g + var(--common-hover) ) calc( b + var(--common-hover) ) );
+    --common-PopUp-OK-Button-background-color                     : #aa00aa;
+    --common-PopUp-OK-Button-background-color-hover               : rgb(from   var(--common-PopUp-OK-Button-background-color   )   calc( r + var(--common-hover) ) calc( g + var(--common-hover) ) calc( b + var(--common-hover) ) );
+    --common-PopUp-Cancel-Button-background-color                 : #009999;
+    --common-PopUp-Cancel-Button-background-color-hover           : rgb(from   var(--common-PopUp-Cancel-Button-background-color)   calc( r + var(--common-hover) ) calc( g + var(--common-hover) ) calc( b + var(--common-hover) ) );
+    
+    /*gradation*/
+    --common-PopUp-Cross-Button-background-color-gradation        : rgb( from var(--common-PopUp-Cross-Button-background-color      ) calc(r + var(--common-gradation)) calc(g + var(--common-gradation)) calc(b + var(--common-gradation)) );
+    --common-PopUp-Cross-Button-background-color-gradation-hover  : rgb( from var(--common-PopUp-Cross-Button-background-color-hover) calc(r + var(--common-gradation)) calc(g + var(--common-gradation)) calc(b + var(--common-gradation)) );
+    --common-PopUp-OK-Button-background-color-gradation           : rgb( from var(--common-PopUp-OK-Button-background-color         ) calc(r + var(--common-gradation)) calc(g + var(--common-gradation)) calc(b + var(--common-gradation)) );
+    --common-PopUp-OK-Button-background-color-gradation-hover     : rgb( from var(--common-PopUp-OK-Button-background-color-hover   ) calc(r + var(--common-gradation)) calc(g + var(--common-gradation)) calc(b + var(--common-gradation)) );
+    --common-PopUp-Cancel-Button-background-color-gradation       : rgb( from var(--common-PopUp-Cancel-Button-background-color) calc(r + var(--common-gradation)) calc(g + var(--common-gradation)) calc(b + var(--common-gradation)) );
+    --common-PopUp-Cancel-Button-background-color-gradation-hover : rgb( from var(--common-PopUp-Cancel-Button-background-color-hover) calc(r + var(--common-gradation)) calc(g + var(--common-gradation)) calc(b + var(--common-gradation)) );
+    
+    /*border*/
+    --common-PopUp-Cross-Button-border-color                      : rgb(from   var(--common-PopUp-Cross-Button-background-color      )   calc( r + var(--common-border) ) calc( g + var(--common-border) ) calc( b + var(--common-border) ) );
+    --common-PopUp-Cross-Button-border-color-hover                : rgb(from   var(--common-PopUp-Cross-Button-background-color-hover)   calc( r + var(--common-border) ) calc( g + var(--common-border) ) calc( b + var(--common-border) ) );
+    --common-PopUp-OK-Button-border-color                         : rgb(from   var(--common-PopUp-OK-Button-background-color         )   calc( r + var(--common-border) ) calc( g + var(--common-border) ) calc( b + var(--common-border) ) );
+    --common-PopUp-OK-Button-border-color-hover                   : rgb(from   var(--common-PopUp-OK-Button-background-color-hover   )   calc( r + var(--common-border) ) calc( g + var(--common-border) ) calc( b + var(--common-border) ) );
+    --common-PopUp-Cancel-Button-border-color                     : rgb(from   var(--common-PopUp-Cancel-Button-background-color)   calc( r + var(--common-border) ) calc( g + var(--common-border) ) calc( b + var(--common-border) ) );
+    --common-PopUp-Cancel-Button-border-color-hover               : rgb(from   var(--common-PopUp-Cancel-Button-background-color-hover)   calc( r + var(--common-border) ) calc( g + var(--common-border) ) calc( b + var(--common-border) ) );
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        /*背景色*/
+    --common-Company-Evaluation-Button-background-color                  : #bf2f2f;          /* 登録モードの色       */
+    --common-Self-Evaluation-Button-background-color                  : #7f2fbf;          /* 登録モードの色       */
+    
+    /*背景色[ホバー時]*/
+    --common-Company-Evaluation-Button-background-color-hover            : rgb( from var(--common-Company-Evaluation-Button-background-color          ) calc( r + var(--common-hover      ) ) calc( g + var(--common-hover    ) ) calc( b + var(--common-hover    ) ) );
+    --common-Self-Evaluation-Button-background-color-hover            : rgb( from var(--common-Self-Evaluation-Button-background-color          ) calc( r + var(--common-hover      ) ) calc( g + var(--common-hover    ) ) calc( b + var(--common-hover    ) ) );
+    /*ボーダー*/
+    --common-Company-Evaluation-Button-border-color                      : rgb( from var(--common-Company-Evaluation-Button-background-color          ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+    --common-Self-Evaluation-Button-border-color                      : rgb( from var(--common-Self-Evaluation-Button-background-color          ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+    
+    /*ボーダー[ホバー時]*/
+    --common-Company-Evaluation-Button-border-color-hover                : rgb( from var(--common-Company-Evaluation-Button-background-color-hover    ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+    --common-Self-Evaluation-Button-border-color-hover                : rgb( from var(--common-Self-Evaluation-Button-background-color-hover    ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+    
+    
+    /*グラデーション*/
+    --common-Company-Evaluation-Button-background-color-gradation        : rgb( from var(--common-Company-Evaluation-Button-background-color          ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+    --common-Self-Evaluation-Button-background-color-gradation        : rgb( from var(--common-Self-Evaluation-Button-background-color          ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+    
+    /*グラデーション[ホバー時]*/
+    --common-Company-Evaluation-Button-background-color-hover-gradation  : rgb( from var(--common-Company-Evaluation-Button-background-color-hover    ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+    --common-Self-Evaluation-Button-background-color-hover-gradation  : rgb( from var(--common-Self-Evaluation-Button-background-color-hover    ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*==========================================================*/
+    /* body                                                     */
+    /*==========================================================*/
+    --body-overflow   : hidden;
+    --body-margin     : 0     ;
+    --body-background : linear-gradient( 0deg , #ffffff , #ffffff );
+    /*
+    --body-background : linear-gradient( 0deg , #923a00 , #923a00 );
+    */
+    /*==========================================================*/
+    /* ボタン                                                   */
+    /*==========================================================*/
+    
+    /*--------------------------------------*/
+    /* デフォルトボタン                     */
+    /*--------------------------------------*/
+    
+    
+    
+    
+    
+    /*--------------------------------------*/
+    /* デフォルトボタン-テキスト            */
+    /*--------------------------------------*/
+    
+    
+    
+    
+    
+    /*--------------------------------------*/
+    /* デフォルトボタン                     */
+    /*--------------------------------------*/
+    
+    
+    
+    
+    
+    /*--------------------------------------*/
+    /* デフォルトボタン                     */
+    /*--------------------------------------*/
+    
+    
+    
+    /*--------------------------------------*/
+    /* デフォルトボタン                     */
+    /*--------------------------------------*/
+    
+    
+    
+    
+    /*==========================================================*/
+    /* ポップアップバツボタン                                   */
+    /*==========================================================*/
+    
+    /*--------------------------------------*/
+    /* ポップアップバツボタン               */
+    /*--------------------------------------*/
+    --PopUp-Cross-Button-width         : 40px;
+    --PopUp-Cross-Button-height        : 30px;
+    --PopUp-Cross-Button-background    : linear-gradient( 0deg , var(--common-PopUp-Cross-Button-background-color) , var(--common-PopUp-Cross-Button-background-color-gradation));
+    --PopUp-Cross-Button-border-bottom : 5px solid var(--common-PopUp-Cross-Button-border-color);
+    
+    /*--------------------------------------*/
+    /* ポップアップバツボタン-テキスト      */
+    /*--------------------------------------*/
+    --PopUp-Cross-Button-Text-font-size : 13px;
+    
+    /*--------------------------------------*/
+    /* ポップアップバツボタン[ホバー]      */
+    /*--------------------------------------*/
+    --PopUp-Cross-Button-hover-background    : linear-gradient( 0deg , var(--common-PopUp-Cross-Button-background-color) , var(--common-PopUp-Cross-Button-background-color-gradation-hover));
+    --PopUp-Cross-Button-hover-border-bottom : 5px solid var(--common-PopUp-Cross-Button-border-color-hover);
+    
+    /*----------------------------------------*/
+    /* ポップアップバツボタン-テキスト[ホバー]*/
+    /*----------------------------------------*/
+    --PopUp-Cross-Button-Text-hover-color : var(--common-font-color-hover);
+    
+    /*--------------------------------------*/
+    /* ポップアップバツボタン[ダウン]       */
+    /*--------------------------------------*/
+    --PopUp-Cross-Button-down-border-bottom : 1px solid var(--common-PopUp-Cross-Button-border-color);
+    
+    /*==========================================================*/
+    /* ポップアップOKボタン                                     */
+    /*==========================================================*/
+    
+
+    /*--------------------------------------*/
+    /* ポップアップOKボタン                 */
+    /*--------------------------------------*/
+    --PopUp-OK-Button-width         : 150px;
+    --PopUp-OK-Button-height        : 30px;
+    --PopUp-OK-Button-background    : linear-gradient( 0deg , var(--common-PopUp-OK-Button-background-color) , var(--common-PopUp-OK-Button-background-color-gradation));
+    --PopUp-OK-Button-border-bottom : 5px solid var(--common-PopUp-OK-Button-border-color);
+    
+    /*--------------------------------------*/
+    /* ポップアップOKボタン-テキスト        */
+    /*--------------------------------------*/
+    --PopUp-OK-Button-Text-font-size : 13px;
+    
+    /*--------------------------------------*/
+    /* ポップアップOKボタン[ホバー]         */
+    /*--------------------------------------*/
+    --PopUp-OK-Button-hover-background    : linear-gradient( 0deg , var(--common-PopUp-OK-Button-background-color) , var(--common-PopUp-OK-Button-background-color-gradation-hover));
+    --PopUp-OK-Button-hover-border-bottom : 5px solid var(--common-PopUp-OK-Button-border-color-hover);
+    
+    /*--------------------------------------*/
+    /* ポップアップOKボタン-テキスト[ホバー]*/
+    /*--------------------------------------*/
+    --PopUp-OK-Button-Text-hover-color : var(--common-font-color-hover);
+    
+    /*--------------------------------------*/
+    /* ポップアップOKボタン[ダウン]         */
+    /*--------------------------------------*/
+    --PopUp-OK-Button-down-border-bottom : 1px solid var(--common-PopUp-OK-Button-border-color);
+    
+    /*==========================================================*/
+    /* ポップアップCancelボタン                                     */
+    /*==========================================================*/
+    
+    /*--------------------------------------*/
+    /* ポップアップCancelボタン                 */
+    /*--------------------------------------*/
+    --PopUp-Cancel-Button-width         : 150px;
+    --PopUp-Cancel-Button-height        : 30px;
+    --PopUp-Cancel-Button-background    : linear-gradient( 0deg , var(--common-PopUp-Cancel-Button-background-color) , var(--common-PopUp-Cancel-Button-background-color-gradation));
+    --PopUp-Cancel-Button-border-bottom : 5px solid var(--common-PopUp-Cancel-Button-border-color);
+    
+    /*--------------------------------------*/
+    /* ポップアップCancelボタン-テキスト        */
+    /*--------------------------------------*/
+    --PopUp-Cancel-Button-Text-font-size : 13px;
+    
+    /*--------------------------------------*/
+    /* ポップアップCancelボタン[ホバー]         */
+    /*--------------------------------------*/
+    --PopUp-Cancel-Button-hover-background    : linear-gradient( 0deg , var(--common-PopUp-Cancel-Button-background-color) , var(--common-PopUp-Cancel-Button-background-color-gradation-hover));
+    --PopUp-Cancel-Button-hover-border-bottom : 5px solid var(--common-PopUp-Cancel-Button-border-color-hover);
+    
+    /*--------------------------------------*/
+    /* ポップアップCancelボタン-テキスト[ホバー]*/
+    /*--------------------------------------*/
+    --PopUp-Cancel-Button-Text-hover-color : var(--common-font-color-hover);
+    
+    /*--------------------------------------*/
+    /* ポップアップCancelボタン[ダウン]         */
+    /*--------------------------------------*/
+    --PopUp-Cancel-Button-down-border-bottom : 1px solid var(--common-PopUp-Cancel-Button-border-color);
+    
+    
+    
+    
+    
+    
+    
+    
+    --Table-Column-height     : 30px                ;
+    --Table-Column-font       : bold 15px sans-serif;
+    --Table-Column-user-select : none                ;
+    --Table-Column-border     : 1px solid black     ;
+    --Table-Column-background : #93c9ff             ;
+    
+    --Table-Data-Normal-height     : 30px                ;
+    --Table-Data-Normal-font       : bold 15px sans-serif;
+    --Table-Data-Normal-user-select : none;               ;
+    --Table-Data-Normal-border     : 1px solid black     ;
+    --Table-Data-Normal-background : var(--common-Table-Data-Normal-color)             ;
+    
+    --Table-Data-Odd-height     : 30px                ;
+    --Table-Data-Odd-font       : bold 15px sans-serif;
+    --Table-Data-Odd-user-select : none;               ;
+    --Table-Data-Odd-border     : 1px solid black     ;
+    --Table-Data-Odd-background : #ffead6             ;
+    
+    --Table-Data-Even-height     : 30px                ;
+    --Table-Data-Even-font       : bold 15px sans-serif;
+    --Table-Data-Even-user-select : none;               ;
+    --Table-Data-Even-border     : 1px solid black     ;
+    --Table-Data-Even-background : #ffffbc             ;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*==========================================================*/
+    /* 会社評価ボタン                                   */
+    /*==========================================================*/
+    
+    
+    /*--------------------------------------*/
+    /* 会社評価ボタン                     */
+    /*--------------------------------------*/
+    --Company-Evaluation-Button-width                 : 150px                                                                                                                                      ;
+    --Company-Evaluation-Button-height                : 30px                                                                                                                                      ;
+    --Company-Evaluation-Button-background            : linear-gradient( 0deg , var(--common-Company-Evaluation-Button-background-color) , var(--common-Company-Evaluation-Button-background-color-gradation) )             ;
+    --Company-Evaluation-Button-border-bottom         : 5px solid var(--common-Company-Evaluation-Button-border-color)                                                                                                             ;
+    
+    /*--------------------------------------*/
+    /* 会社評価ボタン-テキスト            */
+    /*--------------------------------------*/
+    --Company-Evaluation-Button-Text-font-size        : 15px                                                                                                                                                                              ;
+    
+    /*--------------------------------------*/
+    /* 会社評価ボタン[ホバー時]           */
+    /*--------------------------------------*/
+    --Company-Evaluation-Button-hover-background      : linear-gradient( 0deg , var(--common-Company-Evaluation-Button-background-color-hover) , var(--common-Company-Evaluation-Button-background-color-hover-gradation) ) ;
+    --Company-Evaluation-Button-hover-border-bottom   : 5px solid var(--common-Company-Evaluation-Button-border-color-hover);
+    
+    /*--------------------------------------*/
+    /* 会社評価ボタン-テキスト[ホバー時]  */
+    /*--------------------------------------*/
+    --Company-Evaluation-Button-Text-hover-color      : var(--common-font-color-hover)                                                                                                                                                    ;
+    
+    /*--------------------------------------*/
+    /* 会社評価ボタン[ダウン時]           */
+    /*--------------------------------------*/
+    --Company-Evaluation-Button-down-border-bottom    : 1px solid var(--common-Company-Evaluation-Button-border-color-hover)                                                                                                       ;
+    
+    
+    
+    
+    
+    /*==========================================================*/
+    /* 自己評価ボタン                                   */
+    /*==========================================================*/
+    
+    
+    /*--------------------------------------*/
+    /* 自己評価ボタン                     */
+    /*--------------------------------------*/
+    --Self-Evaluation-Button-width                 : 150px                                                                                                                                      ;
+    --Self-Evaluation-Button-height                : 30px                                                                                                                                      ;
+    --Self-Evaluation-Button-background            : linear-gradient( 0deg , var(--common-Self-Evaluation-Button-background-color) , var(--common-Self-Evaluation-Button-background-color-gradation) )             ;
+    --Self-Evaluation-Button-border-bottom         : 5px solid var(--common-Self-Evaluation-Button-border-color)                                                                                                             ;
+    
+    /*--------------------------------------*/
+    /* 自己評価ボタン-テキスト            */
+    /*--------------------------------------*/
+    --Self-Evaluation-Button-Text-font-size        : 15px                                                                                                                                                                              ;
+    
+    /*--------------------------------------*/
+    /* 自己評価ボタン[ホバー時]           */
+    /*--------------------------------------*/
+    --Self-Evaluation-Button-hover-background      : linear-gradient( 0deg , var(--common-Self-Evaluation-Button-background-color-hover) , var(--common-Self-Evaluation-Button-background-color-hover-gradation) ) ;
+    --Self-Evaluation-Button-hover-border-bottom   : 5px solid var(--common-Self-Evaluation-Button-border-color-hover);
+    
+    /*--------------------------------------*/
+    /* 自己評価ボタン-テキスト[ホバー時]  */
+    /*--------------------------------------*/
+    --Self-Evaluation-Button-Text-hover-color      : var(--common-font-color-hover)                                                                                                                                                    ;
+    
+    /*--------------------------------------*/
+    /* 自己評価ボタン[ダウン時]           */
+    /*--------------------------------------*/
+    --Self-Evaluation-Button-down-border-bottom    : 1px solid var(--common-Self-Evaluation-Button-border-color-hover)                                                                                                       ;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+/*--------------------------------------*/
+/* body                                 */
+/*--------------------------------------*/
+body{
+    
+    overflow   : var(--body-overflow  );
+    margin     : var(--body-margin    );
+    background : var(--body-background);
+    -webkit-user-drag: none;
+    
+}
+
+/*--------------------------------------*/
+/* デフォルトボタン                     */
+/*--------------------------------------*/
+.Button-Processing-Button{
+    
+    border-radius   : 1vh                                   ;
+    width           : 100                                   ;
+    height          : 50                                    ;
+    border-bottom   : 5px solid #000000                     ;
+    position        : absolute                              ;
+    box-shadow      : "0 1px 3px 0 black"                   ;
+    
+    
+}
+
+/*--------------------------------------*/
+/* デフォルトボタン-テキスト            */
+/*--------------------------------------*/
+.Button-Processing-Text{
+   width       : 100                     ;
+   text-align  : center                  ;
+   color       : var(--common-font-color);
+   font        : bold 20px Avenir        ;
+   user-select : none                    ;
+   user-drag: none;
+   z-index     : 0                       ;
+   position    : absolute                ;
+}
+
+/*--------------------------------------*/
+/* デフォルトボタン-イベント            */
+/*--------------------------------------*/
+.Button-Processing-Event{
+   width    : 100      ;
+   height   : 50       ;
+   position : absolute ;
+   z-index  : 1        ;
+}
+
+/*--------------------------------------*/
+/* デフォルトボタン-非活性              */
+/*--------------------------------------*/
+.Button-Inactive{
+    
+    background : linear-gradient( 0deg , #aaaaaa , #aaaaaa ) !important;
+    border-bottom   : 0px solid #777777                      !important;
+    
+}
+
+/*--------------------------------------*/
+/* デフォルトボタン-非活性-テキスト     */
+/*--------------------------------------*/
+.Button-Inactive-Text{
+    
+    color : #cccccc !important;
+    
+}
+
+/*--------------------------------------*/
+/* 会社評価ボタン[共通系]               */
+/*--------------------------------------*/
+.Company-Evaluation-Button{
+    background : #123456;
+}
+
+/*--------------------------------------*/
+/* ポップアップバツボタン               */
+/*--------------------------------------*/
+.PopUp-Cross-Button{
+    
+    width         : var(--PopUp-Cross-Button-width        );
+    height        : var(--PopUp-Cross-Button-height       );
+    background    : var(--PopUp-Cross-Button-background   );
+    border-bottom : var(--PopUp-Cross-Button-border-bottom);
+    
+}
+
+/*--------------------------------------*/
+/* ポップアップバツボタン-テキスト      */
+/*--------------------------------------*/
+.PopUp-Cross-Button-Text{
+    font-size : var(--PopUp-Cross-Button-Text-font-size);
+}
+
+/*--------------------------------------*/
+/* ポップアップバツボタン[ホバー]       */
+/*--------------------------------------*/
+.PopUp-Cross-Button-hover{
+    
+    background    : var(--PopUp-Cross-Button-hover-background   );
+    border-bottom : var(--PopUp-Cross-Button-hover-border-bottom);
+    
+}
+
+/*--------------------------------------*/
+/* ポップアップバツボタン-テキスト[ホバー]*/
+/*--------------------------------------*/
+.PopUp-Cross-Button-Text-hover{
+    color : var(--PopUp-Cross-Button-Text-hover-color);
+}
+
+/*--------------------------------------*/
+/* ポップアップバツボタン[ダウン]       */
+/*--------------------------------------*/
+.PopUp-Cross-Button-down{
+    
+    border-bottom : var(--PopUp-Cross-Button-down-border-bottom);
+    
+}
+
+/*--------------------------------------*/
+/* ポップアップOKボタン               */
+/*--------------------------------------*/
+.PopUp-OK-Button{
+    
+    width         : var(--PopUp-OK-Button-width        );
+    height        : var(--PopUp-OK-Button-height       );
+    background    : var(--PopUp-OK-Button-background   );
+    border-bottom : var(--PopUp-OK-Button-border-bottom);
+    
+}
+
+/*--------------------------------------*/
+/* ポップアップOKボタン-テキスト      */
+/*--------------------------------------*/
+.PopUp-OK-Button-Text{
+    font-size : var(--PopUp-OK-Button-Text-font-size);
+}
+
+/*--------------------------------------*/
+/* ポップアップOKボタン[ホバー]       */
+/*--------------------------------------*/
+.PopUp-OK-Button-hover{
+    
+    background    : var(--PopUp-OK-Button-hover-background   );
+    border-bottom : var(--PopUp-OK-Button-hover-border-bottom);
+    
+}
+
+/*--------------------------------------*/
+/* ポップアップOKボタン-テキスト[ホバー]*/
+/*--------------------------------------*/
+.PopUp-OK-Button-Text-hover{
+    color : var(--PopUp-OK-Button-Text-hover-color);
+}
+
+/*--------------------------------------*/
+/* ポップアップOKボタン[ダウン]       */
+/*--------------------------------------*/
+.PopUp-OK-Button-down{
+    
+    border-bottom : var(--PopUp-OK-Button-down-border-bottom);
+    
+}
+
+/*--------------------------------------*/
+/* ポップアップCancelボタン               */
+/*--------------------------------------*/
+.PopUp-Cancel-Button{
+    
+    width         : var(--PopUp-Cancel-Button-width        );
+    height        : var(--PopUp-Cancel-Button-height       );
+    background    : var(--PopUp-Cancel-Button-background   );
+    border-bottom : var(--PopUp-Cancel-Button-border-bottom);
+    
+}
+
+/*--------------------------------------*/
+/* ポップアップCancelボタン-テキスト      */
+/*--------------------------------------*/
+.PopUp-Cancel-Button-Text{
+    font-size : var(--PopUp-Cancel-Button-Text-font-size);
+}
+
+/*--------------------------------------*/
+/* ポップアップCancelボタン[ホバー]       */
+/*--------------------------------------*/
+.PopUp-Cancel-Button-hover{
+    
+    background    : var(--PopUp-Cancel-Button-hover-background   );
+    border-bottom : var(--PopUp-Cancel-Button-hover-border-bottom);
+    
+}
+
+/*--------------------------------------*/
+/* ポップアップCancelボタン-テキスト[ホバー]*/
+/*--------------------------------------*/
+.PopUp-Cancel-Button-Text-hover{
+    color : var(--PopUp-Cancel-Button-Text-hover-color);
+}
+
+/*--------------------------------------*/
+/* ポップアップCancelボタン[ダウン]       */
+/*--------------------------------------*/
+.PopUp-Cancel-Button-down{
+    
+    border-bottom : var(--PopUp-Cancel-Button-down-border-bottom);
+    
+}
+
+
+/*==========================================================*/
+/* テーブル系                                               */
+/*==========================================================*/
+.TableProcessing-Table{
+    
+    border-collapse : collapse         ;
+    overflow       : auto             ;
+    display        : block            ;
+    white-space     : nowrap           ;
+    position       : absolute         ;
+    border         : 3px solid black  ;
+    box-shadow      : 0 1px 3px 0 black;
+    border-bottom   : 5px solid #404040;
+    
+}
+
+.Table-Column{
+    
+}
+
+.Table-Data{
+    
+    height : var(--Table-Data-height);
+    
+}
+
+
+.Employees-Column{
+    
+    width : 100px;
+    
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*==========================================================*/
+/* 会社評価ボタン                                   */
+/*==========================================================*/
+
+
+/*--------------------------------------*/
+/* 会社評価ボタン                     */
+/*--------------------------------------*/
+.Company-Evaluation-Button{
+    
+    /*
+    width           : var(--Company-Evaluation-Button-width               );
+    height          : var(--Company-Evaluation-Button-height              );
+    */
+    background      : var(--Company-Evaluation-Button-background          );
+    border-bottom   : var(--Company-Evaluation-Button-border-bottom       );
+    
+}
+
+/*--------------------------------------*/
+/* 会社評価ボタン-テキスト            */
+/*--------------------------------------*/
+.Company-Evaluation-Button-Text{
+    font-size       : var(--Company-Evaluation-Button-Text-font-size      );
+}
+
+/*--------------------------------------*/
+/* 会社評価ボタン[ホバー時]           */
+/*--------------------------------------*/
+.Company-Evaluation-Button-hover{
+    
+    background      : var(--Company-Evaluation-Button-hover-background    );
+    border-bottom   : var(--Company-Evaluation-Button-hover-border-bottom );
+    
+}
+
+/*--------------------------------------*/
+/* 会社評価ボタン-テキスト[ホバー時]  */
+/*--------------------------------------*/
+.Company-Evaluation-Button-Text-hover{
+    
+    color           : var(--Company-Evaluation-Button-Text-hover-color    );
+    
+}
+
+/*--------------------------------------*/
+/* 会社評価ボタン[ダウン時]           */
+/*--------------------------------------*/
+.Company-Evaluation-Button-down{
+    
+    border-bottom   : var(--Company-Evaluation-Button-down-border-bottom  );
+    
+}
+
+
+
+
+
+
+
+/*==========================================================*/
+/* 自己評価ボタン                                   */
+/*==========================================================*/
+
+
+/*--------------------------------------*/
+/* 自己評価ボタン                     */
+/*--------------------------------------*/
+.Self-Evaluation-Button{
+    
+    /*
+    width           : var(--Self-Evaluation-Button-width               );
+    height          : var(--Self-Evaluation-Button-height              );
+    */
+    background      : var(--Self-Evaluation-Button-background          );
+    border-bottom   : var(--Self-Evaluation-Button-border-bottom       );
+    
+}
+
+/*--------------------------------------*/
+/* 自己評価ボタン-テキスト            */
+/*--------------------------------------*/
+.Self-Evaluation-Button-Text{
+    font-size       : var(--Self-Evaluation-Button-Text-font-size      );
+}
+
+/*--------------------------------------*/
+/* 自己評価ボタン[ホバー時]           */
+/*--------------------------------------*/
+.Self-Evaluation-Button-hover{
+    
+    background      : var(--Self-Evaluation-Button-hover-background    );
+    border-bottom   : var(--Self-Evaluation-Button-hover-border-bottom );
+    
+}
+
+/*--------------------------------------*/
+/* 自己評価ボタン-テキスト[ホバー時]  */
+/*--------------------------------------*/
+.Self-Evaluation-Button-Text-hover{
+    
+    color           : var(--Self-Evaluation-Button-Text-hover-color    );
+    
+}
+
+/*--------------------------------------*/
+/* 自己評価ボタン[ダウン時]             */
+/*--------------------------------------*/
+.Self-Evaluation-Button-down{
+    
+    border-bottom   : var(--Self-Evaluation-Button-down-border-bottom  );
+    
+}
+
+
+
+
+
+
+
+
+/*--------------------------------------*/
+/* テーブルカラム             */
+/*--------------------------------------*/
+.Table-Column{
+    
+    height      : var(--Table-Column-height     );
+    font        : var(--Table-Column-font       );
+    user-select : var(--Table-Column-user-select);
+    border      : var(--Table-Column-border     );
+    background  : var(--Table-Column-background );
+    
+}
+
+/*--------------------------------------*/
+/* テーブルデータ(ノーマル)             */
+/*--------------------------------------*/
+.Table-Data-Normal{
+    
+    height      : var(--Table-Data-Normal-height     );
+    font        : var(--Table-Data-Normal-font       );
+    user-select : var(--Table-Data-Normal-user-select);
+    border      : var(--Table-Data-Normal-border     );
+    background  : var(--Table-Data-Normal-background );
+    
+}
+
+/*--------------------------------------*/
+/* テーブルデータ(奇数)             */
+/*--------------------------------------*/
+.Table-Data-Odd{
+    
+    height      : var(--Table-Data-Odd-height     );
+    font        : var(--Table-Data-Odd-font       );
+    user-select : var(--Table-Data-Odd-user-select);
+    border      : var(--Table-Data-Odd-border     );
+    background  : var(--Table-Data-Odd-background );
+    
+}
+
+
+/*--------------------------------------*/
+/* テーブルデータ(偶数)             */
+/*--------------------------------------*/
+.Table-Data-Even{
+    
+    height      : var(--Table-Data-Even-height     );
+    font        : var(--Table-Data-Even-font       );
+    user-select : var(--Table-Data-Even-user-select);
+    border      : var(--Table-Data-Even-border     );
+    background  : var(--Table-Data-Even-background );
+    
+}
+
+
+
+
+
+
+

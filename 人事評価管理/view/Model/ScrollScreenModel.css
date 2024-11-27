@@ -1,0 +1,370 @@
+/***************************************************************************************************/
+/*                                      変数宣言                                                   */
+/***************************************************************************************************/
+:root{
+    
+    /*共通系*/
+    --ScrollScreenModel-common-padding     : 40px;
+    --ScrollScreenModel-common-Table-Width : 1100px;
+    --ScrollScreenModel-common-Table-Header-Height : 30px;
+    --ScrollScreenModel-common-Fine-Tune   : 6px;
+    --ScrollScreenModel-common-Font-Size : 15px;
+    
+    
+    --ScrollScreenModel-Footer-Frame-height : 100px;
+    
+    /*==========================================================*/
+    /* フレーム                                                 */
+    /*==========================================================*/
+    
+    /*--------------------------------------*/
+    /* テーブルスクロールフレーム           */
+    /*--------------------------------------*/
+    --ScrollScreenModel-Table-Scroll-Frame-width     : 100vw                                                            ;
+    --ScrollScreenModel-Table-Scroll-Frame-height    : calc(100vh - calc(var(--ScrollScreenModel-Footer-Frame-height) + var(--Header-height)))  ;
+    --ScrollScreenModel-Table-Scroll-Frame-position  : fixed                                                            ;
+    --ScrollScreenModel-Table-Scroll-Frame-top       : var(--Header-height)                                             ;
+    --ScrollScreenModel-Table-Scroll-Frame-left      : 0                                                                ;
+    --ScrollScreenModel-Table-Scroll-Frame-overflowY : scroll                                                           ;
+    
+    
+    /*--------------------------------------*/
+    /* テーブルフレーム                     */
+    /*--------------------------------------*/
+    --ScrollScreenModel-Table-Frame-width    : var(--Maine-Screen-Frame-width);
+    --ScrollScreenModel-Table-Frame-height   : calc(100vh - calc(var(--Footer-height) + var(--Header-height)))  ;
+    --ScrollScreenModel-Table-Frame-position : relative;
+    --ScrollScreenModel-Table-Frame-margin   : 0 auto auto auto;
+    
+    
+    
+    /*==========================================================*/
+    /* テーブル                                                 */
+    /*==========================================================*/
+    
+    
+    /*--------------------------------------*/
+    /* テーブル                             */
+    /*--------------------------------------*/
+    --ScrollScreenModel-Table-width    : var(--ScrollScreenModel-common-Table-Width);
+    /*--ScrollScreenModel-Table-height   : 500px;*/
+    --ScrollScreenModel-Table-position : absolute;
+    /*
+    --ScrollScreenModel-Table-left     : calc(calc(var(--Maine-Screen-Frame-width ) - var(--ScrollScreenModel-Table-width )) / 2);
+    --ScrollScreenModel-Table-top      : calc(calc(var(--Maine-Screen-Frame-height) - var(--ScrollScreenModel-Table-height)) / 2);
+    */
+    
+    /*--------------------------------------*/
+    /* テーブルヘッダフレーム(一個目)       */
+    /*--------------------------------------*/
+    --ScrollScreenModel-First-Table-Header-Frame-width    : var(--Maine-Screen-Frame-width) ;
+    --ScrollScreenModel-First-Table-Header-Frame-position : sticky                          ;
+    --ScrollScreenModel-First-Table-Header-Frame-top      : 0;/*var(--ScrollScreenModel-common-padding);*/
+    --ScrollScreenModel-First-Table-Header-Frame-zIndex   : 10                               ;
+    
+    
+    
+    
+
+    /*--------------------------------------*/
+    /* テーブルヘッダフレーム(二個目以降)   */
+    /*--------------------------------------*/
+    --ScrollScreenModel-After-Second-Table-Header-Frame-width    : var(--Maine-Screen-Frame-width) ; 
+    --ScrollScreenModel-After-Second-Table-Header-Frame-position : sticky                          ;
+    --ScrollScreenModel-After-Second-Table-Header-Frame-top      : 0 ;
+    --ScrollScreenModel-After-Second-Table-Header-Frame-zIndex   : 1                               ; 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*--------------------------------------*/
+    /* テーブルヘッダ(一個目)               */
+    /*--------------------------------------*/
+    --ScrollScreenModel-Table-Header-width         : calc(var(--ScrollScreenModel-common-Table-Width) - var(--ScrollScreenModel-common-Fine-Tune));
+    --ScrollScreenModel-Table-Header-height        : var(--ScrollScreenModel-common-Table-Header-Height);
+    --ScrollScreenModel-Table-Header-text-align    : center;
+    --ScrollScreenModel-Table-Header-font          : bold var(--ScrollScreenModel-common-Font-Size) sans-serif;
+    /*--ScrollScreenModst-Table-Header-background    : ;*//*スクリーン側で指定*/
+    --ScrollScreenModel-Table-Header-border        : 3px solid black;
+    --ScrollScreenModel-Table-Header-border-bottom : 0px solid black;
+    --ScrollScreenModel-Table-Header-margin        : auto;
+    --ScrollScreenModel-Table-Header-box-shadow    : 0 1px 3px 0 black;
+    --ScrollScreenModel-Table-Header-user-select   : none;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*--------------------------------------*/
+    /* 情報テーブル                         */
+    /*--------------------------------------*/
+    --ScrollScreenModel-Information-Table-Frame-width    : 400px;
+    --ScrollScreenModel-Information-Table-Frame-height   :  70px;
+    --ScrollScreenModel-Information-Table-Frame-position : absolute;
+    --ScrollScreenModel-Information-Table-Frame-top      : calc( calc(var(--ScrollScreenModel-Footer-Frame-height) - var(--ScrollScreenModel-Information-Table-Frame-height)) / 2);
+    --ScrollScreenModel-Information-Table-Frame-left     : calc( calc(var(--Footer-width )                         - var(--ScrollScreenModel-Information-Table-Frame-width )) / 2);
+    
+    
+    
+    
+    
+}
+
+/***************************************************************************************************/
+/*                                      選択画面                                                   */
+/*                                 [ScrollScreenModel]                                              */
+/***************************************************************************************************/
+
+
+
+/*==========================================================*/
+/* フッダー                                                 */
+/*==========================================================*/
+
+/*--------------------------------------*/
+/* フッダーフレーム                     */
+/*--------------------------------------*/
+.ScrollScreenModel-Footer-Frame{
+    
+    height : var(--ScrollScreenModel-Footer-Frame-height);
+    
+}
+
+
+
+
+
+
+
+/*--------------------------------------*/
+/* テーブルスクロールフレーム           */
+/*--------------------------------------*/
+.ScrollScreenModel-Table-Scroll-Frame{
+    
+    width     : var(--ScrollScreenModel-Table-Scroll-Frame-width    );
+    height    : var(--ScrollScreenModel-Table-Scroll-Frame-height   );
+    position  : var(--ScrollScreenModel-Table-Scroll-Frame-position );
+    top       : var(--ScrollScreenModel-Table-Scroll-Frame-top      );
+    left      : var(--ScrollScreenModel-Table-Scroll-Frame-left     );
+    overflow-y: var(--ScrollScreenModel-Table-Scroll-Frame-overflowY);
+    
+    
+    
+    
+}
+
+
+
+
+/*--------------------------------------*/
+/* テーブルフレーム                     */
+/*--------------------------------------*/
+.ScrollScreenModel-Table-Frame{
+    
+    width    : var(--ScrollScreenModel-Table-Frame-width   );
+    /*
+    height   : var(--ScrollScreenModel-Table-Frame-height);
+    */
+    position : var(--ScrollScreenModel-Table-Frame-position);
+    margin   : var(--ScrollScreenModel-Table-Frame-margin  );
+    
+}
+
+
+
+
+
+
+
+
+/*--------------------------------------*/
+/* テーブル                             */
+/*--------------------------------------*/
+.ScrollScreenModel-Table{
+    
+    width    : var(--ScrollScreenModel-Table-width   );
+    /*height   : var(--ScrollScreenModel-Table-height  );*/
+    position : var(--ScrollScreenModel-Table-position);
+    top : 40;
+    /*
+    left     : var(--ScrollScreenModel-Table-left    );
+    top      : var(--ScrollScreenModel-Table-top     );
+    */
+    
+}
+
+/*--------------------------------------*/
+/* テーブルヘッダフレーム(一個目)       */
+/*--------------------------------------*/
+.ScrollScreenModel-First-Table-Header-Frame{
+    
+    width    : var(--ScrollScreenModel-First-Table-Header-Frame-width   );
+    height   : fit-content;
+    position : var(--ScrollScreenModel-First-Table-Header-Frame-position);
+    top      : var(--ScrollScreenModel-First-Table-Header-Frame-top     );
+    z-index   : var(--ScrollScreenModel-First-Table-Header-Frame-zIndex  );
+    
+}
+
+/*--------------------------------------*/
+/* テーブルヘッダ(一個目)               */
+/*--------------------------------------*/
+.ScrollScreenModel-Table-Header{
+    
+    width          : var(--ScrollScreenModel-Table-Header-width        );
+    height         : var(--ScrollScreenModel-Table-Header-height       );
+    text-align     : var(--ScrollScreenModel-Table-Header-text-align   );
+    font           : var(--ScrollScreenModel-Table-Header-font         );
+    border         : var(--ScrollScreenModel-Table-Header-border       );
+    border-bottom  : var(--ScrollScreenModel-Table-Header-border-bottom);
+    margin         : var(--ScrollScreenModel-Table-Header-margin       );
+    box-shadow     : var(--ScrollScreenModel-Table-Header-box-shadow   );
+    user-select    : var(--ScrollScreenModel-Table-Header-user-select  );
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+/*--------------------------------------*/
+/* テーブルヘッダフレーム(二個目以降)   */
+/*--------------------------------------*/
+.ScrollScreenModel-After-Second-Table-Header-Frame{
+    
+    width    : var(--ScrollScreenModel-After-Second-Table-Header-Frame-width   );
+    position : var(--ScrollScreenModel-After-Second-Table-Header-Frame-position);
+    top      : var(--ScrollScreenModel-After-Second-Table-Header-Frame-top     );
+    z-index   : var(--ScrollScreenModel-After-Second-Table-Header-Frame-zIndex  );
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.ScrollScreenModel-Padding{
+    
+    height : 40px;
+    
+    
+    
+}
+
+
+
+.ScrollScreenModel-Sticky-Container{
+    
+    /*
+    position   : absolute;
+    */
+    /*
+    position   : sticky;
+    */
+    height     : fit-content;
+    top : 0;
+    
+    
+    /*
+    background : red;
+    */
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ScrollScreenModel-Register-Target{
+    
+    background : #1e50bf;
+    
+}
+
+.ScrollScreenModel-Delete-Target{
+    
+    background : #bf0000;
+    
+}
+
+.ScrollScreenModel-Selected-Target{
+    
+    background : #12ad12;
+    
+}
+
+
+
+
+/*--------------------------------------*/
+/* 情報テーブル                         */
+/*--------------------------------------*/
+.ScrollScreenModel-Information-Table-Frame{
+    
+    width    : var(--ScrollScreenModel-Information-Table-Frame-width   );
+    height   : var(--ScrollScreenModel-Information-Table-Frame-height  );
+    position : var(--ScrollScreenModel-Information-Table-Frame-position);
+    top      : var(--ScrollScreenModel-Information-Table-Frame-top     );
+    left     : var(--ScrollScreenModel-Information-Table-Frame-left    );
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+

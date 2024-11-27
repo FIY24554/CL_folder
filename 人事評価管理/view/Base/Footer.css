@@ -1,0 +1,207 @@
+/***************************************************************************************************/
+/*                                      変数宣言                                                   */
+/***************************************************************************************************/
+:root{
+    
+    /*==========================================================*/
+    /* 共通系                                                   */
+    /*==========================================================*/
+    
+    /*背景色*/
+    --Footer-common-background-color                           : #000000                                                                                                                                                                ;
+    --Footer-common-SH-Button-background-color                 :           var(--Footer-common-background-color             )                                                                                                           ;
+    --Footer-common-SH-Button-hover-background-color           : rgb( from var(--Footer-common-background-color             ) calc(r + var(--common-hover    )) calc(g + var(--common-hover    )) calc(b + var(--common-hover    )) )   ;
+    --Footer-common-Button-background-color                    : #4a7b52                                                                                                                                                                ;
+    --Footer-common-Button-hover-background-color              : rgb( from var(--Footer-common-Button-background-color      ) calc(r + var(--common-hover    )) calc(g + var(--common-hover    )) calc(b + var(--common-hover    )) )   ;
+    
+    /*背景色のグラデーション*/
+    --Footer-common-background-gradation-color                 : rgb( from var(--Footer-common-background-color             ) calc(r + var(--common-gradation)) calc(g + var(--common-gradation)) calc(b + var(--common-gradation)) )   ;
+    --Footer-common-SH-Button-background-bradation-color       :           var(--Footer-common-background-gradation-color   )                                                                                                           ;
+    --Footer-common-SH-Button-hover-background-gradation-color : rgb( from var(--Footer-common-background-color             ) calc(r + var(--common-gradation)) calc(g + var(--common-gradation)) calc(b + var(--common-gradation)) )   ;
+    --Footer-common-Button-background-gradation-color          : rgb( from var(--Footer-common-Button-background-color      ) calc(r + var(--common-gradation)) calc(g + var(--common-gradation)) calc(b + var(--common-gradation)) )   ;
+    
+    /*ボーダー色*/
+    --Footer-common-Button-border-color                        : rgb( from var(--Footer-common-Button-background-color      ) calc(r + var(--common-border   )) calc(g + var(--common-border   )) calc(b + var(--common-border   )) )   ;
+    --Footer-common-Button-hover-border-color                  : rgb( from var(--Footer-common-Button-hover-background-color) calc(r + var(--common-border   )) calc(g + var(--common-border   )) calc(b + var(--common-border   )) )   ;
+    
+    /*==========================================================*/
+    /* フッター                                                 */
+    /*==========================================================*/
+    
+    /*--------------------------------------*/
+    /* フッダーフレーム                     */
+    /*--------------------------------------*/
+    --Footer-width                      : 100vw                                                                                                                                                 ;
+    --Footer-height                     : 150px                                                                                                                                                 ;
+    --Footer-background                 : linear-gradient( 0deg , var(--Footer-common-background-color) , var(--Footer-common-background-gradation-color) )                                     ;
+    --Footer-position                   : absolute                                                                                                                                              ;
+    --Footer-bottom                     : 0                                                                                                                                                     ;
+    --Footer-z-index                    : 1                                                                                                                                                     ;
+    
+    /*--------------------------------------*/
+    /* フッダー表示・非表示ボタン           */
+    /*--------------------------------------*/
+    --Footer-SH-Button-width            : calc(35px + 100vw)                                                                                                                                    ;
+    --Footer-SH-Button-height           : 50px                                                                                                                                                  ;
+    --Footer-SH-Button-background       : linear-gradient( 0deg , var(--Footer-common-SH-Button-background-bradation-color) , var(--Footer-common-SH-Button-background-color) )                 ;
+    --Footer-SH-Button-position         : absolute                                                                                                                                              ;
+    --Footer-SH-Button-z-index          : 0                                                                                                                                                     ;
+    
+    /*--------------------------------------*/
+    /* フッダー表示・非表示ボタン-テキスト  */
+    /*--------------------------------------*/
+    --Footer-SH-Button-Text-color       : #ffffff                                                                                                                                               ;
+    
+    /*--------------------------------------*/
+    /* フッター表示・非表示ボタン[ホバー時] */
+    /*--------------------------------------*/    
+    --Footer-SH-Button-hover-background : linear-gradient( 0deg , var(--Footer-common-SH-Button-hover-background-gradation-color) , var(--Footer-common-SH-Button-hover-background-color) )     ;
+    
+    /*--------------------------------------*/
+    /* 評価出力ボタン-テキスト[ホバー時]    */
+    /*--------------------------------------*/
+    --Footer-SH-Button-Text-hover-color : rgb( from var(--Footer-SH-Button-Text-color) calc(r + var(--common-hover)) calc(g + var(--common-hover)) calc(b + var(--common-hover)))               ;
+    
+    /*--------------------------------------*/
+    /* フッダー内のボタン                   */
+    /*--------------------------------------*/
+    --Fotter-Button-background-color    : linear-gradient( 0deg , var(--Footer-common-Button-background-color) , var(--Footer-common-Button-background-gradation-color) )     ;                                                                                                          
+    --Fotter-Button-border-bottom       : 5px solid var(--Footer-common-Button-border-color)                                                                                                    ;
+    --Fotter-Button-width               : 300px                                                                                                                                                 ;
+    --Fotter-Button-height              : 50px                                                                                                                                                  ;
+    --Fotter-Button-border-radius       : 1vh                                                                                                                                                   ;
+    
+    /*--------------------------------------*/
+    /* フッダー内のボタン-テキスト          */
+    /*--------------------------------------*/
+    --Fotter-Button-Text-font-size      : 18                                                                                                                                                    ;
+    --Fotter-Button-Text-color          : var(--common-font-color)                                                                                                                              ;
+    
+    /*--------------------------------------*/
+    /* フッダー内のボタン[ホバー時]         */
+    /*--------------------------------------*/
+    --Fotter-Button-hover-background    : var(--Footer-common-Button-hover-background-color)                                                                                                    ;
+    --Fotter-Button-hover-border-bottom : 5px solid var(--Footer-common-Button-hover-border-color)                                                                                              ;
+    
+    /*--------------------------------------*/
+    /* フッダー内のボタン-テキスト[ホバー時]*/
+    /*--------------------------------------*/
+    --Fotter-Button-Text-hover-color    : var(--common-font-color)                                                                                                                                               ;
+    
+    /*--------------------------------------*/
+    /* フッダー内のボタン[ダウン時]         */
+    /*--------------------------------------*/
+    --Fotter-Button-down-border-bottom  : 1px solid                                                                                                                                             ;
+    
+}
+
+/***************************************************************************************************/
+/*                                      [ フッダー ]                                               */
+/***************************************************************************************************/
+
+/*--------------------------------------*/
+/* フッダーフレーム                     */
+/*--------------------------------------*/
+.Footer{
+    
+    width               : var(--Footer-width                        );
+    height              : var(--Footer-height                       );
+    background          : var(--Footer-background                   );
+    position            : var(--Footer-position                     );
+    bottom              : var(--Footer-bottom                       );
+    z-index             : var(--Footer-z-index                      );
+    
+}
+
+/*--------------------------------------*/
+/* フッダー表示・非表示ボタン           */
+/*--------------------------------------*/
+.SH-Button{
+    
+    width               : var(--Footer-SH-Button-width              );
+    height              : var(--Footer-SH-Button-height             );
+    background          : var(--Footer-SH-Button-background         );
+    position            : var(--Footer-SH-Button-position           );
+    z-index             : var(--Footer-SH-Button-z-index            );
+    
+}
+
+/*--------------------------------------*/
+/* フッダー表示・非表示ボタン           */
+/*--------------------------------------*/
+.SH-Button-Text{
+    
+    color               : var(--Footer-SH-Button-Text-color         );
+    
+}
+
+/*--------------------------------------*/
+/* フッター表示・非表示ボタン[ホバー時] */
+/*--------------------------------------*/
+.SH-Button-hover{
+    
+    background          : var(--Footer-SH-Button-hover-background   );
+    
+}
+
+/*--------------------------------------*/
+/* フッター表示・非表示ボタン-テキスト[ホバー時]    */
+/*--------------------------------------*/
+.SH-Button-Text-hover{
+    
+    color               : var(--Footer-SH-Button-Text-hover-color   );
+    
+}
+
+/*--------------------------------------*/
+/* フッダー内のボタン                   */
+/*--------------------------------------*/
+.Fotter-Button{
+    
+    background          : var(--Fotter-Button-background-color      );
+    border-bottom       : var(--Fotter-Button-border-bottom         );
+    width               : var(--Fotter-Button-width                 );
+    height              : var(--Fotter-Button-height                );
+    border-radius       : var(--Fotter-Button-border-radius         );
+    
+}
+
+/*--------------------------------------*/
+/* フッダー内のボタン-テキスト          */
+/*--------------------------------------*/
+.Fotter-Button-Text{
+    
+    font-size           : var(--Fotter-Button-Text-font-size        );
+    color               : var(--Fotter-Button-Text-color            );
+    
+}
+
+/*--------------------------------------*/
+/* フッダー内のボタン[ホバー時]         */
+/*--------------------------------------*/
+.Fotter-Button-hover{
+    
+    background          : var(--Fotter-Button-hover-background      );
+    border-bottom       : var(--Fotter-Button-hover-border-bottom   );
+    
+}
+
+/*--------------------------------------*/
+/* フッダー内のボタン-テキスト[ホバー時]*/
+/*--------------------------------------*/
+.Fotter-Button-Text-hover{
+    color               : var(--Fotter-Button-Text-hover-color      );
+    
+}
+
+
+/*--------------------------------------*/
+/* フッダー内のボタン[ダウン時]         */
+/*--------------------------------------*/
+.Fotter-Button-down{
+    
+    border-bottom       : var(--Fotter-Button-down-border-bottom    );
+    
+}
+
+

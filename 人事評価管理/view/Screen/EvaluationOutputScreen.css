@@ -1,0 +1,377 @@
+/***************************************************************************************************/
+/*                                      変数宣言                                                   */
+/***************************************************************************************************/
+:root{
+    
+    
+    /*==========================================================*/
+    /* 共通系                                                   */
+    /*==========================================================*/
+    
+    --EvaluationOutputScreen-common-option-button-width  : 125px;
+    --EvaluationOutputScreen-common-option-button-height :  35px;
+    
+    
+    
+    
+    
+    
+    
+        /*背景色*/
+    --EvaluationOutputScreen-common-All-Select-Button-background-color                    : var(--common-Evaluation-Output-color);         /* 更新モードの色       */
+    --EvaluationOutputScreen-common-All-Cancel-Button-background-color                    : #ffffbc;         /* 更新モードの色       */
+    
+    
+    
+    
+    /*背景色[ホバー時]*/
+    --EvaluationOutputScreen-common-All-Select-Button-background-color-hover              : rgb( from var(--EvaluationOutputScreen-common-All-Select-Button-background-color            ) calc( r + var(--common-hover      ) ) calc( g + var(--common-hover    ) ) calc( b + var(--common-hover    ) ) );
+    --EvaluationOutputScreen-common-All-Cancel-Button-background-color-hover              : rgb( from var(--EvaluationOutputScreen-common-All-Cancel-Button-background-color            ) calc( r + var(--common-hover      ) ) calc( g + var(--common-hover    ) ) calc( b + var(--common-hover    ) ) );
+    
+    
+    
+    /*ボーダー*/
+    --EvaluationOutputScreen-common-All-Select-Button-border-color                        : rgb( from var(--EvaluationOutputScreen-common-All-Select-Button-background-color            ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+    --EvaluationOutputScreen-common-All-Cancel-Button-border-color                        : rgb( from var(--EvaluationOutputScreen-common-All-Cancel-Button-background-color            ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+    
+    
+    /*ボーダー[ホバー時]*/
+    --EvaluationOutputScreen-common-All-Select-Button-border-color-hover                  : rgb( from var(--EvaluationOutputScreen-common-All-Select-Button-background-color-hover      ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+    --EvaluationOutputScreen-common-All-Cancel-Button-border-color-hover                  : rgb( from var(--EvaluationOutputScreen-common-All-Cancel-Button-background-color-hover      ) calc( r + var(--common-border     ) ) calc( g + var(--common-border   ) ) calc( b + var(--common-border   ) ) );
+    
+    
+    /*グラデーション*/
+    --EvaluationOutputScreen-common-All-Select-Button-background-color-gradation          : rgb( from var(--EvaluationOutputScreen-common-All-Select-Button-background-color            ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+    --EvaluationOutputScreen-common-All-Cancel-Button-background-color-gradation          : rgb( from var(--EvaluationOutputScreen-common-All-Cancel-Button-background-color            ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+    
+    
+    /*グラデーション[ホバー時]*/
+    --EvaluationOutputScreen-common-All-Select-Button-background-color-hover-gradation    : rgb( from var(--EvaluationOutputScreen-common-All-Select-Button-background-color-hover      ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+    --EvaluationOutputScreen-common-All-Cancel-Button-background-color-hover-gradation    : rgb( from var(--EvaluationOutputScreen-common-All-Cancel-Button-background-color-hover      ) calc( r + var(--common-gradation  ) ) calc(g + var(--common-gradation ) ) calc( b + var(--common-gradation) ) );
+    
+    
+    /*==========================================================*/
+    /* フレーム                                                 */
+    /*==========================================================*/
+    
+    
+    
+    
+    /*==========================================================*/
+    /* フッター                                                 */
+    /*==========================================================*/
+    
+    
+    /*--------------------------------------*/
+    /* フッター                             */
+    /*--------------------------------------*/
+    --EvaluationOutputScreen-Footer-height : 100px;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*--------------------------------------*/
+    /* 全選択モードボタン                     */
+    /*--------------------------------------*/
+    --EvaluationOutputScreen-All-Select-Button-width                   : var(--EvaluationOutputScreen-common-option-button-width)                                                                                                                       ;
+    --EvaluationOutputScreen-All-Select-Button-height                  : var(--EvaluationOutputScreen-common-option-button-height)                                                                                                                       ;
+    --EvaluationOutputScreen-All-Select-Button-background              : linear-gradient( 0deg , var(--EvaluationOutputScreen-common-All-Select-Button-background-color) , var(--EvaluationOutputScreen-common-All-Select-Button-background-color-gradation) )             ;
+    --EvaluationOutputScreen-All-Select-Button-border-bottom           : 5px solid var(--EvaluationOutputScreen-common-All-Select-Button-border-color)                                                                                                           ;
+    
+    /*--------------------------------------*/
+    /* 全選択モードボタン-テキスト            */
+    /*--------------------------------------*/
+    --EvaluationOutputScreen-All-Select-Button-Text-font-size          : 15px                                                                                                                                                                          ;
+    
+    /*--------------------------------------*/
+    /* 全選択モードボタン[ホバー時]           */
+    /*--------------------------------------*/
+    --EvaluationOutputScreen-All-Select-Button-hover-background        : linear-gradient( 0deg , var(--EvaluationOutputScreen-common-All-Select-Button-background-color-hover) , var(--EvaluationOutputScreen-common-All-Select-Button-background-color-hover-gradation) ) ;
+    --EvaluationOutputScreen-All-Select-Button-hover-border-bottom     : 5px solid var(--EvaluationOutputScreen-common-All-Select-Button-border-color-hover);
+    
+    /*--------------------------------------*/
+    /* 全選択モードボタン-テキスト[ホバー時]  */
+    /*--------------------------------------*/
+    --EvaluationOutputScreen-All-Select-Button-Text-hover-color        : var(--common-font-color-hover)                                                                                                                                                ;
+    
+    /*--------------------------------------*/
+    /* 全選択モードボタン[ダウン時]           */
+    /*--------------------------------------*/
+    --EvaluationOutputScreen-All-Select-Button-down-border-bottom      : 1px solid var(--EvaluationOutputScreen-common-All-Select-Button-border-color-hover)                                                                                                     ;
+    
+    
+    
+    
+    /*--------------------------------------*/
+    /* 全解除モードボタン                     */
+    /*--------------------------------------*/
+    --EvaluationOutputScreen-All-Cancel-Button-width                   : var(--EvaluationOutputScreen-common-option-button-width)                                                                                                                       ;
+    --EvaluationOutputScreen-All-Cancel-Button-height                  : var(--EvaluationOutputScreen-common-option-button-height)                                                                                                                       ;
+    --EvaluationOutputScreen-All-Cancel-Button-background              : linear-gradient( 0deg , var(--EvaluationOutputScreen-common-All-Cancel-Button-background-color) , var(--EvaluationOutputScreen-common-All-Cancel-Button-background-color-gradation) )             ;
+    --EvaluationOutputScreen-All-Cancel-Button-border-bottom           : 5px solid var(--EvaluationOutputScreen-common-All-Cancel-Button-border-color)                                                                                                           ;
+    
+    /*--------------------------------------*/
+    /* 全解除モードボタン-テキスト            */
+    /*--------------------------------------*/
+    --EvaluationOutputScreen-All-Cancel-Button-Text-font-size          : 15px                                                                                                                                                                          ;
+    --EvaluationOutputScreen-All-Cancel-Button-Text-color              : var(--common-font-color-black);
+    
+    /*--------------------------------------*/
+    /* 全解除モードボタン[ホバー時]           */
+    /*--------------------------------------*/
+    --EvaluationOutputScreen-All-Cancel-Button-hover-background        : linear-gradient( 0deg , var(--EvaluationOutputScreen-common-All-Cancel-Button-background-color-hover) , var(--EvaluationOutputScreen-common-All-Cancel-Button-background-color-hover-gradation) ) ;
+    --EvaluationOutputScreen-All-Cancel-Button-hover-border-bottom     : 5px solid var(--EvaluationOutputScreen-common-All-Cancel-Button-border-color-hover);
+    
+    /*--------------------------------------*/
+    /* 全解除モードボタン-テキスト[ホバー時]  */
+    /*--------------------------------------*/
+    --EvaluationOutputScreen-All-Cancel-Button-Text-hover-color        : var(--common-font-color-black-hover)                                                                                                                                                ;
+    
+    /*--------------------------------------*/
+    /* 全解除モードボタン[ダウン時]           */
+    /*--------------------------------------*/
+    --EvaluationOutputScreen-All-Cancel-Button-down-border-bottom      : 1px solid var(--EvaluationOutputScreen-common-All-Cancel-Button-border-color-hover)                                                                                                     ;
+    
+    
+     
+    
+    
+    
+    
+    
+    
+    --EvaluationOutputScreen-Option-Button-Frame-width    : calc(var(--EvaluationOutputScreen-common-option-button-width) * 2 );
+    --EvaluationOutputScreen-Option-Button-Frame-height   : var(--EvaluationOutputScreen-common-option-button-height);
+    --EvaluationOutputScreen-Option-Button-Frame-position : absolute;
+    --EvaluationOutputScreen-Option-Button-Frame-top      : calc( var(--TableScreenModel-Table-top) - var(--EvaluationOutputScreen-Option-Button-Frame-height) - 5px);
+    --EvaluationOutputScreen-Option-Button-Frame-left     : var(--TableScreenModel-Table-left);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+/***************************************************************************************************/
+/*                                      評価出力画面                                              */
+/*                                    [EvaluationOutputScreen]                                    */
+/***************************************************************************************************/
+
+
+/*==========================================================*/
+/* フッター                                                 */
+/*==========================================================*/
+
+
+/*--------------------------------------*/
+/* フッター                             */
+/*--------------------------------------*/
+.EvaluationOutputScreen-Footer{
+    
+    height : var(--EvaluationOutputScreen-Footer-height);
+    
+}
+
+/*--------------------------------------*/
+/* 評価出力                             */
+/*--------------------------------------*/
+.EvaluationOutputScreen-Output-Button{
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+/*--------------------------------------*/
+/* テーブルデータ選択時のカラー         */
+/*--------------------------------------*/
+.EvaluationOutputScreen-Select-Record{
+    
+    background : var(--common-Evaluation-Output-color);
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*--------------------------------------*/
+/* 全選択ボタン                     */
+/*--------------------------------------*/
+.EvaluationOutputScreen-All-Select-Button{
+    
+    width           : var(--EvaluationOutputScreen-All-Select-Button-width               );
+    height          : var(--EvaluationOutputScreen-All-Select-Button-height              );
+    background      : var(--EvaluationOutputScreen-All-Select-Button-background          );
+    border-bottom   : var(--EvaluationOutputScreen-All-Select-Button-border-bottom       );
+    
+}
+
+/*--------------------------------------*/
+/* 全選択ボタン-テキスト            */
+/*--------------------------------------*/
+.EvaluationOutputScreen-All-Select-Button-Text{
+    font-size       : var(--EvaluationOutputScreen-All-Select-Button-Text-font-size      );
+}
+
+/*--------------------------------------*/
+/* 全選択ボタン[ホバー時]           */
+/*--------------------------------------*/
+.EvaluationOutputScreen-All-Select-Button-hover{
+    
+    background      : var(--EvaluationOutputScreen-All-Select-Button-hover-background    );
+    border-bottom   : var(--EvaluationOutputScreen-All-Select-Button-hover-border-bottom );
+    
+}
+
+/*--------------------------------------*/
+/* 全選択ボタン-テキスト[ホバー時]  */
+/*--------------------------------------*/
+.EvaluationOutputScreen-All-Select-Button-Text-hover{
+    
+    color           : var(--EvaluationOutputScreen-All-Select-Button-Text-hover-color    );
+    
+}
+
+/*--------------------------------------*/
+/* 全選択ボタン[ダウン時]           */
+/*--------------------------------------*/
+.EvaluationOutputScreen-All-Select-Button-down{
+    
+    border-bottom   : var(--EvaluationOutputScreen-All-Select-Button-down-border-bottom  );
+    
+}
+
+
+
+
+
+/*--------------------------------------*/
+/* 全解除ボタン                     */
+/*--------------------------------------*/
+.EvaluationOutputScreen-All-Cancel-Button{
+    
+    width           : var(--EvaluationOutputScreen-All-Cancel-Button-width               );
+    height          : var(--EvaluationOutputScreen-All-Cancel-Button-height              );
+    background      : var(--EvaluationOutputScreen-All-Cancel-Button-background          );
+    border-bottom   : var(--EvaluationOutputScreen-All-Cancel-Button-border-bottom       );
+    
+}
+
+/*--------------------------------------*/
+/* 全解除ボタン-テキスト            */
+/*--------------------------------------*/
+.EvaluationOutputScreen-All-Cancel-Button-Text{
+    font-size       : var(--EvaluationOutputScreen-All-Cancel-Button-Text-font-size      );
+    color           : var(--EvaluationOutputScreen-All-Cancel-Button-Text-color);
+}
+
+/*--------------------------------------*/
+/* 全解除ボタン[ホバー時]           */
+/*--------------------------------------*/
+.EvaluationOutputScreen-All-Cancel-Button-hover{
+    
+    background      : var(--EvaluationOutputScreen-All-Cancel-Button-hover-background    );
+    border-bottom   : var(--EvaluationOutputScreen-All-Cancel-Button-hover-border-bottom );
+    
+}
+
+/*--------------------------------------*/
+/* 全解除ボタン-テキスト[ホバー時]  */
+/*--------------------------------------*/
+.EvaluationOutputScreen-All-Cancel-Button-Text-hover{
+    
+    color           : var(--EvaluationOutputScreen-All-Cancel-Button-Text-hover-color    );
+    
+}
+
+/*--------------------------------------*/
+/* 全解除ボタン[ダウン時]           */
+/*--------------------------------------*/
+.EvaluationOutputScreen-All-Cancel-Button-down{
+    
+    border-bottom   : var(--EvaluationOutputScreen-All-Cancel-Button-down-border-bottom  );
+    
+}
+
+
+
+
+
+
+/*--------------------------------------*/
+/* オプションボタンフレーム             */
+/*--------------------------------------*/
+#EvaluationOutputScreen-Option-Button-Frame{
+    
+    width    : var(--EvaluationOutputScreen-Option-Button-Frame-width   );
+    height   : var(--EvaluationOutputScreen-Option-Button-Frame-height  );
+    position : var(--EvaluationOutputScreen-Option-Button-Frame-position);
+    top      : var(--EvaluationOutputScreen-Option-Button-Frame-top     );
+    left     : var(--EvaluationOutputScreen-Option-Button-Frame-left    );
+    
+}
+
+
+
+
+
+
+
+
+
+

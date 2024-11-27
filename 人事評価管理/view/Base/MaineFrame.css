@@ -1,0 +1,97 @@
+/***************************************************************************************************/
+/*                                      変数宣言                                                   */
+/***************************************************************************************************/
+:root{
+    
+    /*==========================================================*/
+    /* メインフレーム                                           */
+    /*==========================================================*/
+    
+    /*--------------------------------------*/
+    /* メインフレーム                       */
+    /*--------------------------------------*/
+    --Maine-Frame-width                         : 1200px                                                                            ;
+    --Maine-Frame-height                        : calc(100vh - calc(var(--Header-height) + var(--Footer-SH-Button-height) ) )       ;
+    --Maine-Frame-overflow                      : hidden                                                                            ;
+    --Maine-Frame-margin                        : 0 auto auto auto                                                                  ;
+    --Maine-Frame-position                      : relative                                                                          ;
+    --Maine-Frame-user-select                   : none                                                                              ;
+    
+    /*--------------------------------------*/
+    /* メインスクリーンフレーム             */
+    /*--------------------------------------*/
+    --Maine-Screen-Frame-width                  : var(--Maine-Frame-width)                                                          ;
+    --Maine-Screen-Frame-height                 : 600px                                                                             ;
+    --Maine-Screen-Frame-position               : relative                                                                          ;
+    
+    /*--------------------------------------*/
+    /* メインスクリーン疑似マージン         */
+    /*--------------------------------------*/
+    --Maine-Screen-Frame-margin-width           : var(--Maine-Frame-width)                           ;
+    --Maine-Screen-Frame-margin-height          : calc(calc( var(--Maine-Frame-height) - var(--Maine-Screen-Frame-height) ) / 2)    ;
+    
+    
+    /*--------------------------------------*/
+    /* メインスクリーンフレームデザイン     */
+    /*--------------------------------------*/
+    --Maine-Screen-Frame-design-width           : var(--Maine-Screen-Frame-width   )                                                ;
+    --Maine-Screen-Frame-design-height          : var(--Maine-Screen-Frame-height  )                                                ;
+    --Maine-Screen-Frame-design-position        : absolute                                                                          ;
+    --Maine-Screen-Frame-design-background      : #cccccc                                                                           ;
+    --Maine-Screen-Frame-design-border-radius   : 3%                                                                                ;
+    --Maine-Screen-Frame-design-opacity         : 0.3                                                                               ;
+    
+}
+
+/***************************************************************************************************/
+/*                                      [ メインフレーム ]                                         */
+/***************************************************************************************************/
+
+/*--------------------------------------*/
+/* メインフレーム                       */
+/*--------------------------------------*/
+#Maine-Frame{
+    
+    width           : var(--Maine-Frame-width                       );
+    height          : var(--Maine-Frame-height                      );
+    overflow        : var(--Maine-Frame-overflow                    );
+    margin          : var(--Maine-Frame-margin                      );
+    position        : var(--Maine-Frame-position                    );
+    user-select     : var(--Maine-Frame-user-select                 );
+    
+}
+
+/*--------------------------------------*/
+/* メインスクリーンフレーム             */
+/*--------------------------------------*/
+.Maine-Screen-Frame{
+    
+    width           : var(--Maine-Screen-Frame-width                );
+    height          : var(--Maine-Screen-Frame-height               );
+    position        : var(--Maine-Screen-Frame-position             );
+}
+
+/*--------------------------------------*/
+/* メインスクリーン疑似マージン         */
+/*--------------------------------------*/
+.Maine-Screen-Frame-margin{
+    
+    width           : var(--Maine-Screen-Frame-margin-width         );
+    height          : var(--Maine-Screen-Frame-margin-height        );
+    
+}
+
+/*--------------------------------------*/
+/* メインスクリーンフレームデザイン     */
+/*--------------------------------------*/
+.Maine-Screen-Frame-design{
+    
+    width           : var(--Maine-Screen-Frame-design-width         );
+    height          : var(--Maine-Screen-Frame-design-height        );
+    position        : var(--Maine-Screen-Frame-design-position      );
+    background      : var(--Maine-Screen-Frame-design-background    );
+    border-radius   : var(--Maine-Screen-Frame-design-border-radius );
+    opacity         : var(--Maine-Screen-Frame-design-opacity       );
+    
+}
+
